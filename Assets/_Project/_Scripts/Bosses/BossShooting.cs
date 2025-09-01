@@ -1,70 +1,55 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using _Project._Scripts.Bosses.AttackPatterns;
+using UnityEngine;
 
 namespace _Project._Scripts.Bosses
 {
     public class BossShooting : MonoBehaviour
     {
         private List<AttackPattern> currentAttackPatterns;
-        private int currentPatternIndex = 0;
-        private Coroutine shootingCoroutine;
 
+        /// <summary>
+        /// Nhận danh sách các pattern từ BossController.
+        /// </summary>
         public void SetAttackPatterns(List<AttackPattern> newPatterns)
         {
             currentAttackPatterns = newPatterns;
-            currentPatternIndex = 0;
         }
 
+        /// <summary>
+        /// Ra lệnh cho TẤT CẢ các pattern được gán bắt đầu bắn CÙNG LÚC.
+        /// </summary>
         public void StartShooting()
         {
-            StopShooting(); 
-
-            if (currentAttackPatterns != null && currentAttackPatterns.Count > 0)
-            {
-                shootingCoroutine = StartCoroutine(ShootingSequence());
-            }
-            else
+            if (currentAttackPatterns == null || currentAttackPatterns.Count == 0)
             {
                 Debug.LogWarning("Không có Attack Pattern nào được gán cho BossShooting.", this);
+                return;
+            }
+
+            // Duyệt qua toàn bộ danh sách và gọi StartFiring() trên mỗi pattern
+            foreach (var pattern in currentAttackPatterns)
+            {
+                if (pattern != null)
+                {
+                    pattern.StartFiring();
+                }
             }
         }
 
+        /// <summary>
+        /// Ra lệnh cho TẤT CẢ các pattern đang hoạt động ngừng bắn.
+        /// </summary>
         public void StopShooting()
         {
-            if (shootingCoroutine != null)
+            if (currentAttackPatterns == null) return;
+
+            // Duyệt qua toàn bộ danh sách và gọi StopFiring() trên mỗi pattern
+            foreach (var pattern in currentAttackPatterns)
             {
-                StopCoroutine(shootingCoroutine);
-                shootingCoroutine = null;
-            }
-            StopAllCoroutines();
-        }
-
-        private IEnumerator ShootingSequence()
-        {
-            while (true) 
-            {
-                if (currentAttackPatterns == null || currentAttackPatterns.Count == 0)
+                if (pattern != null)
                 {
-                    yield return null;
-                    continue;
-                }
-
-                AttackPattern currentPattern = currentAttackPatterns[currentPatternIndex];
-                
-                // Khởi tạo pattern với tham chiếu cần thiết (nếu cần)
-                // currentPattern.Initialize(GetComponent<BossController>());
-
-                // SỬA ĐỔI: Gọi đúng tên hàm Execute()
-                // Dòng này sẽ đợi cho đến khi coroutine của IcicleFall (đã có điểm dừng) thực thi xong.
-                yield return StartCoroutine(currentPattern.Execute());
-
-                currentPatternIndex++;
-
-                if (currentPatternIndex >= currentAttackPatterns.Count)
-                {
-                    currentPatternIndex = 0;
+                    pattern.StopFiring();
                 }
             }
         }
