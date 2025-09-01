@@ -1,5 +1,6 @@
 using _Project._Scripts.Bosses;
 using System.Collections;
+using _Project._Scripts.Gameplay.Items;
 using _Project._Scripts.Player;
 using _Project._Scripts.UI;
 using UnityEngine;
@@ -154,10 +155,9 @@ namespace _Project._Scripts.Core
         }
 
 
-        // Coroutine xử lý chuỗi sự kiện khi chiến thắng
-        private IEnumerator BossDefeatedSequence()
+         private IEnumerator BossDefeatedSequence()
         {
-            isVictorySequenceRunning = true; // Đánh dấu là sequence đang chạy
+            isVictorySequenceRunning = true; 
 
             // 1. Chờ một chút để người chơi cảm nhận chiến thắng
             yield return new WaitForSeconds(1f);
@@ -168,11 +168,15 @@ namespace _Project._Scripts.Core
                 yield return StartCoroutine(ShakeCamera());
             }
 
-            // 3. Di chuyển người chơi ra khỏi màn hình
-            // Giả sử bạn đã có coroutine MovePlayerToExit() từ lần trước
+            // --- THAY ĐỔI LOGIC TẠI ĐÂY ---
+            // 3. Chờ cho đến khi người chơi nhặt hết vật phẩm quan trọng
+            Debug.Log("Waiting for player to collect guaranteed loot...");
+            yield return StartCoroutine(WaitForLootCollection());
+
+            // 4. Di chuyển người chơi ra khỏi màn hình
             yield return StartCoroutine(MovePlayerToExit());
 
-            // 4. Tải màn chơi tiếp theo
+            // 5. Tải màn chơi tiếp theo
             Debug.Log("Player has exited. Loading next scene...");
             if (!string.IsNullOrEmpty(nextSceneName))
             {
@@ -183,7 +187,39 @@ namespace _Project._Scripts.Core
                 Debug.LogWarning("GameManager: Tên của scene tiếp theo chưa được thiết lập!");
             }
         
-            isVictorySequenceRunning = false; // Reset cờ nếu cần (mặc dù scene đã chuyển)
+            isVictorySequenceRunning = false;
+        }
+
+        // --- THÊM COROUTINE MỚI ---
+        private IEnumerator WaitForLootCollection()
+        {
+            // Vòng lặp này sẽ tiếp tục chạy chừng nào vẫn còn vật phẩm quan trọng trong màn chơi
+            while (FindGuaranteedLoot() != null)
+            {
+                // Đợi một khoảng thời gian ngắn trước khi kiểm tra lại
+                yield return new WaitForSeconds(0.5f);
+            }
+            
+            Debug.Log("All guaranteed loot collected!");
+        }
+
+        // --- THÊM HÀM HỖ TRỢ MỚI ---
+        private Item FindGuaranteedLoot()
+        {
+            // Tìm tất cả các đối tượng có script Item trong scene
+            Item[] allItems = FindObjectsOfType<Item>();
+            foreach (Item item in allItems)
+            {
+                // Nếu tìm thấy một vật phẩm được đánh dấu là isGuaranteedLoot
+                if (item.isGuaranteedLoot)
+                {
+                    // Trả về vật phẩm đó và dừng tìm kiếm
+                    return item;
+                }
+            }
+            
+            // Nếu không tìm thấy vật phẩm nào, trả về null
+            return null;
         }
 
 
