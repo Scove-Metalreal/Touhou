@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fea904c33d935549b38253040d9c694, type: 3}
+  m_Name: UpgradeLevel_6
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Player.UpgradeData
+  straightShots: 3
+  diagonalShots: 2
+  homingShots: 0
+  cannonballShots: 0
+  hasDash: 1
+  moveSpeedMultiplier: 1.5
+  hasBulletClearSkill: 0
+  hasInvincibilitySkill: 0

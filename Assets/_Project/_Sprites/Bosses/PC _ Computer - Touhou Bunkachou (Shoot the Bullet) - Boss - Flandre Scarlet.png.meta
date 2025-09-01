@@ -1,0 +1,550 @@
+fileFormatVersion: 2
+guid: 975608eb4f5144743b86806e768677ad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5367366346505425638
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_0
+  - first:
+      213: -1711109693164156911
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_1
+  - first:
+      213: -553072791558490110
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_2
+  - first:
+      213: -6146807150354211758
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_3
+  - first:
+      213: 8272708816593147126
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_4
+  - first:
+      213: -7651689887713708496
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_5
+  - first:
+      213: -5405117465221341226
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_6
+  - first:
+      213: 6634310142155215027
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_7
+  - first:
+      213: -4513303299175798077
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_8
+  - first:
+      213: 323835903896872740
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_9
+  - first:
+      213: 6012414063056213049
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_10
+  - first:
+      213: -2558961652592917734
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_11
+  - first:
+      213: -2203910715879294686
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_12
+  - first:
+      213: 512503955753910704
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_13
+  - first:
+      213: -7648208873008342880
+    second: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+      Scarlet_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 194
+        width: 58
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1d6821deb84385b0800000000000000
+      internalID: -5367366346505425638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 194
+        width: 58
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1180937cccae048e0800000000000000
+      internalID: -1711109693164156911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 194
+        width: 58
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 208f834f9371358f0800000000000000
+      internalID: -553072791558490110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 194
+        width: 58
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c5e44c67722baa0800000000000000
+      internalID: -6146807150354211758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 130
+        width: 59
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f4d64786d09ec270800000000000000
+      internalID: 8272708816593147126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_5
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 129
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0363067669cbfc590800000000000000
+      internalID: -7651689887713708496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_6
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 131
+        width: 59
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dfd83c8d4a2df4b0800000000000000
+      internalID: -5405117465221341226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_7
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 132
+        width: 58
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b0dee89cedc11c50800000000000000
+      internalID: 6634310142155215027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 87
+        width: 62
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca2709df868d51c0800000000000000
+      internalID: -4513303299175798077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_9
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 89
+        width: 62
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4276a41f90f7e7400800000000000000
+      internalID: 323835903896872740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 71
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93457073cb2607350800000000000000
+      internalID: 6012414063056213049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_11
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 82
+        width: 59
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a134a575fedbc7cd0800000000000000
+      internalID: -2558961652592917734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 31
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 229765771e22a61e0800000000000000
+      internalID: -2203910715879294686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 32
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1c1b4e1a7cc1700800000000000000
+      internalID: 512503955753910704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre
+        Scarlet_14
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 30
+        width: 66
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8d85c4d8a1cd590800000000000000
+      internalID: -7648208873008342880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_0: -5367366346505425638
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_1: -1711109693164156911
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_10: 6012414063056213049
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_11: -2558961652592917734
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_12: -2203910715879294686
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_13: 512503955753910704
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_14: -7648208873008342880
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_2: -553072791558490110
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_3: -6146807150354211758
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_4: 8272708816593147126
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_5: -7651689887713708496
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_6: -5405117465221341226
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_7: 6634310142155215027
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_8: -4513303299175798077
+      PC _ Computer - Touhou Bunkachou (Shoot the Bullet) - Boss - Flandre Scarlet_9: 323835903896872740
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

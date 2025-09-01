@@ -1,0 +1,3391 @@
+fileFormatVersion: 2
+guid: 6f1f9dd8a36f62542b7aa2972bc46d2c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8983562093976576904
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_0
+  - first:
+      213: 6482634799531619588
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_1
+  - first:
+      213: 8711104512391205626
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_2
+  - first:
+      213: -1653600164924756143
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_3
+  - first:
+      213: -6894410694174650196
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_4
+  - first:
+      213: -7215176777758397915
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_5
+  - first:
+      213: 1279671109904757187
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_6
+  - first:
+      213: 2771899367979039683
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_7
+  - first:
+      213: -7598842139154295070
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_8
+  - first:
+      213: 8829033052333998802
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_9
+  - first:
+      213: -1229249376799173411
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_10
+  - first:
+      213: 1545233044747457919
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_11
+  - first:
+      213: 4286515471364507810
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_12
+  - first:
+      213: 1306739929625212200
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_13
+  - first:
+      213: 4773027090155597811
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_14
+  - first:
+      213: -2731378549958543363
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_15
+  - first:
+      213: 3177181001960486470
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_16
+  - first:
+      213: -4808951995136503447
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_17
+  - first:
+      213: -6027228786204127263
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_18
+  - first:
+      213: 2676341962676699310
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_19
+  - first:
+      213: -3742967748963982928
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_20
+  - first:
+      213: 4609221779507953374
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_21
+  - first:
+      213: 1783869838938107861
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_22
+  - first:
+      213: -7215961985758167423
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_23
+  - first:
+      213: 3725017564224075765
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_24
+  - first:
+      213: -792560085521623613
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_25
+  - first:
+      213: 9114320405835844584
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_26
+  - first:
+      213: 5880868607259670114
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_27
+  - first:
+      213: 364938010182788676
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_28
+  - first:
+      213: 7973400781523834847
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_29
+  - first:
+      213: -2942993025851903310
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_30
+  - first:
+      213: 6355881285527703730
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_31
+  - first:
+      213: 6373394403724275149
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_32
+  - first:
+      213: -5971055862294544183
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_33
+  - first:
+      213: 1139958003075016877
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_34
+  - first:
+      213: 6628675703257134265
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_35
+  - first:
+      213: 1040865094682072483
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_36
+  - first:
+      213: -3729766805922616015
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_37
+  - first:
+      213: 3686733684869814185
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_38
+  - first:
+      213: -3881090195973586853
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_39
+  - first:
+      213: 6666145377093628368
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_40
+  - first:
+      213: 4701171827442867874
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_41
+  - first:
+      213: 5588704200765943733
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_42
+  - first:
+      213: 4839953122968390049
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_43
+  - first:
+      213: -4299459114400129737
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_44
+  - first:
+      213: -4363941566528027053
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_45
+  - first:
+      213: -999216141494461668
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_46
+  - first:
+      213: -2792664049308252690
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_47
+  - first:
+      213: 4525882677831217546
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_48
+  - first:
+      213: 7260596609083960314
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_49
+  - first:
+      213: -1568665657728182522
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_50
+  - first:
+      213: -692999275023551029
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_51
+  - first:
+      213: -5055480234205676536
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_52
+  - first:
+      213: -4395045349888833374
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_53
+  - first:
+      213: -4580550512733344648
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_54
+  - first:
+      213: 8247649245638659110
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_55
+  - first:
+      213: 5877148070607668105
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_56
+  - first:
+      213: 9079132237939963029
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_57
+  - first:
+      213: 8056436397289606962
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_58
+  - first:
+      213: 6278230701853410623
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_59
+  - first:
+      213: 1940757513362738323
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_60
+  - first:
+      213: 4828049013012426738
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_61
+  - first:
+      213: -3458291596451616496
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_62
+  - first:
+      213: 3298687105225315639
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_63
+  - first:
+      213: 6865863989031958901
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_64
+  - first:
+      213: -8764777950843200757
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_65
+  - first:
+      213: -1125807704675615302
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_66
+  - first:
+      213: 42563257229332835
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_67
+  - first:
+      213: -351256149647341982
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_68
+  - first:
+      213: -3655200996801630838
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_69
+  - first:
+      213: 6373247573614906305
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_70
+  - first:
+      213: -5252991100619793593
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_71
+  - first:
+      213: -2812848789328053683
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_72
+  - first:
+      213: -7078432244419080630
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_73
+  - first:
+      213: -3690948439724197213
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_74
+  - first:
+      213: 8753676381156756712
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_75
+  - first:
+      213: 7357840789489216745
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_76
+  - first:
+      213: 7328967838863280909
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_77
+  - first:
+      213: -530357357049281414
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_78
+  - first:
+      213: -4686890709165099211
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_79
+  - first:
+      213: 6225194365760918517
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_80
+  - first:
+      213: 3936900609960698565
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_81
+  - first:
+      213: 5075292833775012990
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_82
+  - first:
+      213: 8739742819435898030
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_83
+  - first:
+      213: 4166327197602871311
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_84
+  - first:
+      213: 4638099806575121926
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_85
+  - first:
+      213: -1647683696673013291
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_86
+  - first:
+      213: 2117664531822918875
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_87
+  - first:
+      213: -736057507446926534
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_88
+  - first:
+      213: -3274710211788894557
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_89
+  - first:
+      213: -7563956874415810021
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_90
+  - first:
+      213: -6063888208837898550
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_91
+  - first:
+      213: -4247109123804850596
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_92
+  - first:
+      213: -7405846018330078632
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_93
+  - first:
+      213: -3837780560483734718
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_94
+  - first:
+      213: 8842759069006104824
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_95
+  - first:
+      213: -1185539059677872860
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_96
+  - first:
+      213: -978216266802734080
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_97
+  - first:
+      213: 5092934653611944497
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_98
+  - first:
+      213: -1301116003238070154
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_99
+  - first:
+      213: 4029657990056126074
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_100
+  - first:
+      213: 6333836080427324570
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_101
+  - first:
+      213: 6579164893660944692
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_102
+  - first:
+      213: -5313939878615637717
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_103
+  - first:
+      213: -7366220352801944811
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_104
+  - first:
+      213: -426385378718485212
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_105
+  - first:
+      213: 883807736671430286
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_106
+  - first:
+      213: -3130181714760044202
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_107
+  - first:
+      213: 6379955024915222366
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_108
+  - first:
+      213: -9097279817432171024
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_109
+  - first:
+      213: -1728495936394294388
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_110
+  - first:
+      213: -6415980156303879719
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_111
+  - first:
+      213: 2296324974038645299
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_112
+  - first:
+      213: -2760371966884633311
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_113
+  - first:
+      213: -2391215435318667590
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_114
+  - first:
+      213: -6906572998595560961
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_115
+  - first:
+      213: 3190242346407413897
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_116
+  - first:
+      213: 3569224662836209956
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_117
+  - first:
+      213: -3808584264358023990
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_118
+  - first:
+      213: 3814101555646608972
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_119
+  - first:
+      213: -5584619013605813955
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_120
+  - first:
+      213: 8804583375424928079
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_121
+  - first:
+      213: -248164702583189521
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_122
+  - first:
+      213: 7122610766876956426
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_123
+  - first:
+      213: -1296141327439583068
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_124
+  - first:
+      213: 1474412409038566928
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_125
+  - first:
+      213: 8833684392114675871
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_126
+  - first:
+      213: 813854554512425118
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_127
+  - first:
+      213: 3621013565180308333
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_128
+  - first:
+      213: -901204453875460364
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_129
+  - first:
+      213: 3381683576926580700
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_130
+  - first:
+      213: 6602119825293915554
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_131
+  - first:
+      213: 5956731621853957853
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_132
+  - first:
+      213: -2507378778564864271
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_133
+  - first:
+      213: -7533110884316706329
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_134
+  - first:
+      213: 7446981554695043819
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_135
+  - first:
+      213: -7531982707257402672
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_136
+  - first:
+      213: 8362570409086680779
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_137
+  - first:
+      213: -6640009591751965704
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_138
+  - first:
+      213: -318326553183431707
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_139
+  - first:
+      213: 5985021326307616913
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_140
+  - first:
+      213: 6363146222221982763
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_141
+  - first:
+      213: -919064088098060315
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_142
+  - first:
+      213: -6419655289930752897
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_143
+  - first:
+      213: -3171978689676738863
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_144
+  - first:
+      213: 3918887238054812320
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_145
+  - first:
+      213: -1905519917522035823
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_146
+  - first:
+      213: -2806440498435292751
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_147
+  - first:
+      213: -7165377069004631476
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_148
+  - first:
+      213: 5108330868980610459
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_149
+  - first:
+      213: 2513344287444016196
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_150
+  - first:
+      213: 4909058794001194974
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_151
+  - first:
+      213: 7828495648591509067
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_152
+  - first:
+      213: -8255867127370719761
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_153
+  - first:
+      213: -3023692153099405680
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_154
+  - first:
+      213: -4706569522106492348
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_155
+  - first:
+      213: 7495925445398684475
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_156
+  - first:
+      213: -8475455971849711797
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_157
+  - first:
+      213: 2779292571395439094
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_158
+  - first:
+      213: -7954580918460977417
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_159
+  - first:
+      213: -6487329440246910235
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_160
+  - first:
+      213: -4439054436145277244
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_161
+  - first:
+      213: -6227691292617001136
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_162
+  - first:
+      213: -1277742829024346622
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_163
+  - first:
+      213: 2232700580054689363
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_164
+  - first:
+      213: 8208314041162625164
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_165
+  - first:
+      213: -4366075085308884432
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_166
+  - first:
+      213: -6774531423332733187
+    second: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+      - Playable Characters_167
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 304
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8836325a0260cac70800000000000000
+      internalID: 8983562093976576904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 304
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 405faa2f002f6f950800000000000000
+      internalID: 6482634799531619588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 305
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af2516e866f04e870800000000000000
+      internalID: 8711104512391205626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 305
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fe121496b3d09e0800000000000000
+      internalID: -1653600164924756143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 304
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca0d01670022250a0800000000000000
+      internalID: -6894410694174650196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 305
+        width: 33
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a2012c2fa8edb90800000000000000
+      internalID: -7215176777758397915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_6
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 304
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1f33f281e42c110800000000000000
+      internalID: 1279671109904757187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_7
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 305
+        width: 33
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cb358df9c3c77620800000000000000
+      internalID: 2771899367979039683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_8
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 304
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e65077b55d7b8690800000000000000
+      internalID: -7598842139154295070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_9
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 304
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d20d8a68c6078a70800000000000000
+      internalID: 8829033052333998802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_10
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 304
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4d3836434d0fee0800000000000000
+      internalID: -1229249376799173411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_11
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 304
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f751e576445c17510800000000000000
+      internalID: 1545233044747457919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_12
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 304
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8c5ea3c13cc7b30800000000000000
+      internalID: 4286515471364507810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_13
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 304
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8253127ea09722210800000000000000
+      internalID: 1306739929625212200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_14
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 304
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ff6a0499d23d3240800000000000000
+      internalID: 4773027090155597811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_15
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 304
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df779962ea1381ad0800000000000000
+      internalID: -2731378549958543363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_16
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 256
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64679f0b94d971c20800000000000000
+      internalID: 3177181001960486470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_17
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 257
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9619bfba3ab234db0800000000000000
+      internalID: -4808951995136503447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_18
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 258
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef4b424a5bfa5ca0800000000000000
+      internalID: -6027228786204127263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_19
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 258
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea001dec5d6442520800000000000000
+      internalID: 2676341962676699310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_20
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 258
+        width: 32
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b12245d9ae4e0cc0800000000000000
+      internalID: -3742967748963982928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_21
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 257
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edeb09aa9ce37ff30800000000000000
+      internalID: 4609221779507953374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_22
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 257
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df607bca2491c810800000000000000
+      internalID: 1783869838938107861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_23
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 257
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e79264ec0cbdb90800000000000000
+      internalID: -7215961985758167423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_24
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 256
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f7baa91dbbe1b330800000000000000
+      internalID: 3725017564224075765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_25
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 256
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c594572dc24005f0800000000000000
+      internalID: -792560085521623613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_26
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 257
+        width: 28
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb80fe8e129c7e70800000000000000
+      internalID: 9114320405835844584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_27
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 257
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 266757217da0d9150800000000000000
+      internalID: 5880868607259670114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_28
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 257
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 446abfdcf25801500800000000000000
+      internalID: 364938010182788676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_29
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 257
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd7dc8214c537ae60800000000000000
+      internalID: 7973400781523834847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_30
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 257
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b235a58f636827d0800000000000000
+      internalID: -2942993025851903310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_31
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 257
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b09e62ba50a43850800000000000000
+      internalID: 6355881285527703730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_32
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 208
+        width: 32
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcda2774178d27850800000000000000
+      internalID: 6373394403724275149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_33
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 209
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c08be9445c822da0800000000000000
+      internalID: -5971055862294544183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_34
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 209
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da8662893c1f1df00800000000000000
+      internalID: 1139958003075016877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_35
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 210
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b477ef8e69cdfb50800000000000000
+      internalID: 6628675703257134265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_36
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 210
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5d0a3f945e17e00800000000000000
+      internalID: 1040865094682072483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_37
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 209
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d60f5e9d43d3cc0800000000000000
+      internalID: -3729766805922616015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_38
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 209
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a7d124d0c8e92330800000000000000
+      internalID: 3686733684869814185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_39
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 209
+        width: 32
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b504eb79709932ac0800000000000000
+      internalID: -3881090195973586853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_40
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 208
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d137c6d6e7e28c50800000000000000
+      internalID: 6666145377093628368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_41
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 208
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae5ec28edaed3140800000000000000
+      internalID: 4701171827442867874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_42
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 208
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bf23614cd01f8d40800000000000000
+      internalID: 5588704200765943733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_43
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 208
+        width: 29
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a9c210e8b7fa2340800000000000000
+      internalID: 4839953122968390049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_44
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 209
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d5dd707b04554c0800000000000000
+      internalID: -4299459114400129737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_45
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 209
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3560982344a2073c0800000000000000
+      internalID: -4363941566528027053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_46
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 209
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1bd260a6321222f0800000000000000
+      internalID: -999216141494461668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_47
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 208
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee54af3e7d67e39d0800000000000000
+      internalID: -2792664049308252690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_48
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 193
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a81393bf05a2fce30800000000000000
+      internalID: 4525882677831217546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_49
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbeaddc522d2c460800000000000000
+      internalID: 7260596609083960314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 191
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 607d1cb35eafa3ae0800000000000000
+      internalID: -1568665657728182522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_51
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 160
+        width: 58
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc53e9eb4d8f166f0800000000000000
+      internalID: -692999275023551029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_52
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 191
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c7927138357d9b0800000000000000
+      internalID: -5055480234205676536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_53
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 200
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8c42c4a89a103c0800000000000000
+      internalID: -4395045349888833374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_54
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 192
+        width: 34
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87cabc4d39d9e60c0800000000000000
+      internalID: -4580550512733344648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_55
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 191
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c8f4e7a49857270800000000000000
+      internalID: 8247649245638659110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_56
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 193
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98341f02803df8150800000000000000
+      internalID: 5877148070607668105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_57
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 174
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5947537caae8ffd70800000000000000
+      internalID: 9079132237939963029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_58
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 191
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23f89ffe7363ecf60800000000000000
+      internalID: 8056436397289606962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_59
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f358ce15f81c02750800000000000000
+      internalID: 6278230701853410623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_60
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c08230da4feea10800000000000000
+      internalID: 1940757513362738323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_61
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ffe7ca4ffca00340800000000000000
+      internalID: 4828049013012426738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_62
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01968c7ad1ea100d0800000000000000
+      internalID: -3458291596451616496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_63
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 176
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735dd1ce17a47cd20800000000000000
+      internalID: 3298687105225315639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_64
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 176
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579756ecbe2784f50800000000000000
+      internalID: 6865863989031958901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_65
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 175
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b90d834e04d5680800000000000000
+      internalID: -8764777950843200757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_66
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 168
+        width: 58
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd796d7bd35060f0800000000000000
+      internalID: -1125807704675615302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_67
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 176
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36153a39e07379000800000000000000
+      internalID: 42563257229332835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_68
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 174
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26649179466102bf0800000000000000
+      internalID: -351256149647341982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_69
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 161
+        width: 66
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d2cfa3f0e164dc0800000000000000
+      internalID: -3655200996801630838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_70
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 97
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cbcfeab6e2527850800000000000000
+      internalID: 6373247573614906305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_71
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 97
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bd44fec60a917b0800000000000000
+      internalID: -5252991100619793593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_72
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 97
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4ab631ede0c6f8d0800000000000000
+      internalID: -2812848789328053683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_73
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 97
+        width: 65
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4ecab8706b54cd90800000000000000
+      internalID: -7078432244419080630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_74
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 128
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aaf4f513fd17ccc0800000000000000
+      internalID: -3690948439724197213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_168
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 194
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c00529793ccd646930d953b8fcf507
+      internalID: -233628260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_169
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 193
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d58cb16df1a2842b995abb4b043a50
+      internalID: -2138866128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_170
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 886e5a59de5b1c04a9c2a0eb08ee4a7a
+      internalID: -1547796577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_171
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 177
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5741a225c8f2cdc4da57573f97b82679
+      internalID: -1715291619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_172
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efc0b9b2078f1e54a85e9a362baacfc6
+      internalID: 1397569974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_173
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a12a84ef5528b4ea11c66559b9dee2
+      internalID: -345757830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_174
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac41401f7406ee24fb6f95c19159ff19
+      internalID: -1983540097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_175
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 176
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04e3f552c09da34e882ecb547f4b62d
+      internalID: -563846449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_176
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 176
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2067b9bede620e5479625f398a425a72
+      internalID: -991348412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_177
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 176
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf041ff908419c46bce49e132c3a043
+      internalID: -1195932919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_178
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 176
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fec9004c6174294680f29b846a652ca
+      internalID: 959436823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_179
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 176
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8343969a22aef704abc4452feb440d44
+      internalID: -652715050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_180
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 200
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9361182c477b13f46838783dec0194e3
+      internalID: 2053764945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_181
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 200
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f2d753dc9fa4546ac3df9d203cef39
+      internalID: 1699812504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_182
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 200
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aaf9506b44b17d48b1ddf6bc6949c4f
+      internalID: 2090247230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_183
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 192
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2041f8a3d78e7914d9ed169102935d5d
+      internalID: 367402958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_184
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 192
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a7aebf40362e94cbbe2cd2f79f6967
+      internalID: -2135594297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_185
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 191
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366c9a9c75601fc45a38ceb708407fd3
+      internalID: -834024783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_186
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 191
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3558637d464a3843902bdfd4c30e9b5
+      internalID: 1572384740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_187
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 160
+        width: 262
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b414b298d157424b95e2a4da6a11d98
+      internalID: -31402623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_188
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 95
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aad436e2e4b94f04bb41b82232d5e289
+      internalID: -210777288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_189
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 94
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcbe6c0a7d55f3f4db5507b4b8b6b1aa
+      internalID: 1528449482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_190
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 132
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfce1e18111ffa142a32cdcd2f84bc16
+      internalID: -989235562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_191
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 133
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c174ab5a9f845bb48b1cfce52ef23369
+      internalID: -1952145929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_192
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 133
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1be18bbdb56303439468e4f15bbc279
+      internalID: -430890067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_193
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 133
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271460418faa3e349a73a160d8d088b3
+      internalID: -462359350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_194
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 94
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77994750a18ab243b3c5ead2b8c1cfb
+      internalID: -203162569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_195
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 94
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1185fa4a20945de449ced8ca0f879e81
+      internalID: 1452081771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters
+        - Playable Characters_196
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 94
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150122d082b887a46bf9b560831c24e6
+      internalID: -2135675165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0e9bcace1c3103d4aa233f4d761849c7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_0: 8983562093976576904
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_1: 6482634799531619588
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_10: -1229249376799173411
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_100: 4029657990056126074
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_101: 6333836080427324570
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_102: 6579164893660944692
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_103: -5313939878615637717
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_104: -7366220352801944811
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_105: -426385378718485212
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_106: 883807736671430286
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_107: -3130181714760044202
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_108: 6379955024915222366
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_109: -9097279817432171024
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_11: 1545233044747457919
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_110: -1728495936394294388
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_111: -6415980156303879719
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_112: 2296324974038645299
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_113: -2760371966884633311
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_114: -2391215435318667590
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_115: -6906572998595560961
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_116: 3190242346407413897
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_117: 3569224662836209956
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_118: -3808584264358023990
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_119: 3814101555646608972
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_12: 4286515471364507810
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_120: -5584619013605813955
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_121: 8804583375424928079
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_122: -248164702583189521
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_123: 7122610766876956426
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_124: -1296141327439583068
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_125: 1474412409038566928
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_126: 8833684392114675871
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_127: 813854554512425118
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_128: 3621013565180308333
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_129: -901204453875460364
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_13: 1306739929625212200
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_130: 3381683576926580700
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_131: 6602119825293915554
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_132: 5956731621853957853
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_133: -2507378778564864271
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_134: -7533110884316706329
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_135: 7446981554695043819
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_136: -7531982707257402672
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_137: 8362570409086680779
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_138: -6640009591751965704
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_139: -318326553183431707
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_14: 4773027090155597811
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_140: 5985021326307616913
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_141: 6363146222221982763
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_142: -919064088098060315
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_143: -6419655289930752897
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_144: -3171978689676738863
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_145: 3918887238054812320
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_146: -1905519917522035823
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_147: -2806440498435292751
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_148: -7165377069004631476
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_149: 5108330868980610459
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_15: -2731378549958543363
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_150: 2513344287444016196
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_151: 4909058794001194974
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_152: 7828495648591509067
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_153: -8255867127370719761
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_154: -3023692153099405680
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_155: -4706569522106492348
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_156: 7495925445398684475
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_157: -8475455971849711797
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_158: 2779292571395439094
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_159: -7954580918460977417
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_16: 3177181001960486470
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_160: -6487329440246910235
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_161: -4439054436145277244
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_162: -6227691292617001136
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_163: -1277742829024346622
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_164: 2232700580054689363
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_165: 8208314041162625164
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_166: -4366075085308884432
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_167: -6774531423332733187
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_168: -233628260
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_169: -2138866128
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_17: -4808951995136503447
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_170: -1547796577
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_171: -1715291619
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_172: 1397569974
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_173: -345757830
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_174: -1983540097
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_175: -563846449
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_176: -991348412
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_177: -1195932919
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_178: 959436823
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_179: -652715050
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_18: -6027228786204127263
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_180: 2053764945
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_181: 1699812504
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_182: 2090247230
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_183: 367402958
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_184: -2135594297
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_185: -834024783
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_186: 1572384740
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_187: -31402623
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_188: -210777288
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_189: 1528449482
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_19: 2676341962676699310
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_190: -989235562
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_191: -1952145929
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_192: -430890067
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_193: -462359350
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_194: -203162569
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_195: 1452081771
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_196: -2135675165
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_2: 8711104512391205626
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_20: -3742967748963982928
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_21: 4609221779507953374
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_22: 1783869838938107861
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_23: -7215961985758167423
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_24: 3725017564224075765
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_25: -792560085521623613
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_26: 9114320405835844584
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_27: 5880868607259670114
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_28: 364938010182788676
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_29: 7973400781523834847
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_3: -1653600164924756143
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_30: -2942993025851903310
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_31: 6355881285527703730
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_32: 6373394403724275149
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_33: -5971055862294544183
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_34: 1139958003075016877
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_35: 6628675703257134265
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_36: 1040865094682072483
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_37: -3729766805922616015
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_38: 3686733684869814185
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_39: -3881090195973586853
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_4: -6894410694174650196
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_40: 6666145377093628368
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_41: 4701171827442867874
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_42: 5588704200765943733
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_43: 4839953122968390049
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_44: -4299459114400129737
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_45: -4363941566528027053
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_46: -999216141494461668
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_47: -2792664049308252690
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_48: 4525882677831217546
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_49: 7260596609083960314
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_5: -7215176777758397915
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_50: -1568665657728182522
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_51: -692999275023551029
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_52: -5055480234205676536
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_53: -4395045349888833374
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_54: -4580550512733344648
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_55: 8247649245638659110
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_56: 5877148070607668105
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_57: 9079132237939963029
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_58: 8056436397289606962
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_59: 6278230701853410623
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_6: 1279671109904757187
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_60: 1940757513362738323
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_61: 4828049013012426738
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_62: -3458291596451616496
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_63: 3298687105225315639
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_64: 6865863989031958901
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_65: -8764777950843200757
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_66: -1125807704675615302
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_67: 42563257229332835
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_68: -351256149647341982
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_69: -3655200996801630838
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_7: 2771899367979039683
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_70: 6373247573614906305
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_71: -5252991100619793593
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_72: -2812848789328053683
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_73: -7078432244419080630
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_74: -3690948439724197213
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_75: 8753676381156756712
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_76: 7357840789489216745
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_77: 7328967838863280909
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_78: -530357357049281414
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_79: -4686890709165099211
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_8: -7598842139154295070
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_80: 6225194365760918517
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_81: 3936900609960698565
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_82: 5075292833775012990
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_83: 8739742819435898030
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_84: 4166327197602871311
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_85: 4638099806575121926
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_86: -1647683696673013291
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_87: 2117664531822918875
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_88: -736057507446926534
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_89: -3274710211788894557
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_9: 8829033052333998802
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_90: -7563956874415810021
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_91: -6063888208837898550
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_92: -4247109123804850596
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_93: -7405846018330078632
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_94: -3837780560483734718
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_95: 8842759069006104824
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_96: -1185539059677872860
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_97: -978216266802734080
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_98: 5092934653611944497
+      PC _ Computer - Touhou Fuujinroku (Mountain of Faith) - Playable Characters - Playable Characters_99: -1301116003238070154
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80173b991de4add44a067daf9a67ca2d, type: 3}
+  m_Name: LT_Cirno_Random
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Gameplay.LootSystem.LootTable
+  drops:
+  - itemPrefab: {fileID: 1554538223781185634, guid: 3af6cab87999d504e9c95457aa6ba795, type: 3}
+    dropChance: 15
+  - itemPrefab: {fileID: 4843359631955462013, guid: cc1da33769282ad4ab8d114aeeb388a5, type: 3}
+    dropChance: 2
