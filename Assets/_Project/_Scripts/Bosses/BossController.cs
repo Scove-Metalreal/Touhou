@@ -164,8 +164,6 @@ namespace _Project._Scripts.Bosses
 
             Debug.Log($"Boss {bossData.bossName} has been defeated!");
             
-            // Dừng mọi hoạt động
-            StopAllCoroutines();
             StopAndClearAllPatterns();
 
             // Vô hiệu hóa va chạm

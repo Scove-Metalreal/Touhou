@@ -30,6 +30,11 @@ namespace _Project._Scripts.Bosses
             maxHealth = newMaxHealth;
             currentHealth = maxHealth;
             isStageDepleted = false;
+
+            if (uiManager != null)
+            {
+                uiManager.UpdateBossHealthBar(1f);
+            }
         }
 
         public void TakeDamage(int damage)
