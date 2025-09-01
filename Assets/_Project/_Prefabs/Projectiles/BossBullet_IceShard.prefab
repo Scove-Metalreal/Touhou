@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4188472331124151973}
   - component: {fileID: 2006658071078373958}
   - component: {fileID: 8205269873786243546}
-  - component: {fileID: 4761203224875441445}
+  - component: {fileID: 2200535696019245194}
   - component: {fileID: 1955236083185332860}
   m_Layer: 0
   m_Name: BossBullet_IceShard
@@ -120,8 +120,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &4761203224875441445
-BoxCollider2D:
+--- !u!58 &2200535696019245194
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,18 +154,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0016519725, y: 0.053965718}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.40625, y: 0.40625}
-    newSize: {x: 0.12, y: 0.48}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.07264227, y: 0.37206858}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0014646947, y: 0}
+  m_Radius: 0.20558152
 --- !u!114 &1955236083185332860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +171,7 @@ MonoBehaviour:
   speed: 5
   damage: 1
   isEnemyBullet: 1
+  lifetime: 5
   behavior: 0
   rotationSpeed: 200
   explosionVFX_Prefab: {fileID: 0}

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Project._Scripts.Player
@@ -12,11 +13,16 @@ namespace _Project._Scripts.Player
         public int cannonballShots = 0;
 
         [Header("Passive Abilities")]
-        public bool hasDash = false;
+        public bool unlocksDash = false; // Renamed for clarity
         public float moveSpeedMultiplier = 1.0f;
 
         [Header("Active Skills")]
         public bool hasBulletClearSkill = false;
         public bool hasInvincibilitySkill = false;
+        
+        [Tooltip("Thời gian hiệu lực (giây) của kỹ năng bất tử. Chỉ có tác dụng khi 'Has Invincibility Skill' được tick.")]
+        public float invincibilitySkillDuration = 3f;
     }
+    
+    
 }

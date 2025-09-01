@@ -1,12 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-// Đây là một lớp trừu tượng, không thể kéo thả trực tiếp vào GameObject
 namespace _Project._Scripts.Bosses.AttackPatterns
 {
     public abstract class AttackPattern : MonoBehaviour
     {
-        // Biến này sẽ được BossController gọi để bắt đầu tấn công
+        protected BossController bossController;
+        protected Transform bossTransform;
+
+        public virtual void Initialize(BossController controller)
+        {
+            this.bossController = controller;
+            this.bossTransform = controller.transform;
+        }
+
+        /// <summary>
+        /// Coroutine chứa logic tấn công chính. 
+        /// Quan trọng: Coroutine này PHẢI có điểm kết thúc.
+        /// </summary>
         public abstract IEnumerator Execute();
     }
 }

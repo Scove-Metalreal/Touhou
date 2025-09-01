@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8205269873786243546}
   - component: {fileID: 4761203224875441445}
   - component: {fileID: 1955236083185332860}
+  - component: {fileID: -1716591625478282721}
   m_Layer: 0
   m_Name: StraightShot
   m_TagString: PlayerBullet
@@ -154,17 +155,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0016519725, y: 0.053965718}
+  m_Offset: {x: 0.0016519725, y: 0.12350747}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.09375, y: 0.375}
+    oldSize: {x: 0.1875, y: 0.75}
     newSize: {x: 0.12, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.07264227, y: 0.37206858}
+  m_Size: {x: 0.14388016, y: 0.5111521}
   m_EdgeRadius: 0
 --- !u!114 &1955236083185332860
 MonoBehaviour:
@@ -181,6 +182,29 @@ MonoBehaviour:
   speed: 15
   damage: 1
   isEnemyBullet: 0
+  lifetime: 5
   behavior: 0
   rotationSpeed: 200
   explosionVFX_Prefab: {fileID: 0}
+--- !u!95 &-1716591625478282721
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718278173086116756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eaa57ace0c6a42a4ebfbc25dd16ccb09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

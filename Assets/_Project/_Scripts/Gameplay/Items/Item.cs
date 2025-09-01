@@ -1,19 +1,28 @@
-// FILE: _Project/Scripts/Gameplay/Items/ItemV2.cs
+// FILE: _Project/_Scripts/Gameplay/Items/Item.cs (VERSION 4.0 - AUTO LEVEL UP)
 
 using _Project._Scripts.Player;
 using UnityEngine;
 
 namespace _Project._Scripts.Gameplay.Items
 {
-    public enum ItemType { Health, Upgrade, Point }
+    public enum ItemType { Health, Power, Point, Bomb, Upgrade }
 
     public class Item : MonoBehaviour
     {
+        [Header("⚙️ Thiết lập Vật phẩm")]
+        [Tooltip("Chọn loại cho vật phẩm này. Loại sẽ quyết định hành động khi người chơi nhặt.")]
         public ItemType itemType;
+        
+        [Tooltip("Giá trị số của vật phẩm (ví dụ: lượng máu hồi, điểm số, sức mạnh).")]
         public int value;
 
-        [Header("Movement")]
+        // GHI CHÚ: Biến 'upgradeData' đã được xóa bỏ vì không còn cần thiết.
+
+        [Space(10)]
+        [Header("🚀 Hành vi Di chuyển")]
+        [Tooltip("Tốc độ vật phẩm bị hút về phía người chơi khi ở trong tầm thu thập.")]
         public float homingSpeed = 8f;
+        
         private Transform playerTarget;
         private bool isHoming = false;
 
@@ -21,36 +30,54 @@ namespace _Project._Scripts.Gameplay.Items
         {
             if (isHoming && playerTarget != null)
             {
-                // Di chuyển vật phẩm về phía mục tiêu (người chơi)
                 transform.position = Vector2.MoveTowards(transform.position, playerTarget.position, homingSpeed * Time.deltaTime);
             }
         }
 
-        /// <summary>
-        /// Hàm này được ItemCollectionHandler gọi để kích hoạt chế độ "hút".
-        /// </summary>
         public void StartHoming(Transform target)
         {
             isHoming = true;
             playerTarget = target;
         }
 
-        // Logic va chạm trực tiếp khi người chơi bay vào nhặt
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("PlayerHitbox")) // Giả sử Hitbox của bạn có tag này
+            if (other.CompareTag("Player"))
             {
-                PlayerState playerState = other.GetComponentInParent<PlayerState>();
+                PlayerState playerState = other.GetComponent<PlayerState>();
                 if (playerState != null)
                 {
-                    if (itemType == ItemType.Upgrade)
-                    {
-                        playerState.AddUpgrade();
-                    }
-                    // Thêm các logic khác cho Health, Point...
+                    Collect(playerState);
+                    Destroy(gameObject); 
                 }
-                // Tạm thời hủy, sau có thể dùng pool
-                Destroy(gameObject); 
+            }
+        }
+        
+        private void Collect(PlayerState player)
+        {
+            switch (itemType)
+            {
+                case ItemType.Health:
+                    player.Heal(value);
+                    break;
+                    
+                case ItemType.Power:
+                    player.AddPower((float)value / 100f); 
+                    break;
+                    
+                case ItemType.Point:
+                    player.AddScore(value);
+                    break;
+                    
+                case ItemType.Bomb:
+                    player.AddBomb(value); 
+                    break;
+                    
+                case ItemType.Upgrade:
+                    // CẬP NHẬT QUAN TRỌNG:
+                    // Thay vì truyền một data cụ thể, chúng ta chỉ cần ra lệnh cho PlayerState tự lên cấp.
+                    player.LevelUp();
+                    break;
             }
         }
     }

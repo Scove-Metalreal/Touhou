@@ -1,49 +1,70 @@
-// 8/30/2025 AI-Tag
-// This was created with the help of Assistant, a Unity Artificial Intelligence product.
-
-using _Project._Scripts.Core;
-using _Project._Scripts.Gameplay.Projectiles;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using _Project._Scripts.Bosses.AttackPatterns;
 
 namespace _Project._Scripts.Bosses
 {
     public class BossShooting : MonoBehaviour
     {
-        [Header("Shooting Settings")]
-        [Tooltip("Tần suất bắn (giây/viên). (Time between shots.)")]
-        public float fireRate = 1.0f;
+        private List<AttackPattern> currentAttackPatterns;
+        private int currentPatternIndex = 0;
+        private Coroutine shootingCoroutine;
 
-        [Tooltip("Tốc độ của đạn. (Speed of the bullets.)")]
-        public float bulletSpeed = 5.0f;
-
-        private float fireTimer = 0f;
-
-        void Update()
+        public void SetAttackPatterns(List<AttackPattern> newPatterns)
         {
-            fireTimer += Time.deltaTime;
+            currentAttackPatterns = newPatterns;
+            currentPatternIndex = 0;
+        }
 
-            if (fireTimer >= fireRate)
+        public void StartShooting()
+        {
+            StopShooting(); 
+
+            if (currentAttackPatterns != null && currentAttackPatterns.Count > 0)
             {
-                FireBullet();
-                fireTimer = 0f;
+                shootingCoroutine = StartCoroutine(ShootingSequence());
+            }
+            else
+            {
+                Debug.LogWarning("Không có Attack Pattern nào được gán cho BossShooting.", this);
             }
         }
 
-        private void FireBullet()
+        public void StopShooting()
         {
-            // Lấy đạn từ Object Pooler
-            GameObject bullet = ObjectPooler.Instance.GetPooledObject("BossBullet");
-            if (bullet != null)
+            if (shootingCoroutine != null)
             {
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = Quaternion.identity;
-                bullet.SetActive(true);
+                StopCoroutine(shootingCoroutine);
+                shootingCoroutine = null;
+            }
+            StopAllCoroutines();
+        }
 
-                // Thiết lập hướng và tốc độ cho đạn
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
-                if (bulletScript != null)
+        private IEnumerator ShootingSequence()
+        {
+            while (true) 
+            {
+                if (currentAttackPatterns == null || currentAttackPatterns.Count == 0)
                 {
-                    // bulletScript.SetDirection(Vector2.down); // Ví dụ: Bắn xuống dưới
+                    yield return null;
+                    continue;
+                }
+
+                AttackPattern currentPattern = currentAttackPatterns[currentPatternIndex];
+                
+                // Khởi tạo pattern với tham chiếu cần thiết (nếu cần)
+                // currentPattern.Initialize(GetComponent<BossController>());
+
+                // SỬA ĐỔI: Gọi đúng tên hàm Execute()
+                // Dòng này sẽ đợi cho đến khi coroutine của IcicleFall (đã có điểm dừng) thực thi xong.
+                yield return StartCoroutine(currentPattern.Execute());
+
+                currentPatternIndex++;
+
+                if (currentPatternIndex >= currentAttackPatterns.Count)
+                {
+                    currentPatternIndex = 0;
                 }
             }
         }

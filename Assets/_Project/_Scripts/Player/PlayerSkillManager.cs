@@ -1,52 +1,67 @@
-// FILE: _Project/Scripts/Player/PlayerSkillManager.cs
+// FILE: _Project/_Scripts/Player/PlayerSkillManager.cs (VERSION 3.0 - INVINCIBILITY ADDED)
 
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// Cần thiết để điều khiển UI
+using TMPro;
 
 namespace _Project._Scripts.Player
 {
+    [RequireComponent(typeof(PlayerState))]
     public class PlayerSkillManager : MonoBehaviour
     {
-        // Enum để định danh các kỹ năng
         public enum SkillType { BulletClear, Invincibility }
     
-        // Lớp nội bộ để lưu trữ thông tin của mỗi kỹ năng
         private class Skill
         {
             public SkillType Type;
             public float Cooldown;
             public float CooldownTimer;
-            public KeyCode Key;
-            public Image CooldownImage; // UI Image cho hiệu ứng cooldown
-            public TMPro.TextMeshProUGUI CooldownText; // UI Text để hiện số giây
+            public Image CooldownImage;
+            public TextMeshProUGUI CooldownText;
         }
 
-        // --- Biến public để thiết lập trong Inspector ---
-        [Header("Thiết lập Skill Xóa Đạn")]
-        [SerializeField] private float bulletClearCooldown = 15f;
-        [SerializeField] private Image bulletClear_CooldownImage;
-        [SerializeField] private TMPro.TextMeshProUGUI bulletClear_CooldownText;
+        [Header("💣 Thiết lập Bom")]
+        [Tooltip("Prefab của đối tượng Bom sẽ được tạo ra.")]
+        [SerializeField] private GameObject bombPrefab;
 
-        [Header("Thiết lập Skill Bất Tử")]
-        [SerializeField] private float invincibilityCooldown = 30f;
+        [Space(10)]
+        [Header("✨ Thiết lập Skill Xóa Đạn")]
+        [Tooltip("Thời gian hồi chiêu (giây) của kỹ năng Xóa Đạn.")]
+        [SerializeField] private float bulletClearCooldown = 15f;
+        [Tooltip("UI Image để hiển thị hiệu ứng hồi chiêu của kỹ năng Xóa Đạn.")]
+        [SerializeField] private Image bulletClear_CooldownImage;
+        [Tooltip("UI Text để hiển thị số giây hồi chiêu còn lại.")]
+        [SerializeField] private TextMeshProUGUI bulletClear_CooldownText;
+
+        // --- THÊM MỚI: Thiết lập cho kỹ năng bất tử ---
+        [Space(10)]
+        [Header("🛡️ Thiết lập Skill Bất Tử")]
+        [Tooltip("Thời gian hồi chiêu (giây) của kỹ năng Bất Tử.")]
+        [SerializeField] private float invincibilityCooldown = 45f;
+        [Tooltip("UI Image để hiển thị hiệu ứng hồi chiêu của kỹ năng Bất Tử.")]
         [SerializeField] private Image invincibility_CooldownImage;
-        [SerializeField] private TMPro.TextMeshProUGUI invincibility_CooldownText;
-    
-        // --- Biến nội bộ ---
+        [Tooltip("UI Text để hiển thị số giây hồi chiêu còn lại.")]
+        [SerializeField] private TextMeshProUGUI invincibility_CooldownText;
+
         private Dictionary<SkillType, Skill> skills = new Dictionary<SkillType, Skill>();
+        private PlayerState playerState;
+
+        void Awake()
+        {
+            playerState = GetComponent<PlayerState>();
+        }
 
         void Start()
         {
-            // Khởi tạo thông tin cho các kỹ năng
-            InitializeSkill(SkillType.BulletClear, bulletClearCooldown, KeyCode.Mouse0, bulletClear_CooldownImage, bulletClear_CooldownText);
-            InitializeSkill(SkillType.Invincibility, invincibilityCooldown, KeyCode.E, invincibility_CooldownImage, invincibility_CooldownText);
+            // Khởi tạo thông tin cho các kỹ năng có cooldown
+            InitializeSkill(SkillType.BulletClear, bulletClearCooldown, bulletClear_CooldownImage, bulletClear_CooldownText);
+            // --- THÊM MỚI: Khởi tạo kỹ năng bất tử ---
+            InitializeSkill(SkillType.Invincibility, invincibilityCooldown, invincibility_CooldownImage, invincibility_CooldownText);
         }
 
         void Update()
         {
-            // Cập nhật timer và UI cho tất cả các kỹ năng
             foreach (var skill in skills.Values)
             {
                 if (skill.CooldownTimer > 0)
@@ -57,19 +72,20 @@ namespace _Project._Scripts.Player
             }
         }
     
-        // --- Các hàm Public để các script khác gọi ---
+        public void ActivateBomb()
+        {
+            if (bombPrefab != null)
+            {
+                Instantiate(bombPrefab, transform.position, Quaternion.identity);
+                Debug.Log("Bom đã được kích hoạt!");
+            }
+        }
 
-        /// <summary>
-        /// Kiểm tra xem một kỹ năng có sẵn sàng để sử dụng không.
-        /// </summary>
         public bool IsSkillReady(SkillType type)
         {
             return skills.ContainsKey(type) && skills[type].CooldownTimer <= 0;
         }
 
-        /// <summary>
-        /// Kích hoạt thời gian hồi chiêu cho một kỹ năng.
-        /// </summary>
         public void TriggerCooldown(SkillType type)
         {
             if (skills.ContainsKey(type))
@@ -77,21 +93,18 @@ namespace _Project._Scripts.Player
                 skills[type].CooldownTimer = skills[type].Cooldown;
             }
         }
-
-        // --- Các hàm nội bộ ---
-
-        private void InitializeSkill(SkillType type, float cooldown, KeyCode key, Image image, TMPro.TextMeshProUGUI text)
+        
+        private void InitializeSkill(SkillType type, float cooldown, Image image, TextMeshProUGUI text)
         {
             skills[type] = new Skill
             {
                 Type = type,
                 Cooldown = cooldown,
                 CooldownTimer = 0f,
-                Key = key,
                 CooldownImage = image,
                 CooldownText = text
             };
-            // Ban đầu, ẩn hết UI cooldown
+            
             if (image != null) image.fillAmount = 0;
             if (text != null) text.enabled = false;
         }
@@ -102,6 +115,7 @@ namespace _Project._Scripts.Player
             {
                 skill.CooldownImage.fillAmount = skill.CooldownTimer / skill.Cooldown;
             }
+
             if (skill.CooldownText != null)
             {
                 if (skill.CooldownTimer > 0)

@@ -1,3 +1,5 @@
+// FILE: _Project/Scripts/Bosses/MovementPatterns/BossMovementPattern.cs
+
 using UnityEngine;
 
 namespace _Project._Scripts.Bosses.MovementPatterns
@@ -6,21 +8,45 @@ namespace _Project._Scripts.Bosses.MovementPatterns
     {
         protected Rigidbody2D rb;
         protected Transform bossTransform;
+        protected bool isMoving = false;
+
+        public virtual void Initialize(BossController controller)
+        {
+            this.rb = controller.GetComponent<Rigidbody2D>();
+            if (this.rb == null)
+            {
+                Debug.LogError("BossMovementPattern yêu cầu một Rigidbody2D trên Boss!", controller.gameObject);
+                return;
+            }
+            this.bossTransform = controller.transform;
+        }
+
+        public abstract void PerformMove();
+
+        public void Move()
+        {
+            if (!isMoving || rb == null) return;
+            PerformMove();
+        }
 
         /// <summary>
-        /// Hàm này được gọi một lần duy nhất khi pattern được kích hoạt.
-        /// Dùng để thiết lập các tham chiếu cần thiết.
+        /// SỬA ĐỔI: Thêm từ khóa "virtual" để cho phép các lớp con override.
         /// </summary>
-        public virtual void Initialize(Rigidbody2D bossRigidbody2D)
+        public virtual void StartMoving()
         {
-            this.rb = bossRigidbody2D;
-            this.bossTransform = bossRigidbody2D.transform;
+            isMoving = true;
         }
-        
+
         /// <summary>
-        /// Hàm này được gọi trong FixedUpdate của BossController.
-        /// Nơi để thực hiện logic di chuyển dựa trên vật lý.
+        /// SỬA ĐỔI: Thêm từ khóa "virtual" để cho phép các lớp con override.
         /// </summary>
-        public abstract void Move();
+        public virtual void StopMoving()
+        {
+            isMoving = false;
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
     }
 }

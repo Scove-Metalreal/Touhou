@@ -1,23 +1,42 @@
 using _Project._Scripts.Bosses;
-using Unity.Mathematics;
+using System.Collections;
+using _Project._Scripts.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Project._Scripts.Core
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Boss Configuration")] [Tooltip("Kéo Prefab của con trùm cho màn chơi này vào đây.")] [SerializeField]
-        private GameObject bossPrefab;
-    
-        [Tooltip("Vị trí mà con trùm sẽ xuất hiện.")]
+        [Header("Boss Configuration")]
+        [SerializeField] private GameObject bossPrefab;
         [SerializeField] private Transform bossSpawnPoint;
+        [SerializeField] private Transform bossInitialSpawnPoint;
 
-        // Singleton Pattern để các script khác có thể truy cập dễ dàng
+        [Header("Player Configuration")]
+        [SerializeField] private GameObject playerPrefab;
+        [SerializeField] private Transform playerSpawnPoint;
+        [SerializeField] private Transform playerInitialSpawnPoint;
+
+        [Header("Movement Configuration")]
+        [SerializeField] private float movementSpeed = 2f;
+
+        [Header("Victory Sequence Configuration")]
+        [SerializeField] private string nextSceneName;
+        [SerializeField] private Transform playerExitPoint;
+        [SerializeField] private float playerExitSpeed = 3f;
+
+        [Header("Camera Shake Configuration")]
+        [SerializeField] private float shakeDuration = 0.5f;
+        [SerializeField] private float shakeMagnitude = 0.1f;
+
+        private GameObject playerObject;
+        private bool isVictorySequenceRunning = false;
+
         public static GameManager Instance { get; private set; }
 
         void Awake()
         {
-            // Thiết lập Singleton
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -30,37 +49,165 @@ namespace _Project._Scripts.Core
 
         void Start()
         {
-            // Kiểm tra xem đã gán prefab và vị trí chưa
-            if (bossPrefab != null && bossSpawnPoint != null)
-            {
-                // 1. Tạo ra boss
-                GameObject bossObject = Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
-            
-                // 2. Lấy component BossController từ boss vừa tạo
-                BossController bossController = bossObject.GetComponent<BossController>();
+            StartCoroutine(StartLevelSequence());
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayMusic("01. Night of Knights");
+        }
 
-                // 3. Khởi động trận đấu một cách an toàn
-                // 3. Khởi động trận đấu một cách an toàn
-                if (bossController != null)
-                {
-                    bossController.Initialize();
-                }
-                else
-                {
-                    Debug.LogError("Boss Prefab không chứa script BossController!", bossPrefab);
-                }
+        private IEnumerator StartLevelSequence()
+        {
+            if (playerPrefab != null && playerInitialSpawnPoint != null)
+            {
+                playerObject = Instantiate(playerPrefab, playerInitialSpawnPoint.position, Quaternion.identity);
             }
             else
             {
-                Debug.LogError("GameManager: Vui lòng gán Boss Prefab và Boss Spawn Point trong Inspector!");
+                Debug.LogError("GameManager: Player Prefab và Player Initial Spawn Point chưa được gán!");
+                yield break;
+            }
+
+            GameObject bossObject = null;
+            if (bossPrefab != null && bossInitialSpawnPoint != null)
+            {
+                bossObject = Instantiate(bossPrefab, bossInitialSpawnPoint.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError("GameManager: Boss Prefab và Boss Initial Spawn Point chưa được gán!");
+                yield break;
+            }
+
+            if (playerSpawnPoint != null && bossSpawnPoint != null)
+            {
+                yield return StartCoroutine(MoveToSpawnPoints(playerObject.transform, bossObject.transform));
+            }
+            else
+            {
+                Debug.LogError("GameManager: Player Spawn Point và Boss Spawn Point chưa được gán!");
+                yield break;
+            }
+
+            BossController bossController = bossObject.GetComponent<BossController>();
+            if (bossController != null)
+            {
+                bossController.Initialize();
+            }
+            else
+            {
+                Debug.LogError("Boss Prefab không chứa script BossController!", bossPrefab);
             }
         }
 
-        // Hàm này được gọi bởi PlayerState khi hết mạng
+        private IEnumerator MoveToSpawnPoints(Transform playerTransform, Transform bossTransform)
+        {
+            float journeyLengthPlayer = Vector3.Distance(playerTransform.position, playerSpawnPoint.position);
+            float journeyLengthBoss = Vector3.Distance(bossTransform.position, bossSpawnPoint.position);
+            float startTime = Time.time;
+
+            while (Vector3.Distance(playerTransform.position, playerSpawnPoint.position) > 0.01f ||
+                   Vector3.Distance(bossTransform.position, bossSpawnPoint.position) > 0.01f)
+            {
+                float distCovered = (Time.time - startTime) * movementSpeed;
+
+                if (Vector3.Distance(playerTransform.position, playerSpawnPoint.position) > 0.01f)
+                {
+                    float fractionOfJourney = distCovered / journeyLengthPlayer;
+                    playerTransform.position = Vector3.Lerp(playerInitialSpawnPoint.position, playerSpawnPoint.position, fractionOfJourney);
+                }
+
+                if (Vector3.Distance(bossTransform.position, bossSpawnPoint.position) > 0.01f)
+                {
+                    float fractionOfJourney = distCovered / journeyLengthBoss;
+                    bossTransform.position = Vector3.Lerp(bossInitialSpawnPoint.position, bossSpawnPoint.position, fractionOfJourney);
+                }
+
+                yield return null;
+            }
+
+            playerTransform.position = playerSpawnPoint.position;
+            bossTransform.position = bossSpawnPoint.position;
+        }
+
+        public void OnBossDefeated()
+        {
+            // SỬA ĐỔI: Kiểm tra nếu sequence đã chạy thì không chạy lại
+            if (isVictorySequenceRunning) return;
+            StartCoroutine(BossDefeatedSequence());
+        }
+
+        private IEnumerator BossDefeatedSequence()
+        {
+            isVictorySequenceRunning = true; // Đánh dấu là sequence đang chạy
+
+            // 1. Rung màn hình
+            if (Camera.main != null)
+                yield return StartCoroutine(ShakeCamera());
+
+            // 2. Chờ một chút để người chơi cảm nhận
+            yield return new WaitForSeconds(1f);
+
+            // 3. Di chuyển người chơi ra khỏi màn hình
+            // Dòng này đã đúng, nó sẽ đợi MovePlayerToExit() hoàn thành
+            yield return StartCoroutine(MovePlayerToExit());
+
+            // 4. Tải màn chơi tiếp theo
+            Debug.Log("Player has exited. Loading next scene..."); // Thêm log để kiểm tra
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                SceneManager.LoadScene(nextSceneName);
+            }
+            else
+            {
+                Debug.LogWarning("GameManager: Tên của scene tiếp theo chưa được thiết lập!");
+            }
+        }
+
+        private IEnumerator ShakeCamera()
+        {
+            Vector3 originalPosition = Camera.main.transform.localPosition;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < shakeDuration)
+            {
+                float x = Random.Range(-1f, 1f) * shakeMagnitude;
+                float y = Random.Range(-1f, 1f) * shakeMagnitude;
+                Camera.main.transform.localPosition = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            Camera.main.transform.localPosition = originalPosition;
+        }
+
+        private IEnumerator MovePlayerToExit()
+        {
+            if (playerObject == null || playerExitPoint == null)
+            {
+                Debug.LogError("GameManager: Player object hoặc Player Exit Point chưa được gán!");
+                yield break; // Thoát khỏi coroutine nếu thiếu tham chiếu
+            }
+            
+            // (Tùy chọn) Vô hiệu hóa điều khiển của người chơi
+            // var playerController = playerObject.GetComponent<PlayerController>();
+            // if (playerController != null) playerController.enabled = false;
+
+            Transform playerTransform = playerObject.transform;
+            while (playerTransform != null && Vector3.Distance(playerTransform.position, playerExitPoint.position) > 0.01f)
+            {
+                playerTransform.position = Vector3.MoveTowards(playerTransform.position, playerExitPoint.position, playerExitSpeed * Time.deltaTime);
+                yield return null; // Chờ đến frame tiếp theo
+            }
+            
+            // Đảm bảo player đến đúng vị trí cuối cùng
+            if (playerTransform != null)
+            {
+                 playerTransform.position = playerExitPoint.position;
+            }
+        }
+
         public void GameOver()
         {
-            Debug.Log("GAME OVER - Implement logic to show game over screen and restart level.");
-            // Ví dụ: UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            Debug.Log("GAME OVER");
         }
     }
 }
