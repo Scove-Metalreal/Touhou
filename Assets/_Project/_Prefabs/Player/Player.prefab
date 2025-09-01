@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Player.PlayerState
   upgradePath: {fileID: 11400000, guid: 5a34a271adb07fa42905e4cd68373e59, type: 2}
-  maxHealth: 100
+  maxHealth: 20
   invincibilityDuration: 3
   initialBombs: 2
   initialPower: 1
@@ -663,8 +663,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008012056, y: -0.004578471}
-  m_Size: {x: 0.200109, y: 0.58335805}
+  m_Offset: {x: -0.012151241, y: 0.027499437}
+  m_Size: {x: 0.17113495, y: 0.4943676}
   m_Direction: 0
 --- !u!114 &8330884433855591073
 MonoBehaviour:

@@ -5,30 +5,24 @@ namespace _Project._Scripts.Bosses.AttackPatterns
 {
     public abstract class AttackPattern : MonoBehaviour
     {
+        [Header("Pattern Behavior")]
+        [Tooltip("Đánh dấu nếu pattern này nên chạy liên tục trong suốt stage (ví dụ: các vòng đạn cơ bản). Bỏ đánh dấu nếu nó chỉ chạy trong một khoảng thời gian rồi kết thúc (ví dụ: một đợt mưa đạn).")]
+        public bool isPersistent = true;
+
         protected BossController bossController;
-        protected Coroutine firingCoroutine; // Biến để lưu trữ coroutine đang chạy
+        protected Coroutine firingCoroutine;
 
         public virtual void Initialize(BossController controller)
         {
             this.bossController = controller;
         }
 
-        /// <summary>
-        /// Bắt đầu thực thi logic tấn công.
-        /// </summary>
         public virtual void StartFiring()
         {
-            // Dừng coroutine cũ nếu có và bắt đầu một cái mới
-            if (firingCoroutine != null)
-            {
-                StopCoroutine(firingCoroutine);
-            }
+            if (firingCoroutine != null) StopCoroutine(firingCoroutine);
             firingCoroutine = StartCoroutine(Execute());
         }
 
-        /// <summary>
-        /// Dừng logic tấn công đang chạy.
-        /// </summary>
         public virtual void StopFiring()
         {
             if (firingCoroutine != null)
@@ -38,9 +32,6 @@ namespace _Project._Scripts.Bosses.AttackPatterns
             }
         }
 
-        /// <summary>
-        /// Coroutine chứa logic tấn công chính.
-        /// </summary>
         public abstract IEnumerator Execute();
     }
 }

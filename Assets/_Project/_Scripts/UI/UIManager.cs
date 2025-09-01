@@ -2,10 +2,10 @@
 
 using UnityEngine;
 using TMPro;
-using MagicPigGames;
 using System.Collections;
 using _Project._Scripts.Core;
-using UnityEngine.UIElements;
+using _Project._Scripts.Player;
+using UnityEngine.UI;
 using ProgressBar = ThirdParty.InfinityPBR___Magic_Pig_Games.Progress_Bar.Scripts.ProgressBar;
 
 namespace _Project._Scripts.UI
@@ -19,6 +19,13 @@ namespace _Project._Scripts.UI
         [SerializeField] private TextMeshProUGUI bombsText;
         [SerializeField] private TextMeshProUGUI powerText;
         [SerializeField] private TextMeshProUGUI scoreText;
+        
+        [Space(15)]
+        [Header("✨ Giao diện Kỹ năng Player")]
+        [SerializeField] private Image bulletClear_CooldownImage;
+        [SerializeField] private TextMeshProUGUI bulletClear_CooldownText;
+        [SerializeField] private Image invincibility_CooldownImage;
+        [SerializeField] private TextMeshProUGUI invincibility_CooldownText;
 
         [Space(15)]
         [Header("👹 Giao diện Boss")]
@@ -57,6 +64,8 @@ namespace _Project._Scripts.UI
             
             if(pauseMenuPanel != null)
                 pauseMenuPanel.SetActive(false);
+            
+            ResetAllSkillCooldowns();
         }
 
         #endregion
@@ -203,6 +212,44 @@ namespace _Project._Scripts.UI
         #endregion
 
         #region Player UI Methods
+        
+        public void UpdateSkillCooldown(PlayerSkillManager.SkillType skillType, float fillAmount, float remainingTime)
+        {
+            Image targetImage = null;
+            TextMeshProUGUI targetText = null;
+
+            // Chọn đúng UI element dựa trên loại skill
+            switch (skillType)
+            {
+                case PlayerSkillManager.SkillType.BulletClear:
+                    targetImage = bulletClear_CooldownImage;
+                    targetText = bulletClear_CooldownText;
+                    break;
+                case PlayerSkillManager.SkillType.Invincibility:
+                    targetImage = invincibility_CooldownImage;
+                    targetText = invincibility_CooldownText;
+                    break;
+            }
+
+            if (targetImage != null)
+            {
+                targetImage.fillAmount = fillAmount;
+            }
+
+            if (targetText != null)
+            {
+                if (remainingTime > 0)
+                {
+                    targetText.enabled = true;
+                    targetText.text = Mathf.Ceil(remainingTime).ToString();
+                }
+                else
+                {
+                    targetText.enabled = false;
+                }
+            }
+        }
+
         public void UpdatePlayerHealthBar(float fillAmount)
         {
             if (playerHealthBar != null)
@@ -230,6 +277,35 @@ namespace _Project._Scripts.UI
             {
                 scoreText.text = $"Điểm: {score:N0}";
             }
+        }
+        
+        public Image GetSkillCooldownImage(PlayerSkillManager.SkillType skillType)
+        {
+            switch (skillType)
+            {
+                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownImage;
+                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownImage;
+                default: return null;
+            }
+        }
+
+        public TextMeshProUGUI GetSkillCooldownText(PlayerSkillManager.SkillType skillType)
+        {
+            switch (skillType)
+            {
+                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownText;
+                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownText;
+                default: return null;
+            }
+        }
+        
+        // Hàm này có thể được giữ lại để reset UI ban đầu
+        private void ResetAllSkillCooldowns()
+        {
+            if (bulletClear_CooldownImage != null) bulletClear_CooldownImage.fillAmount = 0;
+            if (bulletClear_CooldownText != null) bulletClear_CooldownText.enabled = false;
+            if (invincibility_CooldownImage != null) invincibility_CooldownImage.fillAmount = 0;
+            if (invincibility_CooldownText != null) invincibility_CooldownText.enabled = false;
         }
         #endregion
     }
