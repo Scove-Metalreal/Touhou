@@ -32,6 +32,7 @@ namespace _Project._Scripts.Core
 
         private GameObject playerObject;
         private bool isVictorySequenceRunning = false;
+        private bool isPaused = false;
 
         public static GameManager Instance { get; private set; }
 
@@ -49,9 +50,19 @@ namespace _Project._Scripts.Core
 
         void Start()
         {
+            Time.timeScale = 1f;
             StartCoroutine(StartLevelSequence());
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlayMusic("01. Night of Knights");
+        }
+        
+        void Update()
+        {
+            // Nếu người chơi nhấn phím Escape
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
+            }
         }
 
         private IEnumerator StartLevelSequence()
@@ -209,5 +220,52 @@ namespace _Project._Scripts.Core
         {
             Debug.Log("GAME OVER");
         }
+        
+        #region Pause Menu Logic
+
+        // --- MỚI: Các hàm xử lý logic Tạm dừng ---
+        
+        public void TogglePause()
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+
+        public void PauseGame()
+        {
+            isPaused = true;
+            Time.timeScale = 0f; // Dừng thời gian trong game
+            UIManager.Instance.ShowPauseMenu(); // Yêu cầu UIManager hiển thị menu
+        }
+
+        public void ResumeGame()
+        {
+            isPaused = false;
+            Time.timeScale = 1f; // Cho thời gian chạy lại bình thường
+            UIManager.Instance.HidePauseMenu(); // Yêu cầu UIManager ẩn menu
+        }
+
+        public void RestartLevel()
+        {
+            // Quan trọng: Phải đặt lại Time.timeScale trước khi tải lại scene
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void QuitGame()
+        {
+            Debug.Log("Quitting game..."); // Dòng này chỉ hiện trong Editor
+            Application.Quit();
+        }
+
+        // --- KẾT THÚC PHẦN MỚI ---
+        #endregion
     }
 }

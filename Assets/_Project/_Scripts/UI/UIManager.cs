@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using MagicPigGames;
 using System.Collections;
+using _Project._Scripts.Core;
 using ThirdParty.InfinityPBR___Magic_Pig_Games.Progress_Bar.Scripts;
 
 namespace _Project._Scripts.UI
@@ -25,6 +26,10 @@ namespace _Project._Scripts.UI
         [SerializeField] private GameObject spellCardDeclarationGroup;
         [SerializeField] private Animator spellCardAnimator;
         [SerializeField] private float spellCardDisplayTime = 3.5f;
+        
+        [Space(15)]
+        [Header("⏸️ Giao diện Tạm dừng")]
+        [SerializeField] private GameObject pauseMenuPanel;
 
         private Coroutine spellCardDisplayCoroutine;
 
@@ -42,8 +47,41 @@ namespace _Project._Scripts.UI
         {
             if (playerHealthBar != null)
                 playerHealthBar.gameObject.SetActive(true);
+            
+            if(pauseMenuPanel != null)
+                pauseMenuPanel.SetActive(false);
         }
 
+        #endregion
+        
+        #region Pause Menu UI Methods
+        public void ShowPauseMenu()
+        {
+            if (pauseMenuPanel != null)
+                pauseMenuPanel.SetActive(true);
+        }
+
+        public void HidePauseMenu()
+        {
+            if (pauseMenuPanel != null)
+                pauseMenuPanel.SetActive(false);
+        }
+
+        // Các hàm này sẽ được gọi bởi các nút trên UI
+        public void OnResumeButtonPressed()
+        {
+            GameManager.Instance.ResumeGame();
+        }
+
+        public void OnRestartButtonPressed()
+        {
+            GameManager.Instance.RestartLevel();
+        }
+
+        public void OnQuitButtonPressed()
+        {
+            GameManager.Instance.QuitGame();
+        }
         #endregion
         
         #region Boss UI Methods
