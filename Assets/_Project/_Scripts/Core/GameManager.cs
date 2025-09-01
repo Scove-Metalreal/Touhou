@@ -1,5 +1,6 @@
 using _Project._Scripts.Bosses;
 using System.Collections;
+using _Project._Scripts.Player;
 using _Project._Scripts.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,7 @@ namespace _Project._Scripts.Core
         private GameObject playerObject;
         private bool isVictorySequenceRunning = false;
         private bool isPaused = false;
+        private PlayerController playerController;
 
         public static GameManager Instance { get; private set; }
 
@@ -54,6 +56,8 @@ namespace _Project._Scripts.Core
             StartCoroutine(StartLevelSequence());
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlayMusic("01. Night of Knights");
+            
+            playerController = FindObjectOfType<PlayerController>();
         }
         
         void Update()
@@ -141,28 +145,35 @@ namespace _Project._Scripts.Core
 
         public void OnBossDefeated()
         {
-            // SỬA ĐỔI: Kiểm tra nếu sequence đã chạy thì không chạy lại
+            Debug.Log("GameManager received BossDefeated signal.");
+        
+            // Ngăn sequence chạy lại nếu đang chạy rồi
             if (isVictorySequenceRunning) return;
+
             StartCoroutine(BossDefeatedSequence());
         }
 
+
+        // Coroutine xử lý chuỗi sự kiện khi chiến thắng
         private IEnumerator BossDefeatedSequence()
         {
             isVictorySequenceRunning = true; // Đánh dấu là sequence đang chạy
 
-            // 1. Rung màn hình
-            if (Camera.main != null)
-                yield return StartCoroutine(ShakeCamera());
-
-            // 2. Chờ một chút để người chơi cảm nhận
+            // 1. Chờ một chút để người chơi cảm nhận chiến thắng
             yield return new WaitForSeconds(1f);
 
+            // 2. Rung màn hình (hiệu ứng)
+            if (Camera.main != null)
+            {
+                yield return StartCoroutine(ShakeCamera());
+            }
+
             // 3. Di chuyển người chơi ra khỏi màn hình
-            // Dòng này đã đúng, nó sẽ đợi MovePlayerToExit() hoàn thành
+            // Giả sử bạn đã có coroutine MovePlayerToExit() từ lần trước
             yield return StartCoroutine(MovePlayerToExit());
 
             // 4. Tải màn chơi tiếp theo
-            Debug.Log("Player has exited. Loading next scene..."); // Thêm log để kiểm tra
+            Debug.Log("Player has exited. Loading next scene...");
             if (!string.IsNullOrEmpty(nextSceneName))
             {
                 SceneManager.LoadScene(nextSceneName);
@@ -171,7 +182,10 @@ namespace _Project._Scripts.Core
             {
                 Debug.LogWarning("GameManager: Tên của scene tiếp theo chưa được thiết lập!");
             }
+        
+            isVictorySequenceRunning = false; // Reset cờ nếu cần (mặc dù scene đã chuyển)
         }
+
 
         private IEnumerator ShakeCamera()
         {
@@ -198,9 +212,23 @@ namespace _Project._Scripts.Core
                 yield break; // Thoát khỏi coroutine nếu thiếu tham chiếu
             }
             
-            // (Tùy chọn) Vô hiệu hóa điều khiển của người chơi
-            // var playerController = playerObject.GetComponent<PlayerController>();
-            // if (playerController != null) playerController.enabled = false;
+            // 1. Vô hiệu hóa script điều khiển của người chơi
+            playerController.enabled = false;
+
+            // 2. Vô hiệu hóa Collider để tránh va chạm
+            Collider2D playerCollider = playerController.GetComponent<Collider2D>();
+            if (playerCollider != null)
+            {
+                playerCollider.enabled = false;
+            }
+            
+            // 3. Vô hiệu hóa Rigidbody nếu có (để không bị ảnh hưởng bởi trọng lực, v.v.)
+            Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.linearVelocity = Vector2.zero; // Dừng mọi chuyển động hiện tại
+                playerRb.isKinematic = true; // Chuyển sang Kinematic để không bị ảnh hưởng bởi vật lý
+            }
 
             Transform playerTransform = playerObject.transform;
             while (playerTransform != null && Vector3.Distance(playerTransform.position, playerExitPoint.position) > 0.01f)

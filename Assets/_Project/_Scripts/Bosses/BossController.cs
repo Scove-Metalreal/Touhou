@@ -7,205 +7,251 @@ using _Project._Scripts.Core;
 using _Project._Scripts.UI;
 using UnityEngine;
 
-// Các component này là bắt buộc để BossController hoạt động
 namespace _Project._Scripts.Bosses
 {
     [RequireComponent(typeof(BossHealth))]
     [RequireComponent(typeof(BossShooting))]
-    [RequireComponent(typeof(Rigidbody2D))] // THÊM MỚI: Yêu cầu có Rigidbody2D
+    [RequireComponent(typeof(Rigidbody2D))]
     public class BossController : MonoBehaviour
     {
-        [Header("Boss Data")]
+        [Header("Configuration")]
         public BossData bossData;
+        [SerializeField] private float transitionDelay = 2.0f; // Thời gian chờ giữa các stage
 
-        // Tham chiếu đến các component khác
-        private Rigidbody2D rb; // THÊM MỚI: Tham chiếu đến Rigidbody2D
+        // --- References ---
+        private Rigidbody2D rb;
         private BossHealth bossHealth;
         private BossShooting bossShooting;
-
-        // Biến trạng thái
-        private int currentStageIndex = 0;
-        private bool isTransitioning = false;
         private UIManager uiManager;
 
-        // Danh sách chứa các pattern đã được tạo ra (instance)
+        // --- State ---
+        private int currentStageIndex = -1;
         private List<AttackPattern> activeAttackPatterns = new List<AttackPattern>();
         private BossMovementPattern activeMovementPattern;
+        
+        // Cờ trạng thái để quản lý luồng hoạt động
+        private bool isFighting = false;
+        private bool isTransitioning = false;
+        private bool isDefeated = false;
 
         #region Unity Lifecycle
-
-        void Awake()
+        
+        private void Awake()
         {
             // Lấy các component cần thiết
             rb = GetComponent<Rigidbody2D>();
             bossHealth = GetComponent<BossHealth>();
             bossShooting = GetComponent<BossShooting>();
-        
-            // Cài đặt Rigidbody2D cho game 2D (không trọng lực, không xoay)
+            
+            // Cấu hình Rigidbody
             rb.gravityScale = 0;
+            rb.isKinematic = true; // Di chuyển boss qua transform sẽ an toàn hơn
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         private void Start()
         {
             uiManager = UIManager.Instance;
+            // Bắt đầu trận đấu (có thể gọi từ một script khác như LevelManager)
+            Initialize(); 
         }
 
-        // THÊM MỚI: Hàm FixedUpdate để xử lý di chuyển vật lý
-        void FixedUpdate()
+        private void OnEnable()
         {
-            // Nếu có một movement pattern đang hoạt động, gọi hàm Move() của nó
-            if (activeMovementPattern != null && !isTransitioning)
-            {
-                activeMovementPattern.Move();
-            }
+            // Đăng ký sự kiện khi component được kích hoạt
+            bossHealth.OnStageHealthDepleted += HandleStageHealthDepleted;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            if (bossHealth != null)
-            {
-                bossHealth.OnStageHealthDepleted -= HandleStageEnd;
-            }
-            ClearActivePatterns();
+            // Hủy đăng ký sự kiện để tránh lỗi và memory leak
+            bossHealth.OnStageHealthDepleted -= HandleStageHealthDepleted;
         }
 
         #endregion
 
-        #region Stage Management
+        #region Core Fight Loop
 
+        // Bắt đầu trận đấu với boss
         public void Initialize()
         {
             if (bossData == null || bossData.stages.Count == 0)
             {
-                Debug.LogError("BossData chưa được gán hoặc không có stage nào!", this);
+                Debug.LogError("BossData is not assigned or has no stages!", this);
+                gameObject.SetActive(false);
                 return;
             }
-            
-            if (uiManager != null)
-            {
-                uiManager.ShowBossUI();
-            }
 
-            bossHealth.OnStageHealthDepleted += HandleStageEnd;
-            StartNextStage();
+            isFighting = true;
+            currentStageIndex = 0;
+            uiManager?.ShowBossUI();
+            StartCoroutine(TransitionToStage(currentStageIndex));
         }
 
-        private void HandleStageEnd()
+        // Được gọi bởi event OnStageHealthDepleted từ BossHealth
+        private void HandleStageHealthDepleted()
         {
-            if (isTransitioning) return;
+            // Chỉ xử lý khi boss đang trong trận và không bị đánh bại
+            if (!isFighting || isDefeated) return;
 
-            Debug.Log($"Stage {currentStageIndex + 1} đã kết thúc.");
             currentStageIndex++;
 
             if (currentStageIndex < bossData.stages.Count)
             {
-                StartCoroutine(TransitionToNextStage());
+                // Chuyển sang stage tiếp theo
+                StartCoroutine(TransitionToStage(currentStageIndex));
             }
             else
             {
-                DefeatBoss();
+                // Boss đã bị đánh bại
+                StartCoroutine(DefeatSequence());
             }
         }
 
-        private void StartNextStage()
-        {
-            Debug.Log($"Bắt đầu Stage {currentStageIndex + 1}");
-            var currentStage = bossData.stages[currentStageIndex];
-            
-            if (uiManager != null && currentStage.isSpellCard)
-            {
-                uiManager.DeclareSpellCard(currentStage.spellCardName, currentStage.timeLimit);
-            }
-
-            bossHealth.SetNewStage(currentStage.health);
-            SetupAttackPatternsForStage(currentStage);
-            SetupMovementPatternForStage(currentStage); // Sửa đổi để tương thích
-
-            // Bắt đầu các hành động
-            bossShooting.StartShooting();
-            if (activeMovementPattern != null) activeMovementPattern.StartMoving();
-        }
-
-        private IEnumerator TransitionToNextStage()
+        // Coroutine xử lý việc chuyển đổi giữa các stage
+        private IEnumerator TransitionToStage(int stageIndex)
         {
             isTransitioning = true;
-            bossShooting.StopShooting();
-            if (activeMovementPattern != null) activeMovementPattern.StopMoving();
+            
+            // Dừng và dọn dẹp các pattern của stage cũ
+            StopAndClearAllPatterns();
+            
+            // Đợi một khoảng thời gian trước khi bắt đầu stage mới
+            if (stageIndex > 0) // Không delay ở stage đầu tiên
+            {
+                Debug.Log("Transitioning to next stage...");
+                yield return new WaitForSeconds(transitionDelay);
+            }
 
-            Debug.Log("Đang chuyển sang stage tiếp theo...");
-            yield return new WaitForSeconds(2f);
+            // Thiết lập stage mới
+            SetupStage(bossData.stages[stageIndex]);
 
             isTransitioning = false;
-            StartNextStage();
         }
 
-        private void DefeatBoss()
+        // Thiết lập các thành phần cho một stage cụ thể
+        private void SetupStage(BossStage stage)
         {
-            Debug.Log("Boss đã bị đánh bại!");
-            bossHealth.OnStageHealthDepleted -= HandleStageEnd;
-            StopAllCoroutines();
-            bossShooting.StopShooting();
-            if (activeMovementPattern != null) activeMovementPattern.StopMoving();
-            if (GetComponent<Collider2D>() != null) GetComponent<Collider2D>().enabled = false;
-
-            if (uiManager != null)
-            {
-                uiManager.HideBossUI();
-            }
+            if (stage == null) return;
             
-            if (GameManager.Instance != null) GameManager.Instance.OnBossDefeated();
-        
-            Destroy(gameObject, 3f);
+            Debug.Log($"Setting up Stage {currentStageIndex + 1}: {(stage.isSpellCard ? stage.spellCardName : "Non-Spell")}");
+            
+            // Cập nhật UI nếu là Spell Card
+            if (stage.isSpellCard)
+            {
+                uiManager?.DeclareSpellCard(stage.spellCardName, stage.timeLimit);
+            }
+            else
+            {
+                 uiManager?.HideSpellCardUI();
+            }
+
+            // Thiết lập máu và các pattern
+            bossHealth.SetNewStage(stage.health);
+            SetupMovementPattern(stage);
+            SetupAttackPatterns(stage);
+            
+            // Bắt đầu các hành động của stage
+            bossShooting.StartShooting();
         }
 
+        // Coroutine xử lý khi boss bị đánh bại hoàn toàn
+        private IEnumerator DefeatSequence()
+        {
+            if (isDefeated) yield break; // Ngăn chạy nhiều lần
+            isDefeated = true;
+            isFighting = false;
+
+            Debug.Log($"Boss {bossData.bossName} has been defeated!");
+            
+            // Dừng mọi hoạt động
+            StopAllCoroutines();
+            StopAndClearAllPatterns();
+
+            // Vô hiệu hóa va chạm
+            if (GetComponent<Collider2D>() != null) GetComponent<Collider2D>().enabled = false;
+            
+            // Ẩn UI của boss
+            uiManager?.HideBossUI();
+            uiManager?.HideSpellCardUI();
+
+            // TODO: Thêm hiệu ứng nổ, âm thanh, v.v.
+            // Ví dụ: Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(1f); // Chờ hiệu ứng
+
+            // Rớt đồ
+            DropGuaranteedLoot();
+            
+            // Thông báo cho GameManager
+            GameManager.Instance?.OnBossDefeated();
+
+            // Hủy đối tượng boss sau một khoảng trễ
+            Destroy(gameObject, 2f);
+        }
+        
         #endregion
 
-        #region Pattern Management
+        #region Pattern & Loot Management
 
-        private void SetupAttackPatternsForStage(BossStage stage)
+        // Thiết lập các attack pattern cho stage
+        private void SetupAttackPatterns(BossStage stage)
         {
-            // Dọn dẹp Attack Pattern cũ
-            foreach (var pattern in activeAttackPatterns)
-            {
-                if (pattern != null) Destroy(pattern.gameObject);
-            }
-            activeAttackPatterns.Clear();
+            var attackPatternPrefabs = stage.attackPatterns;
+            if (attackPatternPrefabs == null) return;
 
-            // Tạo và khởi tạo Attack Pattern mới
-            foreach (AttackPattern patternPrefab in stage.attackPatterns)
+            foreach (var patternPrefab in attackPatternPrefabs)
             {
                 if (patternPrefab != null)
                 {
                     AttackPattern newInstance = Instantiate(patternPrefab, transform);
-                    newInstance.Initialize(this); // Khởi tạo với BossController
+                    newInstance.Initialize(this);
                     activeAttackPatterns.Add(newInstance);
                 }
             }
             bossShooting.SetAttackPatterns(activeAttackPatterns);
         }
 
-        private void SetupMovementPatternForStage(BossStage stage)
+        // Thiết lập movement pattern cho stage
+        private void SetupMovementPattern(BossStage stage)
         {
-            // Dọn dẹp Movement Pattern cũ
+            if (stage.movementPattern != null)
+            {
+                activeMovementPattern = Instantiate(stage.movementPattern, transform);
+                activeMovementPattern.Initialize(this);
+            }
+        }
+
+        // Hàm dọn dẹp TẤT CẢ các pattern đang hoạt động
+        private void StopAndClearAllPatterns()
+        {
+            // Dừng bắn
+            bossShooting.StopShooting();
+
+            // Dọn dẹp Attack Patterns
+            foreach (var pattern in activeAttackPatterns)
+            {
+                if (pattern != null)
+                {
+                    Destroy(pattern.gameObject);
+                }
+            }
+            activeAttackPatterns.Clear();
+
+            // Dọn dẹp Movement Pattern
             if (activeMovementPattern != null)
             {
                 Destroy(activeMovementPattern.gameObject);
                 activeMovementPattern = null;
             }
-
-            // Tạo và khởi tạo Movement Pattern mới
-            if (stage.movementPattern != null)
-            {
-                activeMovementPattern = Instantiate(stage.movementPattern, transform);
-                activeMovementPattern.Initialize(this); // SỬA ĐỔI: Khởi tạo với BossController
-            }
         }
-    
-        private void ClearActivePatterns()
+
+        private void DropGuaranteedLoot()
         {
-            SetupAttackPatternsForStage(new BossStage()); // Gọi với stage rỗng để dọn dẹp
-            SetupMovementPatternForStage(new BossStage()); // Gọi với stage rỗng để dọn dẹp
+            if (bossData.guaranteedUpgradeDrop != null)
+                Instantiate(bossData.guaranteedUpgradeDrop, transform.position, Quaternion.identity);
+            
+            if (bossData.rareHealthDrop != null)
+                Instantiate(bossData.rareHealthDrop, transform.position, Quaternion.identity);
         }
 
         #endregion

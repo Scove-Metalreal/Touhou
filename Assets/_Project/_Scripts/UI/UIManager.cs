@@ -5,7 +5,8 @@ using TMPro;
 using MagicPigGames;
 using System.Collections;
 using _Project._Scripts.Core;
-using ThirdParty.InfinityPBR___Magic_Pig_Games.Progress_Bar.Scripts;
+using UnityEngine.UIElements;
+using ProgressBar = ThirdParty.InfinityPBR___Magic_Pig_Games.Progress_Bar.Scripts.ProgressBar;
 
 namespace _Project._Scripts.UI
 {
@@ -22,10 +23,16 @@ namespace _Project._Scripts.UI
         [Space(15)]
         [Header("👹 Giao diện Boss")]
         [SerializeField] private ProgressBar bossHealthBar;
-        [SerializeField] private TextMeshProUGUI spellCardNameText;
         [SerializeField] private GameObject spellCardDeclarationGroup;
         [SerializeField] private Animator spellCardAnimator;
         [SerializeField] private float spellCardDisplayTime = 3.5f;
+        // Có thể thêm các thành phần khác như tên, chân dung boss...
+        
+        [Space(15)]
+        [Header("Spell Card UI")]
+        [SerializeField] private GameObject spellCardPanel;
+        [SerializeField] private TextMeshProUGUI spellCardNameText;
+        [SerializeField] private TextMeshProUGUI spellCardTimerText;
         
         [Space(15)]
         [Header("⏸️ Giao diện Tạm dừng")]
@@ -98,6 +105,44 @@ namespace _Project._Scripts.UI
                 bossHealthBar.gameObject.SetActive(false);
             
             ClearSpellCardDeclaration();
+        }
+        
+        // Hàm này sẽ được gọi từ BossController
+        public void HideSpellCardUI()
+        {
+            // Dừng coroutine timer đang chạy để tránh lãng phí tài nguyên
+            if (spellCardDisplayCoroutine != null)
+            {
+                StopCoroutine(spellCardDisplayCoroutine);
+                spellCardDisplayCoroutine = null; // Reset tham chiếu
+            }
+
+            // Ẩn panel chính của Spell Card UI
+            if (spellCardPanel != null)
+            {
+                spellCardPanel.SetActive(false);
+            }
+        }
+        
+        private IEnumerator UpdateSpellCardTimer(float timeLimit)
+        {
+            float timer = timeLimit;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                if (spellCardTimerText != null)
+                {
+                    // Cập nhật text, làm tròn đến 2 chữ số thập phân
+                    spellCardTimerText.text = timer.ToString("F2");
+                }
+                yield return null;
+            }
+
+            // Đảm bảo timer hiển thị 0.00 khi hết giờ
+            if (spellCardTimerText != null)
+            {
+                spellCardTimerText.text = "0.00";
+            }
         }
         
         public void UpdateBossHealthBar(float fillAmount)
