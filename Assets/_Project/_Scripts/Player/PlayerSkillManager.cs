@@ -1,9 +1,8 @@
-// FILE: _Project/_Scripts/Player/PlayerSkillManager.cs (VERSION 3.0 - INVINCIBILITY ADDED)
-
 using System.Collections.Generic;
+using _Project._Scripts.UI; // Thêm để gọi UIManager
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using UnityEngine.UI; // Thêm để sử dụng Image
+using TMPro; // Thêm để sử dụng TextMeshProUGUI
 
 namespace _Project._Scripts.Player
 {
@@ -27,23 +26,12 @@ namespace _Project._Scripts.Player
 
         [Space(10)]
         [Header("✨ Thiết lập Skill Xóa Đạn")]
-        [Tooltip("Thời gian hồi chiêu (giây) của kỹ năng Xóa Đạn.")]
         [SerializeField] private float bulletClearCooldown = 15f;
-        [Tooltip("UI Image để hiển thị hiệu ứng hồi chiêu của kỹ năng Xóa Đạn.")]
-        [SerializeField] private Image bulletClear_CooldownImage;
-        [Tooltip("UI Text để hiển thị số giây hồi chiêu còn lại.")]
-        [SerializeField] private TextMeshProUGUI bulletClear_CooldownText;
 
-        // --- THÊM MỚI: Thiết lập cho kỹ năng bất tử ---
         [Space(10)]
         [Header("🛡️ Thiết lập Skill Bất Tử")]
-        [Tooltip("Thời gian hồi chiêu (giây) của kỹ năng Bất Tử.")]
         [SerializeField] private float invincibilityCooldown = 45f;
-        [Tooltip("UI Image để hiển thị hiệu ứng hồi chiêu của kỹ năng Bất Tử.")]
-        [SerializeField] private Image invincibility_CooldownImage;
-        [Tooltip("UI Text để hiển thị số giây hồi chiêu còn lại.")]
-        [SerializeField] private TextMeshProUGUI invincibility_CooldownText;
-
+        
         private Dictionary<SkillType, Skill> skills = new Dictionary<SkillType, Skill>();
         private PlayerState playerState;
 
@@ -54,10 +42,21 @@ namespace _Project._Scripts.Player
 
         void Start()
         {
-            // Khởi tạo thông tin cho các kỹ năng có cooldown
-            InitializeSkill(SkillType.BulletClear, bulletClearCooldown, bulletClear_CooldownImage, bulletClear_CooldownText);
-            // --- THÊM MỚI: Khởi tạo kỹ năng bất tử ---
-            InitializeSkill(SkillType.Invincibility, invincibilityCooldown, invincibility_CooldownImage, invincibility_CooldownText);
+            // Lấy các tham chiếu UI từ UIManager và khởi tạo skill
+            if (UIManager.Instance != null)
+            {
+                InitializeSkill(SkillType.BulletClear, bulletClearCooldown, 
+                    UIManager.Instance.GetSkillCooldownImage(SkillType.BulletClear), 
+                    UIManager.Instance.GetSkillCooldownText(SkillType.BulletClear));
+                    
+                InitializeSkill(SkillType.Invincibility, invincibilityCooldown,
+                    UIManager.Instance.GetSkillCooldownImage(SkillType.Invincibility),
+                    UIManager.Instance.GetSkillCooldownText(SkillType.Invincibility));
+            }
+            else
+            {
+                Debug.LogError("Không tìm thấy UIManager.Instance! UI kỹ năng sẽ không hoạt động.", this);
+            }
         }
 
         void Update()
@@ -77,7 +76,6 @@ namespace _Project._Scripts.Player
             if (bombPrefab != null)
             {
                 Instantiate(bombPrefab, transform.position, Quaternion.identity);
-                Debug.Log("Bom đã được kích hoạt!");
             }
         }
 
@@ -94,8 +92,15 @@ namespace _Project._Scripts.Player
             }
         }
         
+        // Giữ nguyên hàm InitializeSkill theo yêu cầu của bạn
         private void InitializeSkill(SkillType type, float cooldown, Image image, TextMeshProUGUI text)
         {
+            // Kiểm tra null để tránh lỗi nếu UI không được gán trong UIManager
+            if (image == null || text == null)
+            {
+                Debug.LogWarning($"UI cho kỹ năng {type} chưa được gán trong UIManager.", this);
+            }
+
             skills[type] = new Skill
             {
                 Type = type,
@@ -105,12 +110,16 @@ namespace _Project._Scripts.Player
                 CooldownText = text
             };
             
+            // Đặt lại trạng thái ban đầu cho UI
             if (image != null) image.fillAmount = 0;
             if (text != null) text.enabled = false;
         }
     
+        // Giữ lại hàm UpdateCooldownUI vì PlayerSkillManager giờ đã tự quản lý UI
         private void UpdateCooldownUI(Skill skill)
         {
+            if (skill.CooldownTimer < 0) skill.CooldownTimer = 0;
+
             if (skill.CooldownImage != null)
             {
                 skill.CooldownImage.fillAmount = skill.CooldownTimer / skill.Cooldown;

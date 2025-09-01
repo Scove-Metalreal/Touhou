@@ -221,14 +221,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Player.PlayerState
   upgradePath: {fileID: 11400000, guid: 5a34a271adb07fa42905e4cd68373e59, type: 2}
-  maxHealth: 100
+  maxHealth: 20
   invincibilityDuration: 3
   initialBombs: 2
   initialPower: 1
   bombs: 0
   power: 0
   score: 0
-  debugMode: 1
+  debugMode: 0
   debugApplyUpgrade: {fileID: 11400000, guid: 2d056136b6f9bda4aab602c4f025bfe2, type: 2}
 --- !u!114 &5239147151053284703
 MonoBehaviour:
@@ -244,11 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Player.PlayerSkillManager
   bombPrefab: {fileID: 0}
   bulletClearCooldown: 15
-  bulletClear_CooldownImage: {fileID: 0}
-  bulletClear_CooldownText: {fileID: 0}
   invincibilityCooldown: 30
-  invincibility_CooldownImage: {fileID: 0}
-  invincibility_CooldownText: {fileID: 0}
 --- !u!1 &3637892809442829622
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2607984890652393142
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 4605059645844565372}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0.206, z: 0}
+  m_LocalPosition: {x: -0.009, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -663,8 +659,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008012056, y: -0.004578471}
-  m_Size: {x: 0.200109, y: 0.58335805}
+  m_Offset: {x: -0.011444092, y: 0.19265246}
+  m_Size: {x: 0.23763084, y: 0.23763084}
   m_Direction: 0
 --- !u!114 &8330884433855591073
 MonoBehaviour:

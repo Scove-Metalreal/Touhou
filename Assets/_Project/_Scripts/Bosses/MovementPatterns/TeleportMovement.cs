@@ -1,5 +1,3 @@
-// FILE: _Project/Scripts/Bosses/MovementPatterns/TeleportMovement.cs
-
 using System.Collections;
 using UnityEngine;
 
@@ -9,31 +7,36 @@ namespace _Project._Scripts.Bosses.MovementPatterns
     {
         [Header("Teleport Settings")]
         [Tooltip("Thời gian giữa mỗi lần dịch chuyển (giây).")]
-        public float teleportInterval = 3f;
+        [SerializeField] private float teleportInterval = 3f;
         [Tooltip("Góc dưới-trái của vùng có thể dịch chuyển tới.")]
-        public Vector2 teleportAreaMin = new Vector2(-6, 2);
+        [SerializeField] private Vector2 teleportAreaMin = new Vector2(-6, 2);
         [Tooltip("Góc trên-phải của vùng có thể dịch chuyển tới.")]
-        public Vector2 teleportAreaMax = new Vector2(6, 4);
+        [SerializeField] private Vector2 teleportAreaMax = new Vector2(6, 4);
 
         private Coroutine teleportCoroutine;
 
-        // SỬA ĐỔI: Ghi đè StartMoving() để BẮT ĐẦU chu kỳ dịch chuyển
+        // Ghi đè StartMoving() để BẮT ĐẦU chu kỳ dịch chuyển
         public override void StartMoving()
         {
-            base.StartMoving(); // Gọi hàm của lớp cha để đặt isMoving = true
+            base.StartMoving(); // Gọi hàm của lớp cha để đặt canMove = true
             
-            // Dừng coroutine cũ (nếu có) và bắt đầu một cái mới
+            // Dừng coroutine cũ (nếu có) để tránh chạy nhiều coroutine cùng lúc
             if (teleportCoroutine != null)
             {
                 StopCoroutine(teleportCoroutine);
             }
-            teleportCoroutine = StartCoroutine(TeleportRoutine());
+            
+            // Bắt đầu một coroutine mới nếu được phép di chuyển
+            if (canMove)
+            {
+                teleportCoroutine = StartCoroutine(TeleportRoutine());
+            }
         }
 
-        // SỬA ĐỔI: Ghi đè StopMoving() để DỪNG chu kỳ dịch chuyển
+        // Ghi đè StopMoving() để DỪNG chu kỳ dịch chuyển
         public override void StopMoving()
         {
-            base.StopMoving(); // Gọi hàm của lớp cha để đặt isMoving = false và dừng vận tốc
+            base.StopMoving(); // Gọi hàm của lớp cha để đặt canMove = false
             
             // Dừng coroutine đang chạy
             if (teleportCoroutine != null)
@@ -43,32 +46,34 @@ namespace _Project._Scripts.Bosses.MovementPatterns
             }
         }
 
-        // Hàm PerformMove để trống vì di chuyển không dựa trên vật lý liên tục
-        public override void PerformMove() { }
+        // Hàm Move() để trống vì di chuyển không diễn ra liên tục mỗi frame.
+        // Toàn bộ logic nằm trong coroutine.
+        public override void Move() { }
 
         private IEnumerator TeleportRoutine()
         {
-            // Vòng lặp sẽ chạy khi isMoving là true
-            while (isMoving)
+            // Vòng lặp sẽ chạy chừng nào cờ canMove (từ lớp cha) còn true
+            while (canMove)
             {
                 // Chờ khoảng thời gian định sẵn
                 yield return new WaitForSeconds(teleportInterval);
 
-                // Tính toán vị trí mới ngẫu nhiên
-                float randomX = Random.Range(teleportAreaMin.x, teleportAreaMax.x);
-                float randomY = Random.Range(teleportAreaMin.y, teleportAreaMax.y);
-                Vector2 newPosition = new Vector2(randomX, randomY);
-
-                // (Tùy chọn) Thêm hiệu ứng "chuẩn bị dịch chuyển" ở đây
-                // yield return new WaitForSeconds(0.2f);
-
-                // Dịch chuyển boss đến vị trí mới qua Rigidbody để đảm bảo an toàn vật lý
-                if (rb != null)
+                // Nếu sau khi chờ, boss vẫn còn được phép di chuyển
+                if (canMove && bossTransform != null)
                 {
-                    rb.position = newPosition;
-                }
+                    // Tính toán vị trí mới ngẫu nhiên
+                    float randomX = Random.Range(teleportAreaMin.x, teleportAreaMax.x);
+                    float randomY = Random.Range(teleportAreaMin.y, teleportAreaMax.y);
+                    Vector2 newPosition = new Vector2(randomX, randomY);
+
+                    // (Tùy chọn) Thêm hiệu ứng "chuẩn bị dịch chuyển" ở đây
+                    // yield return new WaitForSeconds(0.2f);
+
+                    // Dịch chuyển boss đến vị trí mới bằng cách thay đổi transform
+                    bossTransform.position = newPosition;
                 
-                // (Tùy chọn) Thêm hiệu ứng "xuất hiện" ở đây
+                    // (Tùy chọn) Thêm hiệu ứng "xuất hiện" ở đây
+                }
             }
         }
     }

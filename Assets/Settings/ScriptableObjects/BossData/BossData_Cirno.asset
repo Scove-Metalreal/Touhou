@@ -15,7 +15,7 @@ MonoBehaviour:
   bossName: Cirno
   bossPortrait: {fileID: 0}
   randomLootTable: {fileID: 11400000, guid: c78c927b40e8f6a4d8d4185c73fae64f, type: 2}
-  damageThresholdForLoot: 400
+  damageThresholdForLoot: 10
   guaranteedUpgradeDrop: {fileID: 4843359631955462013, guid: cc1da33769282ad4ab8d114aeeb388a5, type: 3}
   rareHealthDrop: {fileID: 6499522804243731514, guid: 55c0f632592b7a946bfc3577f526cc68, type: 3}
   stages:
@@ -31,6 +31,7 @@ MonoBehaviour:
   - health: 250
     attackPatterns:
     - {fileID: 3938177350114954239, guid: e3bc5bb16e2a079418cda3366f61596c, type: 3}
+    - {fileID: 6834334456411441507, guid: 2de017017cfabeb419c64263697d3a5c, type: 3}
     movementPattern: {fileID: 8398891831464668648, guid: 1b18e0be8256f004a88f4a284de007d2, type: 3}
     isSpellCard: 1
     spellCardName: Test
@@ -41,6 +42,7 @@ MonoBehaviour:
     attackPatterns:
     - {fileID: 5954029358303631608, guid: 851fe22fe75e35f40b145cebd27b701a, type: 3}
     - {fileID: 3938177350114954239, guid: e3bc5bb16e2a079418cda3366f61596c, type: 3}
+    - {fileID: 6834334456411441507, guid: 2de017017cfabeb419c64263697d3a5c, type: 3}
     movementPattern: {fileID: 6945958371288358153, guid: 74f27197532bc994b9f01eeb47c9867b, type: 3}
     isSpellCard: 0
     spellCardName: 

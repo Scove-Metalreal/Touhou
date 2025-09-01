@@ -1,70 +1,105 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using _Project._Scripts.Bosses.AttackPatterns;
+using UnityEngine;
 
 namespace _Project._Scripts.Bosses
 {
     public class BossShooting : MonoBehaviour
     {
-        private List<AttackPattern> currentAttackPatterns;
-        private int currentPatternIndex = 0;
-        private Coroutine shootingCoroutine;
+        [Header("Scheduler Settings")]
+        [Tooltip("Thời gian nghỉ tối thiểu trước khi thử kích hoạt một đợt tấn công (Cyclic) mới.")]
+        [SerializeField] private float minCyclicActivationCooldown = 1.0f;
+        [Tooltip("Thời gian nghỉ tối đa trước khi thử kích hoạt một đợt tấn công (Cyclic) mới.")]
+        [SerializeField] private float maxCyclicActivationCooldown = 2.5f;
 
-        public void SetAttackPatterns(List<AttackPattern> newPatterns)
+        // Danh sách các pattern được phân loại
+        private List<AttackPattern> persistentPatterns = new List<AttackPattern>();
+        private List<AttackPattern> cyclicPatterns = new List<AttackPattern>();
+        
+        // Coroutine chính điều phối các đợt tấn công
+        private Coroutine schedulerCoroutine;
+
+        public void SetAttackPatterns(List<AttackPattern> allPatterns)
         {
-            currentAttackPatterns = newPatterns;
-            currentPatternIndex = 0;
+            persistentPatterns.Clear();
+            cyclicPatterns.Clear();
+
+            if (allPatterns == null) return;
+
+            foreach (var pattern in allPatterns)
+            {
+                if (pattern.isPersistent)
+                {
+                    persistentPatterns.Add(pattern);
+                }
+                else
+                {
+                    cyclicPatterns.Add(pattern);
+                }
+            }
         }
 
         public void StartShooting()
         {
-            StopShooting(); 
-
-            if (currentAttackPatterns != null && currentAttackPatterns.Count > 0)
+            // 1. Bắt đầu tất cả các pattern Persistent. Chúng sẽ chạy liên tục.
+            foreach (var pattern in persistentPatterns)
             {
-                shootingCoroutine = StartCoroutine(ShootingSequence());
+                pattern?.StartFiring();
             }
-            else
+
+            // 2. Bắt đầu bộ điều phối cho các pattern Cyclic.
+            //    Bộ điều phối này sẽ liên tục kích hoạt lại chúng.
+            if (cyclicPatterns.Count > 0)
             {
-                Debug.LogWarning("Không có Attack Pattern nào được gán cho BossShooting.", this);
+                if (schedulerCoroutine != null) StopCoroutine(schedulerCoroutine);
+                schedulerCoroutine = StartCoroutine(CyclicPatternScheduler());
             }
         }
 
         public void StopShooting()
         {
-            if (shootingCoroutine != null)
+            // Dừng bộ điều phối
+            if (schedulerCoroutine != null)
             {
-                StopCoroutine(shootingCoroutine);
-                shootingCoroutine = null;
+                StopCoroutine(schedulerCoroutine);
+                schedulerCoroutine = null;
             }
-            StopAllCoroutines();
+
+            // Dừng tất cả các pattern đang chạy (cả Persistent và Cyclic)
+            foreach (var pattern in persistentPatterns)
+            {
+                pattern?.StopFiring();
+            }
+            foreach (var pattern in cyclicPatterns)
+            {
+                pattern?.StopFiring();
+            }
         }
 
-        private IEnumerator ShootingSequence()
+        private IEnumerator CyclicPatternScheduler()
         {
-            while (true) 
+            // Vòng lặp này chạy suốt stage để liên tục kích hoạt các pattern Cyclic
+            while (true)
             {
-                if (currentAttackPatterns == null || currentAttackPatterns.Count == 0)
+                // Chờ một khoảng thời gian ngẫu nhiên
+                float cooldown = Random.Range(minCyclicActivationCooldown, maxCyclicActivationCooldown);
+                yield return new WaitForSeconds(cooldown);
+
+                // Sau khi chờ, chọn một pattern Cyclic ngẫu nhiên để thực thi
+                if (cyclicPatterns.Count > 0)
                 {
-                    yield return null;
-                    continue;
-                }
+                    int randomIndex = Random.Range(0, cyclicPatterns.Count);
+                    AttackPattern patternToExecute = cyclicPatterns[randomIndex];
 
-                AttackPattern currentPattern = currentAttackPatterns[currentPatternIndex];
-                
-                // Khởi tạo pattern với tham chiếu cần thiết (nếu cần)
-                // currentPattern.Initialize(GetComponent<BossController>());
-
-                // SỬA ĐỔI: Gọi đúng tên hàm Execute()
-                // Dòng này sẽ đợi cho đến khi coroutine của IcicleFall (đã có điểm dừng) thực thi xong.
-                yield return StartCoroutine(currentPattern.Execute());
-
-                currentPatternIndex++;
-
-                if (currentPatternIndex >= currentAttackPatterns.Count)
-                {
-                    currentPatternIndex = 0;
+                    if (patternToExecute != null)
+                    {
+                        Debug.Log($"<color=yellow>Scheduler is re-triggering: {patternToExecute.GetType().Name}</color>");
+                        
+                        // Khởi động pattern. Hàm StartFiring() trong AttackPattern
+                        // sẽ tự động xử lý việc dừng coroutine cũ (nếu có) và bắt đầu cái mới.
+                        patternToExecute.StartFiring();
+                    }
                 }
             }
         }
