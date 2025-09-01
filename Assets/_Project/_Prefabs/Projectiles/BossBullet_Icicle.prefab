@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77eb0304dea8ef45a842504b4a0a646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Projectiles.Bullet
-  speed: 5
+  speed: 2
   damage: 1
   isEnemyBullet: 1
   lifetime: 5
