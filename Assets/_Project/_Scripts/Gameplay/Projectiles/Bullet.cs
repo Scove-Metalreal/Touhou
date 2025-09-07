@@ -1,4 +1,4 @@
-// FILE: _Project/_Scripts/Gameplay/Projectiles/Bullet.cs (VERSION 4.0 - FULLY FEATURED)
+// FILE: _Project/_Scripts/Gameplay/Projectiles/Bullet.cs (VERSION 4.1 - With Spinner)
 
 using System.Collections;
 using _Project._Scripts.Bosses;
@@ -22,23 +22,24 @@ namespace _Project._Scripts.Gameplay.Projectiles
         /// <summary>
         /// Enum định nghĩa các kiểu hành vi di chuyển chính của đạn.
         /// </summary>
-        public enum BulletBehavior { Straight, Homing, Explosive }
+        public enum BulletBehavior { Straight, Homing, Explosive, Spinner }
 
         [Header("🎯 Thông số Cơ bản")]
         [Tooltip("Tốc độ di chuyển của viên đạn.")]
         [SerializeField] private float speed = 10f;
 
         [Tooltip("Lượng sát thương viên đạn gây ra khi trúng mục tiêu.")]
-        [SerializeField] private int damage = 1;
+        [SerializeField] protected int damage = 1;
 
         [Tooltip("Đánh dấu nếu đây là đạn của địch. Dùng để xác định mục tiêu va chạm.")]
-        [SerializeField] private bool isEnemyBullet = true;
+        [SerializeField] protected bool isEnemyBullet = true;
     
         /// <summary>
         /// Thuộc tính public để các script khác có thể đọc được lượng sát thương của viên đạn.
         /// Ký hiệu "=>" là một cách viết tắt cho "get { return damage; }".
         /// </summary>
         public int Damage => damage;
+        public float Speed { get; protected set; } 
 
         [Space(10)] // Thêm khoảng trống trong Inspector
 
@@ -61,9 +62,14 @@ namespace _Project._Scripts.Gameplay.Projectiles
         [Header("💥 Thiết lập Nổ (Explosive)")]
         [Tooltip("Prefab hiệu ứng nổ sẽ được tạo ra khi đạn va chạm. Chỉ dùng cho Behavior.Explosive.")]
         [SerializeField] private GameObject explosionVFX_Prefab;
+        
+        [Header("🌀 Thiết lập Spinner")]
+        [Tooltip("Tốc độ xoay của đạn quanh trục Z. Chỉ dùng cho Behavior.Spinner.")]
+        [SerializeField] private float spinnerAngularSpeed = 720f; // Độ/giây
 
         // --- Biến nội bộ (private) cho logic game ---
-        private Rigidbody2D rb;
+        protected Rigidbody2D rb;
+        protected bool canBeDisabledOffscreen = true;
         private Transform homingTarget;
         private Camera mainCamera;
         private Coroutine lifetimeCoroutine; // Tham chiếu đến coroutine để có thể dừng nó khi cần
@@ -80,21 +86,25 @@ namespace _Project._Scripts.Gameplay.Projectiles
             // Lấy các component cần thiết một lần duy nhất để tối ưu hiệu năng
             rb = GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
+            Speed = speed; 
         }
 
         /// <summary>
         /// OnEnable được gọi mỗi khi viên đạn được "lấy ra" từ Object Pool và kích hoạt.
         /// Đây là nơi lý tưởng để reset trạng thái của viên đạn.
         /// </summary>
-        void OnEnable()
+        protected virtual void OnEnable()
         {
+            canBeDisabledOffscreen = true;
+            
             // 1. Thiết lập quỹ đạo bay ban đầu dựa trên hành vi đã chọn
             switch (behavior)
             {
                 case BulletBehavior.Straight:
                 case BulletBehavior.Explosive:
-                    rb.linearVelocity = transform.up * speed;
-                    rb.angularVelocity = 0; // Đảm bảo đạn không tự xoay
+                case BulletBehavior.Spinner: // THÊM SPINNER
+                    rb.linearVelocity = transform.up * Speed;
+                    rb.angularVelocity = 0; // Đảm bảo đạn không tự xoay theo vật lý
                     break;
                 case BulletBehavior.Homing:
                     FindHomingTarget(); // Đạn homing cần tìm mục tiêu ngay khi được bắn ra
@@ -133,16 +143,23 @@ namespace _Project._Scripts.Gameplay.Projectiles
 
         #region Movement & Update
 
-        void Update()
+        protected virtual void Update()
         {
             // Chỉ xử lý logic di chuyển phức tạp trong Update nếu cần thiết
             if (behavior == BulletBehavior.Homing)
             {
                 MoveHoming();
             }
+            else if (behavior == BulletBehavior.Spinner) // THÊM LOGIC SPINNER
+            {
+                transform.Rotate(0, 0, spinnerAngularSpeed * Time.deltaTime);
+            }
 
-            // Luôn kiểm tra xem đạn có bay ra khỏi màn hình không
-            CheckIfOffScreen();
+            
+            if (canBeDisabledOffscreen) // Chỉ kiểm tra nếu cờ cho phép
+            {
+                CheckIfOffScreen();
+            }
         }
 
         /// <summary>
@@ -153,7 +170,7 @@ namespace _Project._Scripts.Gameplay.Projectiles
             // Nếu không có hoặc mất mục tiêu, đạn sẽ bay thẳng về phía trước
             if (homingTarget == null)
             {
-                rb.linearVelocity = transform.up * speed;
+                rb.linearVelocity = transform.up * Speed;
                 rb.angularVelocity = 0; // Dừng xoay
                 return;
             }
@@ -164,7 +181,7 @@ namespace _Project._Scripts.Gameplay.Projectiles
             float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
             rb.angularVelocity = -rotateAmount * rotationSpeed;
-            rb.linearVelocity = transform.up * speed;
+            rb.linearVelocity = transform.up * Speed;
         }
 
         /// <summary>
@@ -195,7 +212,7 @@ namespace _Project._Scripts.Gameplay.Projectiles
 
         #region Collision & Effects
 
-        void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             bool hitValidTarget = false;
 

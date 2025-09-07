@@ -36,18 +36,40 @@ namespace _Project._Scripts.Core
         private bool isVictorySequenceRunning = false;
         private bool isPaused = false;
         private PlayerController playerController;
+        private int currentSceneBuildIndex;
 
+        
         public static GameManager Instance { get; private set; }
+        
 
         void Awake()
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
+            if (Instance == null)
             {
                 Instance = this;
+                // Không dùng DontDestroyOnLoad nếu mỗi scene có GameManager riêng
+                // DontDestroyOnLoad(gameObject); // Bỏ comment này nếu bạn đã có nó
+                currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+            }
+            else if (Instance != this)
+            {
+                // Nếu đã có một GameManager khác tồn tại VÀ nó thuộc về một scene khác,
+                // thì hủy GameManager này đi. Điều này cho phép GameManager mới của scene hiện tại hoạt động.
+                if (Instance.currentSceneBuildIndex != SceneManager.GetActiveScene().buildIndex)
+                {
+                    Debug.Log($"<color=yellow>GameManager: Destroying old GameManager from scene {Instance.currentSceneBuildIndex} in scene {SceneManager.GetActiveScene().buildIndex}</color>");
+                    Destroy(Instance.gameObject); // Hủy bản cũ
+                    Instance = this; // Gán bản mới
+                    // DontDestroyOnLoad(gameObject); // Bỏ comment này nếu bạn đã có nó
+                    currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+                }
+                else
+                {
+                    // Nếu đã có GameManager trong cùng một scene (ví dụ: duplicate GameManager trong Hierarchy)
+                    Debug.LogWarning("GameManager: Duplicate GameManager found in the same scene. Destroying this one.");
+                    Destroy(gameObject);
+                    return; // Thoát ngay lập tức
+                }
             }
         }
 
@@ -58,7 +80,7 @@ namespace _Project._Scripts.Core
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlayMusic("01. Night of Knights");
             
-            playerController = FindObjectOfType<PlayerController>();
+            // playerController = FindObjectOfType<PlayerController>();
         }
         
         void Update()
@@ -72,16 +94,21 @@ namespace _Project._Scripts.Core
 
         private IEnumerator StartLevelSequence()
         {
+            Debug.Log($"GameManager: Starting Level Sequence for scene {SceneManager.GetActiveScene().name}");
+
+            // Khởi tạo Player
             if (playerPrefab != null && playerInitialSpawnPoint != null)
             {
                 playerObject = Instantiate(playerPrefab, playerInitialSpawnPoint.position, Quaternion.identity);
+                playerController = playerObject.GetComponent<PlayerController>(); // Gán ở đây
             }
             else
             {
-                Debug.LogError("GameManager: Player Prefab và Player Initial Spawn Point chưa được gán!");
+                Debug.LogError("GameManager: Player Prefab và/hoặc Player Initial Spawn Point chưa được gán cho scene này!", this);
                 yield break;
             }
 
+            // Khởi tạo Boss
             GameObject bossObject = null;
             if (bossPrefab != null && bossInitialSpawnPoint != null)
             {
@@ -89,20 +116,22 @@ namespace _Project._Scripts.Core
             }
             else
             {
-                Debug.LogError("GameManager: Boss Prefab và Boss Initial Spawn Point chưa được gán!");
+                Debug.LogError("GameManager: Boss Prefab và/hoặc Boss Initial Spawn Point chưa được gán cho scene này!", this);
                 yield break;
             }
 
+            // Di chuyển đến điểm spawn
             if (playerSpawnPoint != null && bossSpawnPoint != null)
             {
                 yield return StartCoroutine(MoveToSpawnPoints(playerObject.transform, bossObject.transform));
             }
             else
             {
-                Debug.LogError("GameManager: Player Spawn Point và Boss Spawn Point chưa được gán!");
+                Debug.LogError("GameManager: Player Spawn Point và/hoặc Boss Spawn Point chưa được gán cho scene này!", this);
                 yield break;
             }
 
+            // Khởi tạo BossController
             BossController bossController = bossObject.GetComponent<BossController>();
             if (bossController != null)
             {

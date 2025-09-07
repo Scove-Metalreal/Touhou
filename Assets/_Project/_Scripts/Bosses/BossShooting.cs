@@ -90,6 +90,7 @@ namespace _Project._Scripts.Bosses
                 if (cyclicPatterns.Count > 0)
                 {
                     int randomIndex = Random.Range(0, cyclicPatterns.Count);
+                    
                     AttackPattern patternToExecute = cyclicPatterns[randomIndex];
 
                     if (patternToExecute != null)

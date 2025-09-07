@@ -17,7 +17,8 @@ namespace _Project._Scripts.Bosses
         [Header("Configuration")]
         public BossData bossData;
         [SerializeField] private float transitionDelay = 2.0f; // Thời gian chờ giữa các stage
-
+        [HideInInspector] public Transform playerTransform;
+        
         // --- References ---
         private Rigidbody2D rb;
         private BossHealth bossHealth;
@@ -55,6 +56,7 @@ namespace _Project._Scripts.Bosses
             // Dòng Initialize() này đã có sẵn và đúng vị trí.
         }
         
+        
         // --- THÊM HÀM NÀY ĐỂ XỬ LÝ DI CHUYỂN ---
         void FixedUpdate()
         {
@@ -90,6 +92,17 @@ namespace _Project._Scripts.Bosses
                 Debug.LogError("BossData is not assigned or has no stages!", this);
                 gameObject.SetActive(false);
                 return;
+            }
+            
+            // Tìm player sau khi player được Instantiate
+            var playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null)
+            {
+                playerTransform = playerObject.transform;
+            }
+            else
+            {
+                Debug.LogWarning("BossController: Player object not found with tag 'Player'!");
             }
 
             isFighting = true;
