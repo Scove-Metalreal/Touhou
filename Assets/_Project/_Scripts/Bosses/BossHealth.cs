@@ -7,6 +7,7 @@ namespace _Project._Scripts.Bosses
     public class BossHealth : MonoBehaviour
     {
         public event Action OnStageHealthDepleted;
+        public static event Action OnComboBurstTriggered;
 
         private int currentHealth;
         private int maxHealth;
@@ -55,6 +56,9 @@ namespace _Project._Scripts.Bosses
             {
                 // Reset bộ đếm sát thương
                 damageAccumulator = 0;
+                
+                // Kích hoạt combo burst
+                OnComboBurstTriggered?.Invoke(); 
                 
                 // Lấy vật phẩm ngẫu nhiên từ LootTable dựa trên tỉ lệ
                 GameObject itemToDrop = bossController.bossData.randomLootTable.GetRandomDrop();

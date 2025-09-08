@@ -555,6 +555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &778674042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5937855824367776418, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+  m_PrefabInstance: {fileID: 137222504308344477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943869074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,10 +1221,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4137302503406645029, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5035578699495467114, guid: e1e220323de87f945afb0e6019847e66, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 381692167}
+    - target: {fileID: 5937855824367776418, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075869744945564527, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+      propertyPath: winScreen
+      value: 
+      objectReference: {fileID: 778674042}
+    - target: {fileID: 7075869744945564527, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 137222504308344478}
     - target: {fileID: 7075869744945564527, guid: e1e220323de87f945afb0e6019847e66, type: 3}
       propertyPath: bulletClear_CooldownText
       value: 
@@ -1320,11 +1341,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8070265477862487118, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+--- !u!1 &137222504308344478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8070265477862487118, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+  m_PrefabInstance: {fileID: 137222504308344477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

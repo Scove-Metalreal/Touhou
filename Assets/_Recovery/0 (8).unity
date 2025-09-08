@@ -298,6 +298,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &287506777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8070265477862487118, guid: e1e220323de87f945afb0e6019847e66, type: 3}
+  m_PrefabInstance: {fileID: 137222504308344477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &381692165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,11 +1013,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1383921883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8070265477862487118, guid: e1e220323de87f945afb0e6019847e66, type: 3}
-  m_PrefabInstance: {fileID: 137222504308344477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1390525502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 7075869744945564527, guid: e1e220323de87f945afb0e6019847e66, type: 3}
       propertyPath: gameOverScreen
       value: 
-      objectReference: {fileID: 1383921883}
+      objectReference: {fileID: 287506777}
     - target: {fileID: 7075869744945564527, guid: e1e220323de87f945afb0e6019847e66, type: 3}
       propertyPath: bulletClear_CooldownText
       value: 

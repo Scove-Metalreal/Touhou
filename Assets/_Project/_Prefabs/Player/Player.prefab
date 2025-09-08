@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Player.PlayerState
   upgradePath: {fileID: 11400000, guid: 5a34a271adb07fa42905e4cd68373e59, type: 2}
-  maxHealth: 20
+  maxHealth: 5
   invincibilityDuration: 3
   initialBombs: 2
   initialPower: 1

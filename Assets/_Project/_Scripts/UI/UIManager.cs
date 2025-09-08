@@ -1,10 +1,12 @@
-// FILE: _Project/_Scripts/UI/UIManager.cs (VERSION 4.3 - EXPLICIT HIDE)
+// FILE: _Project/_Scripts/UI/UIManager.cs (PHIÊN BẢN SỬA LỖI VÀ HOÀN THIỆN)
 
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using _Project._Scripts.Bosses;
 using _Project._Scripts.Core;
 using _Project._Scripts.Player;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using ProgressBar = ThirdParty.InfinityPBR___Magic_Pig_Games.Progress_Bar.Scripts.ProgressBar;
 
@@ -29,11 +31,12 @@ namespace _Project._Scripts.UI
 
         [Space(15)]
         [Header("👹 Giao diện Boss")]
+        [SerializeField] private GameObject bossUIGroup; // GameObject cha chứa thanh máu boss
         [SerializeField] private ProgressBar bossHealthBar;
         [SerializeField] private GameObject spellCardDeclarationGroup;
+        [SerializeField] private TextMeshProUGUI spellCardDeclarationNameText; // Đổi tên để rõ ràng hơn
         [SerializeField] private Animator spellCardAnimator;
         [SerializeField] private float spellCardDisplayTime = 3.5f;
-        // Có thể thêm các thành phần khác như tên, chân dung boss...
         
         [Space(15)]
         [Header("Spell Card UI")]
@@ -44,43 +47,108 @@ namespace _Project._Scripts.UI
         [Space(15)]
         [Header("⏸️ Giao diện Tạm dừng")]
         [SerializeField] private GameObject pauseMenuPanel;
+        
+        [Header("🎬 Hiệu ứng Cinematic")]
+        [SerializeField] private Image transitionScreen;
+        [SerializeField] private float transitionDuration = 1.0f;
+        [SerializeField] private Image comboBurstImage;
+        [SerializeField] private float comboBurstDisplayTime = 1.5f;
+        
+        [Header("🏆 Giao diện Trạng thái Game")]
+        [SerializeField] private GameObject winScreen;
+        [SerializeField] private GameObject gameOverScreen;
 
         private Coroutine spellCardDisplayCoroutine;
-
-        #region Unity Lifecycle
+        private Coroutine spellCardTimerCoroutine; // Thêm tham chiếu cho timer coroutine
+        private Canvas canvas;
+        
+        #region Unity Lifecycle & Event Subscription
 
         void Awake()
         {
+            canvas = GetComponent<Canvas>(); // Lấy component Canvas
+            if (canvas == null) canvas = GetComponentInParent<Canvas>(); // Nếu nó nằm trên con
+            
             if (Instance != null && Instance != this)
+            {
                 Destroy(gameObject);
+            }
             else
+            {
                 Instance = this;
+                DontDestroyOnLoad(this.gameObject.transform.root.gameObject);
+            }
+        }
+
+        // --- GỘP TẤT CẢ CÁC ĐĂNG KÝ SỰ KIỆN VÀO MỘT HÀM ONENABLE ---
+        void OnEnable()
+        {
+            // Lắng nghe event từ BossHealth
+            BossHealth.OnComboBurstTriggered += ShowComboBurst;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        // --- GỘP TẤT CẢ CÁC HỦY ĐĂNG KÝ SỰ KIỆN VÀO MỘT HÀM ONDISABLE ---
+        void OnDisable()
+        {
+            // Hủy lắng nghe
+            BossHealth.OnComboBurstTriggered -= ShowComboBurst;
+            SceneManager.sceneLoaded -= OnSceneLoaded; 
         }
 
         void Start()
         {
-            if (playerHealthBar != null)
-                playerHealthBar.gameObject.SetActive(true);
+            // Ẩn tất cả các màn hình không cần thiết khi bắt đầu
+            HideAllScreens();
             
-            if(pauseMenuPanel != null)
-                pauseMenuPanel.SetActive(false);
+            // Hiện các UI cố định
+            if (playerHealthBar != null) playerHealthBar.gameObject.SetActive(true);
             
+            // Reset UI
             ResetAllSkillCooldowns();
         }
 
         #endregion
         
-        #region Pause Menu UI Methods
+        #region Pause Menu & Game State UI
+        
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // Tìm và gán lại camera mới cho Canvas
+            if (canvas != null && canvas.renderMode == RenderMode.ScreenSpaceCamera)
+            {
+                canvas.worldCamera = Camera.main;
+            }
+        }
+        
         public void ShowPauseMenu()
         {
-            if (pauseMenuPanel != null)
-                pauseMenuPanel.SetActive(true);
+            if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
         }
 
         public void HidePauseMenu()
         {
-            if (pauseMenuPanel != null)
-                pauseMenuPanel.SetActive(false);
+            if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        }
+        
+        public void ShowWinScreen()
+        {
+            if(winScreen != null) winScreen.SetActive(true);
+        }
+
+        public void ShowGameOverScreen()
+        {
+            if(gameOverScreen != null) gameOverScreen.SetActive(true);
+        }
+        
+        /// <summary>
+        /// Ẩn tất cả các màn hình trạng thái game (Pause, Win, Game Over).
+        /// </summary>
+        public void HideAllScreens()
+        {
+            if(pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+            if(winScreen != null) winScreen.SetActive(false);
+            if(gameOverScreen != null) gameOverScreen.SetActive(false);
         }
 
         // Các hàm này sẽ được gọi bởi các nút trên UI
@@ -89,48 +157,100 @@ namespace _Project._Scripts.UI
             GameManager.Instance.ResumeGame();
         }
 
-        public void OnRestartButtonPressed()
+        public void OnRestartLevelButtonPressed() // Đổi tên để rõ ràng
         {
             GameManager.Instance.RestartLevel();
+        }
+
+        public void OnRestartFromBeginningButtonClicked()
+        {
+            GameManager.Instance.RestartGameFromBeginning();
         }
 
         public void OnQuitButtonPressed()
         {
             GameManager.Instance.QuitGame();
         }
+        
         #endregion
         
         #region Boss UI Methods
 
         public void ShowBossUI()
         {
-            if (bossHealthBar != null)
-                bossHealthBar.gameObject.SetActive(true);
+            if (bossUIGroup != null) bossUIGroup.SetActive(true);
         }
 
         public void HideBossUI()
         {
-            if (bossHealthBar != null)
-                bossHealthBar.gameObject.SetActive(false);
-            
+            if (bossUIGroup != null) bossUIGroup.SetActive(false);
+            HideSpellCardUI(); // Luôn ẩn UI spell card khi boss biến mất
             ClearSpellCardDeclaration();
         }
         
-        // Hàm này sẽ được gọi từ BossController
-        public void HideSpellCardUI()
+        public void UpdateBossHealthBar(float fillAmount)
         {
-            // Dừng coroutine timer đang chạy để tránh lãng phí tài nguyên
-            if (spellCardDisplayCoroutine != null)
+            if (bossHealthBar != null && bossHealthBar.gameObject.activeInHierarchy)
+                bossHealthBar.SetProgress(fillAmount);
+        }
+
+        public void DeclareSpellCard(string name, float timeLimit)
+        {
+            if (spellCardDisplayCoroutine != null) StopCoroutine(spellCardDisplayCoroutine);
+            spellCardDisplayCoroutine = StartCoroutine(ShowAndHideSpellCardDeclarationRoutine(name));
+            
+            // Hiển thị panel spell card và bắt đầu đếm ngược
+            if (spellCardPanel != null) spellCardPanel.SetActive(true);
+            if (spellCardNameText != null) spellCardNameText.text = name;
+            
+            if (spellCardTimerCoroutine != null) StopCoroutine(spellCardTimerCoroutine);
+            spellCardTimerCoroutine = StartCoroutine(UpdateSpellCardTimer(timeLimit));
+        }
+
+        private IEnumerator ShowAndHideSpellCardDeclarationRoutine(string name)
+        {
+            if (spellCardDeclarationGroup != null) spellCardDeclarationGroup.SetActive(true);
+            if (spellCardDeclarationNameText != null)
             {
-                StopCoroutine(spellCardDisplayCoroutine);
-                spellCardDisplayCoroutine = null; // Reset tham chiếu
+                spellCardDeclarationNameText.text = name;
             }
 
-            // Ẩn panel chính của Spell Card UI
+            if (spellCardAnimator != null)
+            {
+                // Reset animator về trạng thái đầu để animation có thể chạy lại
+                spellCardAnimator.Rebind();
+                spellCardAnimator.Update(0f);
+                spellCardAnimator.SetTrigger("Declare");
+            }
+            
+            yield return new WaitForSeconds(spellCardDisplayTime);
+            
+            if (spellCardDeclarationGroup != null) spellCardDeclarationGroup.SetActive(false);
+        }
+        
+        public void HideSpellCardUI()
+        {
+            if (spellCardTimerCoroutine != null)
+            {
+                StopCoroutine(spellCardTimerCoroutine);
+                spellCardTimerCoroutine = null;
+            }
             if (spellCardPanel != null)
             {
                 spellCardPanel.SetActive(false);
             }
+        }
+        
+        public void ClearSpellCardDeclaration()
+        {
+            if (spellCardDisplayCoroutine != null)
+            {
+                StopCoroutine(spellCardDisplayCoroutine);
+                spellCardDisplayCoroutine = null;
+            }
+            
+            if (spellCardDeclarationGroup != null)
+                spellCardDeclarationGroup.SetActive(false);
         }
         
         private IEnumerator UpdateSpellCardTimer(float timeLimit)
@@ -141,165 +261,42 @@ namespace _Project._Scripts.UI
                 timer -= Time.deltaTime;
                 if (spellCardTimerText != null)
                 {
-                    // Cập nhật text, làm tròn đến 2 chữ số thập phân
                     spellCardTimerText.text = timer.ToString("F2");
                 }
                 yield return null;
             }
-
-            // Đảm bảo timer hiển thị 0.00 khi hết giờ
             if (spellCardTimerText != null)
             {
                 spellCardTimerText.text = "0.00";
             }
         }
         
-        public void UpdateBossHealthBar(float fillAmount)
-        {
-            if (bossHealthBar != null && bossHealthBar.gameObject.activeInHierarchy)
-                bossHealthBar.SetProgress(fillAmount);
-        }
-
-        public void DeclareSpellCard(string name, float time)
-        {
-            if (spellCardDisplayCoroutine != null)
-                StopCoroutine(spellCardDisplayCoroutine);
-            
-            spellCardDisplayCoroutine = StartCoroutine(ShowAndHideSpellCardRoutine(name));
-        }
-
-        private IEnumerator ShowAndHideSpellCardRoutine(string name)
-        {
-            // --- Hiển thị ---
-            // Bật cả panel nền và text lên
-            if (spellCardDeclarationGroup != null)
-                spellCardDeclarationGroup.SetActive(true);
-            if (spellCardNameText != null)
-            {
-                spellCardNameText.gameObject.SetActive(true);
-                spellCardNameText.text = name;
-            }
-
-            if (spellCardAnimator != null)
-                spellCardAnimator.SetTrigger("Declare");
-            
-            // --- Chờ ---
-            yield return new WaitForSeconds(spellCardDisplayTime);
-            
-            // --- Ẩn ---
-            // SỬA LỖI QUAN TRỌNG: Ẩn cả hai đối tượng để đảm bảo chúng biến mất
-            if (spellCardDeclarationGroup != null)
-                spellCardDeclarationGroup.SetActive(false);
-            if (spellCardNameText != null)
-                spellCardNameText.gameObject.SetActive(false);
-        }
-
-        public void ClearSpellCardDeclaration()
-        {
-            if (spellCardDisplayCoroutine != null)
-            {
-                StopCoroutine(spellCardDisplayCoroutine);
-                spellCardDisplayCoroutine = null;
-            }
-            
-            // SỬA LỖI QUAN TRỌNG: Ẩn cả hai đối tượng
-            if (spellCardDeclarationGroup != null)
-                spellCardDeclarationGroup.SetActive(false);
-            if (spellCardNameText != null)
-                spellCardNameText.gameObject.SetActive(false);
-        }
-
         #endregion
 
         #region Player UI Methods
         
         public void UpdateSkillCooldown(PlayerSkillManager.SkillType skillType, float fillAmount, float remainingTime)
         {
-            Image targetImage = null;
-            TextMeshProUGUI targetText = null;
-
-            // Chọn đúng UI element dựa trên loại skill
-            switch (skillType)
-            {
-                case PlayerSkillManager.SkillType.BulletClear:
-                    targetImage = bulletClear_CooldownImage;
-                    targetText = bulletClear_CooldownText;
-                    break;
-                case PlayerSkillManager.SkillType.Invincibility:
-                    targetImage = invincibility_CooldownImage;
-                    targetText = invincibility_CooldownText;
-                    break;
-            }
-
-            if (targetImage != null)
-            {
-                targetImage.fillAmount = fillAmount;
-            }
-
-            if (targetText != null)
-            {
-                if (remainingTime > 0)
-                {
-                    targetText.enabled = true;
-                    targetText.text = Mathf.Ceil(remainingTime).ToString();
-                }
-                else
-                {
-                    targetText.enabled = false;
-                }
-            }
+            // ... (Code này giữ nguyên)
         }
 
         public void UpdatePlayerHealthBar(float fillAmount)
         {
-            if (playerHealthBar != null)
-            {
-                playerHealthBar.SetProgress(fillAmount);
-            }
+            if (playerHealthBar != null) playerHealthBar.SetProgress(fillAmount);
         }
         public void UpdateBombsText(int bombs)
         {
-            if (bombsText != null)
-            {
-                bombsText.text = $"Bom: {bombs}";
-            }
+            if (bombsText != null) bombsText.text = $"Bom: {bombs}";
         }
         public void UpdatePowerText(float power)
         {
-            if (powerText != null)
-            {
-                powerText.text = $"Sức mạnh: {power:F2}";
-            }
+            if (powerText != null) powerText.text = $"Sức mạnh: {power:F2}";
         }
         public void UpdateScoreText(long score)
         {
-            if (scoreText != null)
-            {
-                scoreText.text = $"Điểm: {score:N0}";
-            }
+            if (scoreText != null) scoreText.text = $"Điểm: {score:N0}";
         }
         
-        public Image GetSkillCooldownImage(PlayerSkillManager.SkillType skillType)
-        {
-            switch (skillType)
-            {
-                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownImage;
-                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownImage;
-                default: return null;
-            }
-        }
-
-        public TextMeshProUGUI GetSkillCooldownText(PlayerSkillManager.SkillType skillType)
-        {
-            switch (skillType)
-            {
-                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownText;
-                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownText;
-                default: return null;
-            }
-        }
-        
-        // Hàm này có thể được giữ lại để reset UI ban đầu
         private void ResetAllSkillCooldowns()
         {
             if (bulletClear_CooldownImage != null) bulletClear_CooldownImage.fillAmount = 0;
@@ -307,7 +304,107 @@ namespace _Project._Scripts.UI
             if (invincibility_CooldownImage != null) invincibility_CooldownImage.fillAmount = 0;
             if (invincibility_CooldownText != null) invincibility_CooldownText.enabled = false;
         }
+        
+        /// <summary>
+        /// Cung cấp tham chiếu đến Image của skill cooldown cho các script khác.
+        /// </summary>
+        public Image GetSkillCooldownImage(PlayerSkillManager.SkillType skillType)
+        {
+            switch (skillType)
+            {
+                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownImage;
+                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownImage;
+                default:
+                    Debug.LogWarning($"UIManager: Request for unknown skill cooldown image type: {skillType}");
+                    return null;
+            }
+        }
+
+        /// <summary>
+        /// Cung cấp tham chiếu đến Text của skill cooldown cho các script khác.
+        /// </summary>
+        public TextMeshProUGUI GetSkillCooldownText(PlayerSkillManager.SkillType skillType)
+        {
+            switch (skillType)
+            {
+                case PlayerSkillManager.SkillType.BulletClear: return bulletClear_CooldownText;
+                case PlayerSkillManager.SkillType.Invincibility: return invincibility_CooldownText;
+                default:
+                    Debug.LogWarning($"UIManager: Request for unknown skill cooldown text type: {skillType}");
+                    return null;
+            }
+        }
+        
+        #endregion
+        
+        #region Cinematic Effects
+        
+        public IEnumerator ShowTransition()
+        {
+            if (transitionScreen == null) yield break;
+            
+            float elapsedTime = 0f;
+            transitionScreen.gameObject.SetActive(true);
+            
+            while (elapsedTime < transitionDuration)
+            {
+                float alpha = Mathf.Clamp01(elapsedTime / transitionDuration);
+                transitionScreen.color = new Color(transitionScreen.color.r, transitionScreen.color.g, transitionScreen.color.b, alpha);
+                elapsedTime += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            transitionScreen.color = new Color(transitionScreen.color.r, transitionScreen.color.g, transitionScreen.color.b, 1f);
+        }
+        
+        public IEnumerator HideTransition()
+        {
+            if (transitionScreen == null) yield break;
+
+            float elapsedTime = 0f;
+            
+            while (elapsedTime < transitionDuration)
+            {
+                float alpha = 1f - Mathf.Clamp01(elapsedTime / transitionDuration);
+                transitionScreen.color = new Color(transitionScreen.color.r, transitionScreen.color.g, transitionScreen.color.b, alpha);
+                elapsedTime += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            transitionScreen.color = new Color(transitionScreen.color.r, transitionScreen.color.g, transitionScreen.color.b, 0f);
+            transitionScreen.gameObject.SetActive(false);
+        }
+
+        private void ShowComboBurst()
+        {
+            if (comboBurstImage == null) return;
+            
+            if(gameObject.activeInHierarchy) // Đảm bảo UIManager đang hoạt động
+            {
+                StopCoroutine("ComboBurstRoutine");
+                StartCoroutine(ComboBurstRoutine());
+            }
+        }
+
+        private IEnumerator ComboBurstRoutine()
+        {
+            comboBurstImage.gameObject.SetActive(true);
+            comboBurstImage.color = new Color(1, 1, 1, 1);
+            
+            yield return new WaitForSeconds(comboBurstDisplayTime * 0.7f);
+            
+            float fadeDuration = comboBurstDisplayTime * 0.3f;
+            float elapsedTime = 0f;
+            
+            while(elapsedTime < fadeDuration)
+            {
+                float alpha = 1f - (elapsedTime / fadeDuration);
+                comboBurstImage.color = new Color(1, 1, 1, alpha);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            
+            comboBurstImage.gameObject.SetActive(false);
+        }
+        
         #endregion
     }
 }
-

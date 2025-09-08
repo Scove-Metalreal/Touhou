@@ -1,7 +1,8 @@
-// FILE: _Project/_Scripts/Player/PlayerController.cs (VERSION 6.0 - FINAL & STABLE)
+// FILE: _Project/_Scripts/Player/PlayerController.cs (CẬP NHẬT ĐỂ TÍCH HỢP VỚI GAMEMANAGER)
 
 using System.Collections;
 using UnityEngine;
+using _Project._Scripts.Core; // Cần thiết để tham chiếu GameManager (tùy chọn, không bắt buộc)
 
 namespace _Project._Scripts.Player
 {
@@ -12,7 +13,6 @@ namespace _Project._Scripts.Player
     [RequireComponent(typeof(Rigidbody2D), typeof(PlayerState), typeof(PlayerShooting))]
     public class PlayerController : MonoBehaviour
     {
-        // Tối ưu hóa: Chuyển string thành hash ID một lần duy nhất để Animator hoạt động hiệu quả hơn
         private static readonly int MoveXAnimID = Animator.StringToHash("MoveX");
 
         [Header("Thiết lập Di chuyển Chính")]
@@ -46,6 +46,11 @@ namespace _Project._Scripts.Player
         private float speedMultiplier = 1.0f;
         private bool canDash = true;
         private bool isDashing = false;
+        
+        // --- CÁC CỜ KIỂM SOÁT MỚI ---
+        private bool canMove = false;
+        private bool canShoot = false;
+        
         public bool IsFocused { get; private set; } 
 
         #region Unity Lifecycle
@@ -90,32 +95,40 @@ namespace _Project._Scripts.Player
         /// </summary>
         private void ProcessInputs()
         {
-            // Input di chuyển
-            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            // Chỉ xử lý input di chuyển nếu được phép
+            if (canMove)
+            {
+                moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            }
+            else
+            {
+                // Nếu không được phép di chuyển, đảm bảo moveInput là zero để dừng lại
+                moveInput = Vector2.zero;
+            }
             
             // Input Focus (giữ nút "Fire3", mặc định là Left Shift)
-            IsFocused = Input.GetButton("Fire3");
+            IsFocused = canMove && Input.GetButton("Fire3"); // Chỉ có thể focus khi có thể di chuyển
             
             // Input Bắn (giữ nút "Fire1", mặc định là Z hoặc Left Ctrl)
-            if (Input.GetButton("Fire1"))
+            if (canShoot && Input.GetButton("Fire1"))
             {
                 playerShooting.TryToShoot();
             }
 
             // Input Dùng Bom (nhấn 1 lần "Fire2", mặc định là X hoặc Left Alt)
-            if (Input.GetButtonDown("Fire2"))
+            if (canMove && Input.GetButtonDown("Fire2")) // Thường thì bạn có thể dùng bom ngay cả khi không thể bắn
             {
                 playerState.UseBomb();
             }
             
             // Input Dash (nhấn 1 lần "Jump", mặc định là Space)
-            if (Input.GetButtonDown("Jump") && canDash && playerState.HasDashAbility())
+            if (canMove && Input.GetButtonDown("Jump") && canDash && playerState.HasDashAbility())
             {
                 StartCoroutine(Dash());
             }
 
             // Input Dùng Skill Bất Tử (nhấn 1 lần phím "E")
-            if (Input.GetKeyDown(KeyCode.E))
+            if (canMove && Input.GetKeyDown(KeyCode.E))
             {
                 playerState.UseInvincibilitySkill();
             }
@@ -125,12 +138,25 @@ namespace _Project._Scripts.Player
 
         private void HandleMovement()
         {
-            if (isDashing) return;
+            // Di chuyển chỉ được xử lý nếu cờ canMove là true
+            // và không đang trong trạng thái lướt
+            if (!canMove || isDashing)
+            {
+                // Dừng người chơi nếu không được phép di chuyển
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+            
             float finalSpeed = currentSpeed * speedMultiplier;
-            Vector2 newPosition = rb.position + moveInput.normalized * finalSpeed * Time.fixedDeltaTime;
+            Vector2 targetVelocity = moveInput.normalized * finalSpeed;
+            // Di chuyển bằng cách set velocity để phản ứng nhanh hơn
+            rb.linearVelocity = targetVelocity; 
+
+            // Giới hạn vị trí sau khi di chuyển
+            Vector2 newPosition = rb.position;
             newPosition.x = Mathf.Clamp(newPosition.x, horizontalBounds.x, horizontalBounds.y);
             newPosition.y = Mathf.Clamp(newPosition.y, verticalBounds.x, verticalBounds.y);
-            rb.MovePosition(newPosition);
+            rb.position = newPosition; // Cập nhật lại vị trí đã được giới hạn
         }
 
         private void UpdateFocusState()
@@ -163,12 +189,20 @@ namespace _Project._Scripts.Player
             canDash = false;
             isDashing = true;
             
-            // Kích hoạt bất tử tạm thời trong suốt thời gian lướt
             playerState.SetTemporaryInvincibility(dashDuration);
 
-            rb.linearVelocity = moveInput.normalized * dashSpeed;
+            // Tạm thời bỏ qua giới hạn di chuyển để dash mượt mà
+            Vector2 dashDirection = moveInput.normalized;
+            if (dashDirection == Vector2.zero)
+            {
+                // Nếu người chơi đứng yên và dash, dash về phía trước (lên trên)
+                dashDirection = Vector2.up; 
+            }
+            rb.linearVelocity = dashDirection * dashSpeed;
+            
             yield return new WaitForSeconds(dashDuration);
-            rb.linearVelocity = Vector2.zero;
+            
+            rb.linearVelocity = Vector2.zero; // Dừng lại sau khi dash
 
             isDashing = false;
             
@@ -176,7 +210,29 @@ namespace _Project._Scripts.Player
             yield return new WaitForSeconds(dashCooldown);
             canDash = true;
         }
+
+        #endregion
+
+        #region Public Control Methods
         
+        /// <summary>
+        /// Hàm này được GameManager gọi để cho phép hoặc vô hiệu hóa khả năng di chuyển và bắn của người chơi.
+        /// </summary>
+        /// <param name="isEnabled">True để cho phép, False để vô hiệu hóa.</param>
+        public void SetPlayerControl(bool isEnabled)
+        {
+            canMove = isEnabled;
+            canShoot = isEnabled;
+            Debug.Log($"[PlayerController] Player control set to: {isEnabled}");
+            
+            // Nếu bị vô hiệu hóa, đảm bảo dừng mọi chuyển động
+            if (!isEnabled)
+            {
+                moveInput = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
+
         /// <summary>
         /// Hàm này được PlayerState gọi để cập nhật hệ số nhân tốc độ khi có nâng cấp mới.
         /// </summary>
@@ -193,4 +249,3 @@ namespace _Project._Scripts.Player
         #endregion
     }
 }
-

@@ -3,6 +3,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using _Project._Scripts.Core;
 using _Project._Scripts.UI;
 
 namespace _Project._Scripts.Player
@@ -218,8 +219,18 @@ namespace _Project._Scripts.Player
             currentHealth -= damage;
             if (currentHealth < 0) currentHealth = 0;
             UpdateHealthUI();
-            if (currentHealth <= 0) Die();
+            if (currentHealth <= 0)
+            {
+                GameManager.Instance.PlayerDied();
+                Die();
+            }
             else StartInvincibility();
+        }
+        
+        public void RestoreFullHealth()
+        {
+            currentHealth = maxHealth;
+            // Cập nhật UI máu
         }
         
         public void UseBomb()
@@ -260,7 +271,7 @@ namespace _Project._Scripts.Player
             UIManager.Instance?.UpdatePlayerHealthBar(healthPercentage);
         }
         
-        private void UpdateAllUI()
+        public void UpdateAllUI()
         {
             UpdateHealthUI();
             UIManager.Instance?.UpdateBombsText(bombs);
