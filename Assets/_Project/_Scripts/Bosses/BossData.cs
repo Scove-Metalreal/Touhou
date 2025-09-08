@@ -24,6 +24,10 @@ namespace _Project._Scripts.Bosses
         public GameObject guaranteedUpgradeDrop;
         [Tooltip("Prefab vật phẩm hồi máu hiếm chắc chắn rơi khi chết.")]
         public GameObject rareHealthDrop;
+        
+        [Header("Cinematic Defeat")]
+        [Tooltip("Prefab hiệu ứng nổ tung sẽ được tạo ra khi boss bị đánh bại. Có thể chứa Animator, Particle System, v.v.")]
+        public GameObject defeatExplosionVFX;
 
         [Header("Stage Sequence")]
         [Tooltip("Danh sách các giai đoạn (stage) của boss, theo thứ tự.")]

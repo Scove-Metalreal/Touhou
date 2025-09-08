@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class DestroyAfterAnimation : MonoBehaviour
+namespace _Project._Scripts.Core
 {
-    [Tooltip("Thời gian tồn tại của đối tượng này (tính bằng giây). Nên đặt bằng độ dài của animation.")]
-    public float lifetime = 1f;
-
-    void Start()
+    public class DestroyAfterAnimation : MonoBehaviour
     {
-        // Hẹn giờ để tự hủy GameObject này sau một khoảng thời gian 'lifetime'.
-        Destroy(gameObject, lifetime);
+        [Tooltip("Thời gian tồn tại của đối tượng này (tính bằng giây). Nên đặt bằng độ dài của animation.")]
+        public float lifetime = 1f;
+
+        void Start()
+        {
+            // Hẹn giờ để tự hủy GameObject này sau một khoảng thời gian 'lifetime'.
+            Destroy(gameObject, lifetime);
+        }
     }
 }
