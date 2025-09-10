@@ -66,17 +66,22 @@ namespace _Project._Scripts.UI
 
         void Awake()
         {
-            canvas = GetComponent<Canvas>(); // Lấy component Canvas
-            if (canvas == null) canvas = GetComponentInParent<Canvas>(); // Nếu nó nằm trên con
-            
-            if (Instance != null && Instance != this)
+            // Logic Singleton đơn giản hơn, vì GameManager đảm bảo chỉ có 1 được tạo ra
+            if (Instance != null)
             {
-                Destroy(gameObject);
+                // Nếu có một bản sao được tạo ra do lỗi nào đó, hủy nó đi
+                Destroy(gameObject.transform.root.gameObject);
+                return;
             }
-            else
+            
+            Instance = this;
+            // Đảm bảo cả Canvas gốc tồn tại xuyên suốt các màn chơi
+            DontDestroyOnLoad(transform.root.gameObject);
+
+            canvas = GetComponentInParent<Canvas>();
+            if (canvas == null)
             {
-                Instance = this;
-                DontDestroyOnLoad(this.gameObject.transform.root.gameObject);
+                Debug.LogError("UIManager must be a child of a Canvas!", this);
             }
         }
 
@@ -114,10 +119,16 @@ namespace _Project._Scripts.UI
         
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            // Tìm và gán lại camera mới cho Canvas
-            if (canvas != null && canvas.renderMode == RenderMode.ScreenSpaceCamera)
+
+            
+            // Cập nhật lại UI của Player khi vào scene mới
+            if(GameManager.Instance != null && GameManager.Instance.PlayerObject != null)
             {
-                canvas.worldCamera = Camera.main;
+                PlayerState playerState = GameManager.Instance.PlayerObject.GetComponent<PlayerState>();
+                if(playerState != null)
+                {
+                    playerState.UpdateAllUI();
+                }
             }
         }
         

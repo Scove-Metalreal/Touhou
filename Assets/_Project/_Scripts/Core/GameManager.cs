@@ -19,6 +19,8 @@ namespace _Project._Scripts.Core
 
         [Header("Global Player Configuration")]
         [SerializeField] private GameObject playerPrefab;
+        [Tooltip("Prefab của Canvas chứa UIManager và tất cả các thành phần UI.")]
+        [SerializeField] private GameObject uiPrefab;
 
         [Header("Movement Configuration")]
         [SerializeField] private float movementSpeed = 2f;
@@ -59,6 +61,20 @@ namespace _Project._Scripts.Core
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
+                
+                // Kiểm tra xem UIManager đã tồn tại chưa. Nếu chưa, tạo nó từ prefab.
+                if (UIManager.Instance == null)
+                {
+                    if (uiPrefab != null)
+                    {
+                        Instantiate(uiPrefab);
+                        // UIManager prefab sẽ tự xử lý việc gán Instance và DontDestroyOnLoad
+                    }
+                    else
+                    {
+                        Debug.LogError("[GameManager.Awake] UI Prefab is not assigned in GameManager! UI will not function.", this);
+                    }
+                }
             }
             else if (Instance != this)
             {
