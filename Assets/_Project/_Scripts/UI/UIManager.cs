@@ -66,31 +66,19 @@ namespace _Project._Scripts.UI
 
         void Awake()
         {
-            // Logic Singleton đơn giản hơn, vì GameManager đảm bảo chỉ có 1 được tạo ra
             if (Instance != null)
             {
-                // Nếu có một bản sao được tạo ra do lỗi nào đó, hủy nó đi
-                Destroy(gameObject.transform.root.gameObject);
+                Debug.LogWarning("Found a duplicate UIManager in the scene. Destroying this one.", this);
+                Destroy(gameObject);
                 return;
             }
-            
             Instance = this;
-            // Đảm bảo cả Canvas gốc tồn tại xuyên suốt các màn chơi
-            DontDestroyOnLoad(transform.root.gameObject);
-
-            canvas = GetComponentInParent<Canvas>();
-            if (canvas == null)
-            {
-                Debug.LogError("UIManager must be a child of a Canvas!", this);
-            }
         }
 
         // --- GỘP TẤT CẢ CÁC ĐĂNG KÝ SỰ KIỆN VÀO MỘT HÀM ONENABLE ---
         void OnEnable()
         {
-            // Lắng nghe event từ BossHealth
             BossHealth.OnComboBurstTriggered += ShowComboBurst;
-            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         // --- GỘP TẤT CẢ CÁC HỦY ĐĂNG KÝ SỰ KIỆN VÀO MỘT HÀM ONDISABLE ---
@@ -98,19 +86,18 @@ namespace _Project._Scripts.UI
         {
             // Hủy lắng nghe
             BossHealth.OnComboBurstTriggered -= ShowComboBurst;
-            SceneManager.sceneLoaded -= OnSceneLoaded; 
         }
 
         void Start()
         {
-            // Ẩn tất cả các màn hình không cần thiết khi bắt đầu
+            // Ẩn tất cả các màn hình không cần thiết khi scene bắt đầu
             HideAllScreens();
             
-            // Hiện các UI cố định
-            if (playerHealthBar != null) playerHealthBar.gameObject.SetActive(true);
-            
-            // Reset UI
-            ResetAllSkillCooldowns();
+            // Cập nhật lại toàn bộ UI của Player ngay khi UIManager của scene mới bắt đầu
+            UpdateAllPlayerUI();
+
+            // Ẩn thanh máu boss ban đầu
+            HideBossUI();
         }
 
         #endregion
@@ -285,6 +272,28 @@ namespace _Project._Scripts.UI
         #endregion
 
         #region Player UI Methods
+        
+        /// <summary>
+        /// Hàm tổng hợp để cập nhật toàn bộ UI liên quan đến Player.
+        /// Được gọi từ Start() và khi Player được tạo.
+        /// </summary>
+        public void UpdateAllPlayerUI()
+        {
+            if (GameManager.Instance == null || GameManager.Instance.PlayerObject == null) return;
+            
+            PlayerState playerState = GameManager.Instance.PlayerObject.GetComponent<PlayerState>();
+            PlayerSkillManager playerSkillManager = GameManager.Instance.PlayerObject.GetComponent<PlayerSkillManager>();
+
+            if (playerState != null)
+            {
+                playerState.UpdateAllUI();
+            }
+
+            if (playerSkillManager != null)
+            {
+                playerSkillManager.InitializeUI();
+            }
+        }
         
         public void UpdateSkillCooldown(PlayerSkillManager.SkillType skillType, float fillAmount, float remainingTime)
         {

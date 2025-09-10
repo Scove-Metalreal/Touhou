@@ -109,7 +109,8 @@ MonoBehaviour:
   value: 3
   isGuaranteedLoot: 0
   homingSpeed: 8
-  lifetime: 15
+  initialFallSpeed: 2
+  lifetime: 5
 --- !u!50 &-599536172180171052
 Rigidbody2D:
   serializedVersion: 5

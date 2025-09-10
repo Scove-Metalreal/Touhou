@@ -19,8 +19,6 @@ namespace _Project._Scripts.Core
 
         [Header("Global Player Configuration")]
         [SerializeField] private GameObject playerPrefab;
-        [Tooltip("Prefab của Canvas chứa UIManager và tất cả các thành phần UI.")]
-        [SerializeField] private GameObject uiPrefab;
 
         [Header("Movement Configuration")]
         [SerializeField] private float movementSpeed = 2f;
@@ -46,6 +44,7 @@ namespace _Project._Scripts.Core
         private GameObject currentBossObject;
         private BossController currentBossController;
         private SceneSetup currentSceneSetup;
+        private PlayerSkillManager playerSkillManager;
 
         // --- Singleton Instance ---
         public static GameManager Instance { get; private set; }
@@ -61,20 +60,6 @@ namespace _Project._Scripts.Core
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                
-                // Kiểm tra xem UIManager đã tồn tại chưa. Nếu chưa, tạo nó từ prefab.
-                if (UIManager.Instance == null)
-                {
-                    if (uiPrefab != null)
-                    {
-                        Instantiate(uiPrefab);
-                        // UIManager prefab sẽ tự xử lý việc gán Instance và DontDestroyOnLoad
-                    }
-                    else
-                    {
-                        Debug.LogError("[GameManager.Awake] UI Prefab is not assigned in GameManager! UI will not function.", this);
-                    }
-                }
             }
             else if (Instance != this)
             {
@@ -112,12 +97,15 @@ namespace _Project._Scripts.Core
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Debug.Log($"<color=cyan>[GameManager.OnSceneLoaded] Scene '{scene.name}' (Build Index {scene.buildIndex}) loaded.</color>");
+            if (UIManager.Instance == null)
+            {
+                Debug.LogWarning($"[GameManager.OnSceneLoaded] No UIManager found in scene '{scene.name}'. UI will not function until one is loaded. This is normal for scenes without UI.");
+            }
 
             currentSceneData = GetSceneDataByBuildIndex(scene.buildIndex);
             if (currentSceneData == null)
             {
-                Debug.LogError($"[GameManager.OnSceneLoaded] No SceneData found for scene '{scene.name}'. Check GameManager's sceneDatas list.", this);
+                Debug.LogError($"[GameManager.OnSceneLoaded] No SceneData found for scene '{scene.name}'.", this);
                 GameOver();
                 return;
             }
@@ -157,37 +145,35 @@ namespace _Project._Scripts.Core
                 }
                 playerObject = Instantiate(playerPrefab, currentSceneSetup.playerInitialSpawnPoint.position, Quaternion.identity);
                 playerController = playerObject.GetComponent<PlayerController>();
-                playerState = playerObject.GetComponent<PlayerState>(); // Lấy tham chiếu PlayerState
-                if (playerController == null || playerState == null)
-                {
-                    Debug.LogError("[GameManager.SetupPlayer] Player Prefab is missing PlayerController or PlayerState component.", playerPrefab);
-                }
+                playerState = playerObject.GetComponent<PlayerState>();
+                playerSkillManager = playerObject.GetComponent<PlayerSkillManager>();
                 DontDestroyOnLoad(playerObject);
-                
-                // Sau khi Player đã được setup, yêu cầu nó cập nhật lại toàn bộ UI
-                if (playerState != null)
-                {
-                    playerState.UpdateAllUI();
-                }
             }
             else
             {
                 playerObject.transform.position = currentSceneSetup.playerInitialSpawnPoint.position;
+                
+                // Nếu Player đã tồn tại, chúng ta cần chủ động yêu cầu UIManager mới cập nhật lại.
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.UpdateAllPlayerUI();
+                }
             }
 
             if (playerController != null)
             {
-                playerController.SetPlayerControl(false); // Vô hiệu hóa điều khiển ban đầu
-                playerObject.SetActive(true); // Đảm bảo player được bật lại sau khi chết
-                playerController.enabled = true;
-                Rigidbody2D playerRb = playerController.GetComponent<Rigidbody2D>();
+                playerController.SetPlayerControl(false);
+                playerObject.SetActive(true);
+                // Reset vật lý
+                Rigidbody2D playerRb = playerObject.GetComponent<Rigidbody2D>();
                 if (playerRb != null)
                 {
-                    playerRb.isKinematic = false;
+                    // Đảm bảo Rigidbody không còn là Kinematic nữa
+                    playerRb.isKinematic = false; 
                     playerRb.linearVelocity = Vector2.zero;
-                    playerRb.angularVelocity = 0;
                 }
-                Collider2D playerCollider = playerController.GetComponent<Collider2D>();
+        
+                Collider2D playerCollider = playerObject.GetComponent<Collider2D>();
                 if (playerCollider != null) playerCollider.enabled = true;
             }
         }

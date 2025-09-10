@@ -1,5 +1,6 @@
 // FILE: _Project/_Scripts/Player/PlayerCollision.cs (VERSION 3.0 - FULLY COMPATIBLE)
 
+using _Project._Scripts.Gameplay.Items;
 using _Project._Scripts.Gameplay.Projectiles;
 using UnityEngine;
 
@@ -90,9 +91,12 @@ namespace _Project._Scripts.Player
             // --- XỬ LÝ VA CHẠM VỚI VẬT PHẨM ---
             if (other.CompareTag("Item"))
             {
-                Debug.Log("Nhặt vật phẩm!");
-                // Thêm logic xử lý nhặt vật phẩm tại đây
-                Destroy(other.gameObject);
+                Item item = other.GetComponent<Item>();
+                if (item != null)
+                {
+                    // Ra lệnh cho vật phẩm áp dụng hiệu ứng và tự hủy
+                    item.Collect(playerState); 
+                }
             }
         }
 

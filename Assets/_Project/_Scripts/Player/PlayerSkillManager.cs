@@ -42,9 +42,34 @@ namespace _Project._Scripts.Player
 
         void Start()
         {
-            // Lấy các tham chiếu UI từ UIManager và khởi tạo skill
+            InitializeUI();
+            
+            // // Lấy các tham chiếu UI từ UIManager và khởi tạo skill
+            // if (UIManager.Instance != null)
+            // {
+            //     InitializeSkill(SkillType.BulletClear, bulletClearCooldown, 
+            //         UIManager.Instance.GetSkillCooldownImage(SkillType.BulletClear), 
+            //         UIManager.Instance.GetSkillCooldownText(SkillType.BulletClear));
+            //         
+            //     InitializeSkill(SkillType.Invincibility, invincibilityCooldown,
+            //         UIManager.Instance.GetSkillCooldownImage(SkillType.Invincibility),
+            //         UIManager.Instance.GetSkillCooldownText(SkillType.Invincibility));
+            // }
+            // else
+            // {
+            //     Debug.LogError("Không tìm thấy UIManager.Instance! UI kỹ năng sẽ không hoạt động.", this);
+            // }
+        }
+
+        /// <summary>
+        /// Được GameManager gọi mỗi khi vào một scene mới để lấy lại các tham chiếu UI
+        /// từ UIManager của scene đó và cập nhật trạng thái cooldown.
+        /// </summary>
+        public void InitializeUI()
+        {
             if (UIManager.Instance != null)
             {
+                Debug.Log("[PlayerSkillManager] Initializing skill UI references from new UIManager.");
                 InitializeSkill(SkillType.BulletClear, bulletClearCooldown, 
                     UIManager.Instance.GetSkillCooldownImage(SkillType.BulletClear), 
                     UIManager.Instance.GetSkillCooldownText(SkillType.BulletClear));
@@ -55,10 +80,10 @@ namespace _Project._Scripts.Player
             }
             else
             {
-                Debug.LogError("Không tìm thấy UIManager.Instance! UI kỹ năng sẽ không hoạt động.", this);
+                Debug.LogError("Cannot initialize skill UI because UIManager.Instance is null!", this);
             }
         }
-
+        
         void Update()
         {
             foreach (var skill in skills.Values)
@@ -100,19 +125,24 @@ namespace _Project._Scripts.Player
             {
                 Debug.LogWarning($"UI cho kỹ năng {type} chưa được gán trong UIManager.", this);
             }
-
-            skills[type] = new Skill
-            {
-                Type = type,
-                Cooldown = cooldown,
-                CooldownTimer = 0f,
-                CooldownImage = image,
-                CooldownText = text
-            };
             
-            // Đặt lại trạng thái ban đầu cho UI
-            if (image != null) image.fillAmount = 0;
-            if (text != null) text.enabled = false;
+            // Nếu skill chưa tồn tại, tạo mới
+            if (!skills.ContainsKey(type))
+            {
+                skills[type] = new Skill
+                {
+                    Type = type,
+                    Cooldown = cooldown,
+                    CooldownTimer = 0f, // Giả sử bắt đầu với skill sẵn sàng
+                };
+            }
+            
+            // Cập nhật lại các tham chiếu UI
+            skills[type].CooldownImage = image;
+            skills[type].CooldownText = text;
+            
+            // Cập nhật lại trạng thái UI hiện tại
+            UpdateCooldownUI(skills[type]);
         }
     
         // Giữ lại hàm UpdateCooldownUI vì PlayerSkillManager giờ đã tự quản lý UI
@@ -122,7 +152,8 @@ namespace _Project._Scripts.Player
 
             if (skill.CooldownImage != null)
             {
-                skill.CooldownImage.fillAmount = skill.CooldownTimer / skill.Cooldown;
+                // Đảm bảo không chia cho 0
+                skill.CooldownImage.fillAmount = skill.Cooldown > 0 ? (skill.CooldownTimer / skill.Cooldown) : 0;
             }
 
             if (skill.CooldownText != null)

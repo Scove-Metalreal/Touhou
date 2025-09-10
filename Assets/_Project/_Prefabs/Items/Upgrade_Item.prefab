@@ -107,9 +107,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Gameplay.Items.Item
   itemType: 1
   value: 0
-  isGuaranteedLoot: 0
+  isGuaranteedLoot: 1
   homingSpeed: 8
-  lifetime: 15
+  initialFallSpeed: 2
+  lifetime: 5
 --- !u!50 &-6496146255461674345
 Rigidbody2D:
   serializedVersion: 5
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 1
+  m_LinearDamping: 3
   m_AngularDamping: 0.05
   m_GravityScale: 0.5
   m_Material: {fileID: 0}

@@ -36,6 +36,12 @@ namespace _Project._Scripts.Player
         [SerializeField] private float maxTiltAngle = 15f;
         [SerializeField] private float tiltSpeed = 10f;
         
+        [Header("Victory Sequence")]
+        [Tooltip("Lực kéo người chơi lên trên sau khi thắng.")]
+        [SerializeField] private float victoryPullForce = 2f;
+        [Tooltip("Vị trí Y mà từ đó lực kéo bắt đầu có tác dụng.")]
+        [SerializeField] private float victoryPullStartY = 0f; // 1/3 màn hình, ví dụ: 0
+        
         // --- Các biến trạng thái ---
         private Rigidbody2D rb;
         private PlayerState playerState;
@@ -46,6 +52,7 @@ namespace _Project._Scripts.Player
         private float speedMultiplier = 1.0f;
         private bool canDash = true;
         private bool isDashing = false;
+        private bool isVictoryExiting = false;
         
         // --- CÁC CỜ KIỂM SOÁT MỚI ---
         private bool canMove = false;
@@ -86,9 +93,26 @@ namespace _Project._Scripts.Player
         {
             // Xử lý di chuyển trong FixedUpdate để đảm bảo vật lý ổn định
             HandleMovement();
+            
+            // Nếu đang trong trạng thái thoát, áp dụng lực kéo
+            if (isVictoryExiting)
+            {
+                HandleVictoryPull();
+            }
         }
 
         #endregion
+        
+        // --- THÊM HÀM MỚI ---
+        private void HandleVictoryPull()
+        {
+            // Chỉ áp dụng lực kéo nếu người chơi ở phía trên của vùng cho phép
+            if (transform.position.y > victoryPullStartY)
+            {
+                // Thêm một lực không đổi hướng lên trên
+                rb.AddForce(Vector2.up * victoryPullForce, ForceMode2D.Force);
+            }
+        }
         
         /// <summary>
         /// Xử lý toàn bộ input của người chơi bằng hệ thống Input cũ.
@@ -135,6 +159,16 @@ namespace _Project._Scripts.Player
         }
         
         #region Movement & Abilities
+        
+        /// <summary>
+        /// Kích hoạt trạng thái thoát sau khi thắng. Player vẫn có thể di chuyển và bắn.
+        /// </summary>
+        public void StartVictoryExitSequence()
+        {
+            SetPlayerControl(true); // Đảm bảo người chơi có thể di chuyển
+            isVictoryExiting = true;
+            Debug.Log("[PlayerController] Victory exit sequence started. Player is being pulled upwards.");
+        }
 
         private void HandleMovement()
         {

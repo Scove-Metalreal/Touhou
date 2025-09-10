@@ -18,10 +18,10 @@ MonoBehaviour:
   sceneObjectPools:
   - tag: BossBullet_IceShard
     prefab: {fileID: 1718278173086116756, guid: 9c8428e3a00fdf94d9167244882967bc, type: 3}
-    size: 70
+    size: 100
   - tag: BossBullet_Icicle
     prefab: {fileID: 1718278173086116756, guid: 25ba6b8d91e00814ab21346f349fce26, type: 3}
-    size: 70
+    size: 100
   - tag: Cannonball
     prefab: {fileID: 1718278173086116756, guid: 658804a23853dd24485ac23faa13e891, type: 3}
     size: 70
