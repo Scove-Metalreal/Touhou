@@ -31,5 +31,5 @@ MonoBehaviour:
   - tag: StraightShot
     prefab: {fileID: 1718278173086116756, guid: db3adaf9f3091a6458ac7908de2757f2, type: 3}
     size: 70
-  musicTrackName: 
+  musicTrackName: 01. Night of Knights
   nextSceneName: Level 2

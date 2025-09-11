@@ -18,6 +18,7 @@ namespace _Project._Scripts.Core
         // Khóa để lưu trữ giá trị âm lượng
         private const string MusicVolumeKey = "MusicVolume";
         private const string SfxVolumeKey = "SfxVolume";
+        private string currentMusicTrackName = "";
 
         void Awake()
         {
@@ -47,16 +48,62 @@ namespace _Project._Scripts.Core
         // Hàm phát nhạc nền
         public void PlayMusic(string name)
         {
+            // Nếu không có tên hoặc bài nhạc được yêu cầu đã đang phát, thì không làm gì
+            if (string.IsNullOrEmpty(name) || name == currentMusicTrackName)
+            {
+                // Nếu nhạc đang bị pause và được yêu cầu phát lại, thì tiếp tục
+                if (name == currentMusicTrackName && !musicSource.isPlaying)
+                {
+                    musicSource.UnPause();
+                }
+                return;
+            }
+
             Sound s = Array.Find(musicSounds, sound => sound.name == name);
             if (s == null)
             {
                 Debug.LogWarning("AudioManager: Không tìm thấy nhạc nền tên: " + name);
+                currentMusicTrackName = ""; // Reset tên bài nhạc hiện tại
+                musicSource.Stop();
                 return;
             }
 
             musicSource.clip = s.clip;
-            musicSource.loop = true;
+            musicSource.loop = true; // Đảm bảo nhạc lặp lại vô hạn
             musicSource.Play();
+            currentMusicTrackName = name; // Lưu lại tên bài nhạc đang phát
+        }
+        
+        /// <summary>
+        /// Dừng hoàn toàn nhạc nền đang phát.
+        /// </summary>
+        public void StopMusic()
+        {
+            musicSource.Stop();
+            currentMusicTrackName = "";
+        }
+        
+        /// <summary>
+        /// Tạm dừng nhạc nền đang phát.
+        /// </summary>
+        public void PauseMusic()
+        {
+            if (musicSource.isPlaying)
+            {
+                musicSource.Pause();
+            }
+        }
+        
+        /// <summary>
+        /// Tiếp tục phát nhạc nền đã bị tạm dừng.
+        /// </summary>
+        public void ResumeMusic()
+        {
+            // Chỉ tiếp tục nếu có bài nhạc đã được chọn và nó đang bị pause
+            if (musicSource.clip != null && !musicSource.isPlaying)
+            {
+                musicSource.UnPause();
+            }
         }
 
         // Hàm phát hiệu ứng âm thanh
@@ -68,8 +115,6 @@ namespace _Project._Scripts.Core
                 Debug.LogWarning("AudioManager: Không tìm thấy SFX tên: " + name);
                 return;
             }
-
-            // PlayOneShot cho phép phát nhiều hiệu ứng chồng lên nhau mà không cắt ngang
             sfxSource.PlayOneShot(s.clip, s.volume);
         }
 

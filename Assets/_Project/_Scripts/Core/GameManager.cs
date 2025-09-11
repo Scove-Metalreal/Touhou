@@ -1,4 +1,4 @@
-// FILE: _Project/_Scripts/Core/GameManager.cs (PHIÊN BẢN HOÀN THIỆN)
+// FILE: _Project/_Scripts/Core/GameManager.cs (PHIÊN BẢN CUỐI CÙNG - FULL)
 
 using _Project._Scripts.Bosses;
 using System.Collections;
@@ -35,8 +35,10 @@ namespace _Project._Scripts.Core
         // --- Biến nội bộ ---
         private GameObject playerObject;
         private PlayerController playerController;
-        private PlayerState playerState; // Tham chiếu đến PlayerState để reset máu
+        private PlayerState playerState;
+        private PlayerSkillManager playerSkillManager;
 
+        private bool isGameStarted = false;
         private bool isVictorySequenceRunning = false;
         private bool isPaused = false;
 
@@ -44,7 +46,6 @@ namespace _Project._Scripts.Core
         private GameObject currentBossObject;
         private BossController currentBossController;
         private SceneSetup currentSceneSetup;
-        private PlayerSkillManager playerSkillManager;
 
         // --- Singleton Instance ---
         public static GameManager Instance { get; private set; }
@@ -80,12 +81,14 @@ namespace _Project._Scripts.Core
 
         void Start()
         {
+            // Đảm bảo Time Scale luôn được reset khi game khởi động
             Time.timeScale = 1f;
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            // Chỉ cho phép pause nếu game đã bắt đầu và không trong cinematic chiến thắng
+            if (isGameStarted && !isVictorySequenceRunning && Input.GetKeyDown(KeyCode.Escape))
             {
                 TogglePause();
             }
@@ -97,29 +100,64 @@ namespace _Project._Scripts.Core
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (UIManager.Instance == null)
+            // Dừng tất cả các coroutine đang chạy từ scene trước để tránh xung đột.
+            StopAllCoroutines();
+            // Việc khởi tạo sẽ được kích hoạt bởi UIManager thông qua NotifyUIManagerReady.
+        }
+        
+        /// <summary>
+        /// Được UIManager gọi khi nó đã sẵn sàng. Đây là điểm khởi đầu logic cho mỗi scene.
+        /// </summary>
+        public void NotifyUIManagerReady()
+        {
+            if (!isGameStarted)
             {
-                Debug.LogWarning($"[GameManager.OnSceneLoaded] No UIManager found in scene '{scene.name}'. UI will not function until one is loaded. This is normal for scenes without UI.");
+                // Nếu game chưa bắt đầu, đây là lần đầu vào game -> hiển thị Main Menu.
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.ShowMainMenu();
+                }
             }
-
-            currentSceneData = GetSceneDataByBuildIndex(scene.buildIndex);
-            if (currentSceneData == null)
+            else
             {
-                Debug.LogError($"[GameManager.OnSceneLoaded] No SceneData found for scene '{scene.name}'.", this);
-                GameOver();
-                return;
+                // Nếu game đã bắt đầu (đang chuyển màn), tiến hành khởi tạo màn chơi mới.
+                InitializeLevel();
             }
+        }
+        
+        /// <summary>
+        /// Bắt đầu game, được gọi từ nút "Bắt Đầu" trên UI.
+        /// </summary>
+        public void StartGame()
+        {
+            if (isGameStarted) return;
+            
+            isGameStarted = true;
+            Debug.Log("[GameManager] Bắt đầu game. Khởi tạo màn chơi đầu tiên.");
+            
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.HidePauseMenu(); // Ẩn main menu
+            }
+            
+            // Khởi tạo màn chơi hiện tại (màn đầu tiên).
+            InitializeLevel();
+        }
+        
+        /// <summary>
+        /// Khởi tạo tài nguyên và bắt đầu chuỗi sự kiện cho một màn chơi.
+        /// </summary>
+        private void InitializeLevel()
+        {
+            currentSceneData = GetSceneDataByBuildIndex(SceneManager.GetActiveScene().buildIndex);
+            if (currentSceneData == null) { Debug.LogError("Không tìm thấy SceneData cho màn chơi hiện tại."); GameOver(); return; }
 
             currentSceneSetup = FindObjectOfType<SceneSetup>();
-            if (currentSceneSetup == null)
-            {
-                Debug.LogError($"[GameManager.OnSceneLoaded] No SceneSetup GameObject found in scene '{scene.name}'.", this);
-                GameOver();
-                return;
-            }
+            if (currentSceneSetup == null) { Debug.LogError("Không tìm thấy SceneSetup trong màn chơi hiện tại."); GameOver(); return; }
 
             if (UIManager.Instance != null)
             {
+                UIManager.Instance.ShowGameplayUI();
                 StartCoroutine(UIManager.Instance.HideTransition());
             }
 
@@ -132,17 +170,13 @@ namespace _Project._Scripts.Core
         {
             if (currentSceneSetup.playerInitialSpawnPoint == null || currentSceneSetup.playerSpawnPoint == null)
             {
-                Debug.LogError($"[GameManager.SetupPlayer] Player spawn points not assigned in SceneSetup for scene '{currentSceneData.sceneName}'.", this);
+                Debug.LogError($"Player spawn points chưa được gán trong SceneSetup.");
                 return;
             }
 
             if (playerObject == null)
             {
-                if (playerPrefab == null)
-                {
-                    Debug.LogError("[GameManager.SetupPlayer] Player Prefab is not assigned in GameManager.", this);
-                    return;
-                }
+                if (playerPrefab == null) { Debug.LogError("Player Prefab chưa được gán trong GameManager."); return; }
                 playerObject = Instantiate(playerPrefab, currentSceneSetup.playerInitialSpawnPoint.position, Quaternion.identity);
                 playerController = playerObject.GetComponent<PlayerController>();
                 playerState = playerObject.GetComponent<PlayerState>();
@@ -152,30 +186,19 @@ namespace _Project._Scripts.Core
             else
             {
                 playerObject.transform.position = currentSceneSetup.playerInitialSpawnPoint.position;
-                
-                // Nếu Player đã tồn tại, chúng ta cần chủ động yêu cầu UIManager mới cập nhật lại.
-                if (UIManager.Instance != null)
-                {
-                    UIManager.Instance.UpdateAllPlayerUI();
-                }
             }
 
-            if (playerController != null)
-            {
-                playerController.SetPlayerControl(false);
-                playerObject.SetActive(true);
-                // Reset vật lý
-                Rigidbody2D playerRb = playerObject.GetComponent<Rigidbody2D>();
-                if (playerRb != null)
-                {
-                    // Đảm bảo Rigidbody không còn là Kinematic nữa
-                    playerRb.isKinematic = false; 
-                    playerRb.linearVelocity = Vector2.zero;
-                }
-        
-                Collider2D playerCollider = playerObject.GetComponent<Collider2D>();
-                if (playerCollider != null) playerCollider.enabled = true;
-            }
+            // Kích hoạt lại Player và reset trạng thái vật lý
+            playerObject.SetActive(true);
+            playerController?.SetPlayerControl(false);
+            
+            Rigidbody2D playerRb = playerObject.GetComponent<Rigidbody2D>();
+            if (playerRb != null) { playerRb.isKinematic = false; playerRb.linearVelocity = Vector2.zero; }
+            Collider2D playerCollider = playerObject.GetComponent<Collider2D>();
+            if (playerCollider != null) playerCollider.enabled = true;
+
+            // Yêu cầu UIManager của scene mới cập nhật toàn bộ thông tin của Player
+            UIManager.Instance?.UpdateAllPlayerUI();
         }
 
         private IEnumerator StartLevelSequence()
@@ -185,43 +208,39 @@ namespace _Project._Scripts.Core
                 Destroy(currentBossObject);
             }
 
-            if (currentSceneData.bossPrefab != null && currentSceneSetup.bossInitialSpawnPoint != null)
+            if (currentSceneData.bossPrefab != null && currentSceneSetup.bossInitialSpawnPoint != null && currentSceneSetup.bossSpawnPoint != null)
             {
                 currentBossObject = Instantiate(currentSceneData.bossPrefab, currentSceneSetup.bossInitialSpawnPoint.position, Quaternion.identity);
                 currentBossController = currentBossObject.GetComponent<BossController>();
-                if (currentBossController == null)
-                {
-                    Debug.LogError($"[GameManager.StartLevel] Boss Prefab '{currentSceneData.bossPrefab.name}' is missing BossController component.", currentSceneData.bossPrefab);
-                    yield break;
-                }
+                if (currentBossController == null) yield break;
                 
-                if (UIManager.Instance != null) UIManager.Instance.ShowBossUI();
-            }
-            else
-            {
-                if (UIManager.Instance != null) UIManager.Instance.HideBossUI();
-                Debug.LogWarning($"[GameManager.StartLevel] No boss configured for scene '{currentSceneData.sceneName}'.", this);
-                yield break;
-            }
-
-            if (currentSceneSetup.playerSpawnPoint != null && currentSceneSetup.bossSpawnPoint != null)
-            {
+                UIManager.Instance?.ShowBossUI();
+                
+                // Di chuyển Player và Boss vào vị trí chiến đấu
                 yield return StartCoroutine(MoveToSpawnPoints(playerObject.transform, currentBossObject.transform));
             }
             else
             {
-                Debug.LogError($"[GameManager.StartLevel] Player or Boss spawn points not assigned in SceneSetup.", this);
+                Debug.LogWarning($"Không có boss hoặc spawn point cho màn chơi '{currentSceneData.sceneName}'.");
+                playerController?.SetPlayerControl(true); // Cho phép người chơi di chuyển nếu không có boss
+                UIManager.Instance?.HideBossUI();
                 yield break;
             }
 
+            // Kích hoạt boss và bật nhạc nền
             currentBossController.Initialize();
-
             if (AudioManager.Instance != null)
             {
                 if (!string.IsNullOrEmpty(currentSceneData.musicTrackName))
+                {
                     AudioManager.Instance.PlayMusic(currentSceneData.musicTrackName);
+                }
                 else
-                    AudioManager.Instance.PlayMusic("01. Night of Knights");
+                {
+                    // Nếu không có nhạc cụ thể cho scene, có thể dừng nhạc hoặc phát một bài mặc định
+                    Debug.LogWarning($"[GameManager] No music track specified in SceneData for '{currentSceneData.sceneName}'.");
+                    AudioManager.Instance.StopMusic(); // Ví dụ: dừng nhạc nếu không có bài nào được chọn
+                }
             }
         }
 
@@ -250,14 +269,11 @@ namespace _Project._Scripts.Core
             playerTransform.position = currentSceneSetup.playerSpawnPoint.position;
             bossTransform.position = currentSceneSetup.bossSpawnPoint.position;
             
-            if (playerController != null)
-            {
-                playerController.SetPlayerControl(true);
-            }
+            playerController?.SetPlayerControl(true);
 
             if (elapsedTime >= maxMoveToSpawnTime)
             {
-                Debug.LogWarning("[GameManager.MoveToSpawnPoints] Movement timed out.");
+                Debug.LogWarning("Di chuyển đến điểm spawn bị quá thời gian.");
             }
         }
 
@@ -274,18 +290,11 @@ namespace _Project._Scripts.Core
         private IEnumerator BossDefeatedSequence()
         {
             isVictorySequenceRunning = true;
-            
-            if (playerController != null)
-            {
-                playerController.SetPlayerControl(false);
-            }
+            playerController?.SetPlayerControl(false);
 
             yield return new WaitForSeconds(1f);
 
-            if (Camera.main != null)
-            {
-                yield return StartCoroutine(ShakeCamera());
-            }
+            if (Camera.main != null) yield return StartCoroutine(ShakeCamera());
 
             if (currentBossObject != null)
             {
@@ -312,18 +321,13 @@ namespace _Project._Scripts.Core
 
             if (!string.IsNullOrEmpty(currentSceneData.nextSceneName))
             {
-                if (UIManager.Instance != null)
-                    yield return StartCoroutine(UIManager.Instance.ShowTransition());
-                
+                if (UIManager.Instance != null) yield return StartCoroutine(UIManager.Instance.ShowTransition());
                 SceneManager.LoadScene(currentSceneData.nextSceneName);
             }
             else
             {
-                Debug.Log("Final boss defeated. Showing Win Screen.");
-                if (UIManager.Instance != null)
-                {
-                    UIManager.Instance.ShowWinScreen();
-                }
+                Debug.Log("Đã hạ boss cuối. Hiển thị màn hình chiến thắng.");
+                UIManager.Instance?.ShowWinScreen();
             }
 
             isVictorySequenceRunning = false;
@@ -351,24 +355,19 @@ namespace _Project._Scripts.Core
         
         public void PlayerDied()
         {
-             Debug.Log("GAME OVER signal received from Player. Showing Game Over screen.");
+             Debug.Log("Player đã chết. Hiển thị màn hình Game Over.");
              if (playerObject != null)
              {
                  playerObject.SetActive(false); 
              }
      
-             // Hiển thị màn hình Game Over trước
-             if (UIManager.Instance != null)
-             {
-                 UIManager.Instance.ShowGameOverScreen();
-             }
-
+             UIManager.Instance?.ShowGameOverScreen();
              Time.timeScale = 0f;
         }
 
         public void GameOver()
         {
-            Debug.LogError("FATAL ERROR: Resetting game to first scene.");
+            Debug.LogError("Lỗi nghiêm trọng! Đang reset game về màn hình đầu tiên.");
             Time.timeScale = 1f;
             
             if (playerObject != null) Destroy(playerObject);
@@ -380,29 +379,33 @@ namespace _Project._Scripts.Core
 
         public void RestartGameFromBeginning()
         {
-            Debug.Log("Restarting game from the beginning.");
+            Debug.Log("Chơi lại từ đầu.");
             Time.timeScale = 1f;
+            isGameStarted = false;
             
             if (playerObject != null)
             {
                 Destroy(playerObject);
+                playerObject = null;
             }
             
-            if (UIManager.Instance != null) UIManager.Instance.HideAllScreens();
+            // Dừng nhạc khi quay về Main Menu
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopMusic();
+            }
             
             SceneManager.LoadScene(0);
         }
         
         public void RestartLevel()
         {
-            Debug.Log($"Restarting current level: {SceneManager.GetActiveScene().name}");
+            Debug.Log($"Chơi lại màn: {SceneManager.GetActiveScene().name}");
             Time.timeScale = 1f;
             
-            if(playerState != null)
-            {
-                playerState.RestoreFullHealth(); // Giả định có hàm này trong PlayerState
-            }
+            playerState?.RestoreFullHealth();
 
+            // Tải lại scene sẽ tự động kích hoạt luồng OnSceneLoaded -> NotifyUIManagerReady -> InitializeLevel
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -474,18 +477,25 @@ namespace _Project._Scripts.Core
         {
             isPaused = true;
             Time.timeScale = 0f;
-            UIManager.Instance.ShowPauseMenu();
+            
+            if (AudioManager.Instance != null) AudioManager.Instance.PauseMusic();
+            
+            if (UIManager.Instance != null) UIManager.Instance.ShowPauseMenu();
         }
 
         public void ResumeGame()
         {
             isPaused = false;
             Time.timeScale = 1f;
-            UIManager.Instance.HidePauseMenu();
+            
+            if (AudioManager.Instance != null) AudioManager.Instance.ResumeMusic();
+            
+            if (UIManager.Instance != null) UIManager.Instance.HidePauseMenu();
         }
 
         public void QuitGame()
         {
+            Debug.Log("Thoát game...");
             Application.Quit();
         }
 

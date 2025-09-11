@@ -91,11 +91,19 @@ namespace _Project._Scripts.Player
             // --- XỬ LÝ VA CHẠM VỚI VẬT PHẨM ---
             if (other.CompareTag("Item"))
             {
+                Debug.Log($"[PlayerCollision] Va chạm với một đối tượng có tag 'Item': {other.gameObject.name}"); // DEBUG 1
+
                 Item item = other.GetComponent<Item>();
                 if (item != null)
                 {
+                    Debug.Log($"[PlayerCollision] Lấy được component Item. Loại vật phẩm là: {item.itemType}"); // DEBUG 2
+
                     // Ra lệnh cho vật phẩm áp dụng hiệu ứng và tự hủy
-                    item.Collect(playerState); 
+                    item.Collect(playerState);
+                }
+                else
+                {
+                    Debug.LogError($"[PlayerCollision] Đối tượng {other.gameObject.name} có tag 'Item' nhưng không có script Item.cs!", other.gameObject); // DEBUG 3
                 }
             }
         }

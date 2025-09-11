@@ -131,14 +131,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386304588943596455}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -173,6 +173,8 @@ MonoBehaviour:
   playerVisuals: {fileID: 9050262529554507907}
   maxTiltAngle: 15
   tiltSpeed: 10
+  victoryPullForce: 2
+  victoryPullStartY: 0
 --- !u!114 &6873620633021049184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +231,7 @@ MonoBehaviour:
   power: 0
   score: 0
   debugMode: 1
-  debugApplyUpgrade: {fileID: 11400000, guid: 2d056136b6f9bda4aab602c4f025bfe2, type: 2}
+  debugApplyUpgrade: {fileID: 11400000, guid: fbec118b6109a5246b8a5df678ff0c22, type: 2}
 --- !u!114 &5239147151053284703
 MonoBehaviour:
   m_ObjectHideFlags: 0

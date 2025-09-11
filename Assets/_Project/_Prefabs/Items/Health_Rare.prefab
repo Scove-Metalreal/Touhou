@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Gameplay.Items.Item
   itemType: 0
-  value: 20
+  value: 10
   isGuaranteedLoot: 1
   homingSpeed: 8
   initialFallSpeed: 2

@@ -172,14 +172,19 @@ namespace _Project._Scripts.Player
 
         private void HandleMovement()
         {
-            // Di chuyển chỉ được xử lý nếu cờ canMove là true
             // và không đang trong trạng thái lướt
-            if (!canMove || isDashing)
+            if (isDashing)
             {
-                // Dừng người chơi nếu không được phép di chuyển
+                return;
+            }
+            
+            // Nếu không được phép di chuyển, dừng người chơi lại.
+            if (!canMove)
+            {
                 rb.linearVelocity = Vector2.zero;
                 return;
             }
+
             
             float finalSpeed = currentSpeed * speedMultiplier;
             Vector2 targetVelocity = moveInput.normalized * finalSpeed;

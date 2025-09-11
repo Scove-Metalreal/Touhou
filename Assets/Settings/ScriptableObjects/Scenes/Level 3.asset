@@ -14,25 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Core.SceneData
   sceneName: Level 3
   sceneBuildIndex: 2
-  bossPrefab: {fileID: 6081455925941192813, guid: ff51e414cc5ce4d409bdde798f98550e, type: 3}
+  bossPrefab: {fileID: 6081455925941192813, guid: 1a12972f5d9d81e4db8e9ce3de9a4be2, type: 3}
   sceneObjectPools:
   - tag: BossBullet_IceShard
     prefab: {fileID: 1718278173086116756, guid: 9c8428e3a00fdf94d9167244882967bc, type: 3}
-    size: 70
+    size: 100
   - tag: BossBullet_Icicle
     prefab: {fileID: 1718278173086116756, guid: 25ba6b8d91e00814ab21346f349fce26, type: 3}
-    size: 70
+    size: 100
   - tag: Cannonball
     prefab: {fileID: 1718278173086116756, guid: 658804a23853dd24485ac23faa13e891, type: 3}
     size: 70
   - tag: HomingShot
     prefab: {fileID: 1718278173086116756, guid: 34cc3a9a81361154cb3dcd74a050b596, type: 3}
-    size: 0
+    size: 70
   - tag: StraightShot
     prefab: {fileID: 1718278173086116756, guid: db3adaf9f3091a6458ac7908de2757f2, type: 3}
-    size: 0
-  - tag: 
-    prefab: {fileID: 0}
-    size: 0
-  musicTrackName: 
+    size: 70
+  - tag: BossBullet_Bouncing
+    prefab: {fileID: 1718278173086116756, guid: bfbe14c805ca1ad45ae516108bc0efc6, type: 3}
+    size: 70
+  - tag: BossBullet_Spinner
+    prefab: {fileID: 1718278173086116756, guid: fe93aff3865cab443ad992c31ad71dac, type: 3}
+    size: 70
+  - tag: BossBullet_Spread
+    prefab: {fileID: 1718278173086116756, guid: a94e0c6ff3115bd4680e9e2232ff4a79, type: 3}
+    size: 70
+  musicTrackName: 'Masayoshi Minoshima - Bad Apple!! feat. nomico - Touhou PV [iichan]'
   nextSceneName: 

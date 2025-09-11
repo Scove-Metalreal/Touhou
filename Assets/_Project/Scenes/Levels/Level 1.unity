@@ -909,6 +909,18 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
+  - name: 12 - Everything will freeze
+    clip: {fileID: 8300000, guid: 6013e74976789d743b8df0562403b371, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 'Masayoshi Minoshima - Bad Apple!! feat. nomico - Touhou PV [iichan]'
+    clip: {fileID: 8300000, guid: 3a0f181474f92664884391b95090753f, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
   sfxSounds: []
   musicSource: {fileID: 1184406188}
   sfxSource: {fileID: 1184406187}
@@ -2153,7 +2165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1309733230097500846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2871,19 +2883,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8209596476009351292}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4897754102314833324}
-        m_TargetAssemblyTypeName: _Project._Scripts.UI.UIManager, Assembly-CSharp
-        m_MethodName: OnResumeButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2255197167853957627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3010,7 +3010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2338866162213167521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,7 +3882,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4897754102314833324}
         m_TargetAssemblyTypeName: _Project._Scripts.UI.UIManager, Assembly-CSharp
-        m_MethodName: OnRestartButtonPressed
+        m_MethodName: OnRestartLevelButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5749,16 +5749,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5be192a4a84b5438d365770b79352f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.UI.UIManager
+  playerHUD: {fileID: 1814930817719602329}
   playerHealthBar: {fileID: 4100389378249045949}
   bombsText: {fileID: 7043833763256204713}
   powerText: {fileID: 720360176143827389}
   scoreText: {fileID: 1024520191352448684}
+  bossUIGroup: {fileID: 2141441130694344540}
+  bossHealthBar: {fileID: 4276102956708639534}
   bulletClear_CooldownImage: {fileID: 4747572399574059874}
   bulletClear_CooldownText: {fileID: 826258742898465792}
   invincibility_CooldownImage: {fileID: 1711523261170847451}
   invincibility_CooldownText: {fileID: 583196403416637952}
-  bossUIGroup: {fileID: 2141441130694344540}
-  bossHealthBar: {fileID: 4276102956708639534}
   spellCardDeclarationGroup: {fileID: 1876594103566867302}
   spellCardDeclarationNameText: {fileID: 0}
   spellCardAnimator: {fileID: 0}
@@ -5766,13 +5767,15 @@ MonoBehaviour:
   spellCardPanel: {fileID: 0}
   spellCardNameText: {fileID: 2555761712042628921}
   spellCardTimerText: {fileID: 0}
-  pauseMenuPanel: {fileID: 6811474119132063836}
+  menuPanel: {fileID: 6811474119132063836}
+  winScreen: {fileID: 8335418586981395553}
+  gameOverScreen: {fileID: 5635565344758000269}
+  resumeStartButton: {fileID: 2226354495230834759}
+  resumeStartButtonText: {fileID: 7708024569757756567}
   transitionScreen: {fileID: 5026536153112964493}
   transitionDuration: 1
   comboBurstImage: {fileID: 0}
   comboBurstDisplayTime: 1.5
-  winScreen: {fileID: 8335418586981395553}
-  gameOverScreen: {fileID: 5635565344758000269}
 --- !u!1 &4916105569696386017
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,15 +6460,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0.392}
+  m_Color: {r: 1, g: 0.6745283, b: 0.6745283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7376679487275012701, guid: 0110af27844b75d47807305548d27a98, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6956,7 +6959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7394892240446263039
 GameObject:
   m_ObjectHideFlags: 0
@@ -8131,6 +8134,7 @@ SceneRoots:
   - {fileID: 123330957}
   - {fileID: 2096851001}
   - {fileID: 674733138}
+  - {fileID: 5182150846990503082}
   - {fileID: 1033230056}
   - {fileID: 1390525503}
   - {fileID: 1859023282}
@@ -8138,4 +8142,3 @@ SceneRoots:
   - {fileID: 409043355}
   - {fileID: 1732999942}
   - {fileID: 943869075}
-  - {fileID: 5182150846990503082}

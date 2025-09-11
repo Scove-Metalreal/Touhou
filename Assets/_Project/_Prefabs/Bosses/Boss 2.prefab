@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03f4467cfe641146b72535e2efb886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Bosses.BossController
-  bossData: {fileID: 11400000, guid: d69085f0feb9a1a4fa5d0b38858e74c1, type: 2}
+  bossData: {fileID: 11400000, guid: 1e93b7be5adbda549a0dc8d7eebad931, type: 2}
   transitionDelay: 2
   playerTransform: {fileID: 0}
 --- !u!114 &7838063302913304356

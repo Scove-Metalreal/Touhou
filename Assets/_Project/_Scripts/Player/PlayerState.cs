@@ -96,30 +96,27 @@ namespace _Project._Scripts.Player
         {
             if (upgradePath == null || upgradePath.upgradeLevels.Count == 0)
             {
-                Debug.LogError("Chưa thiết lập 'Upgrade Path' cho PlayerState trong Inspector!", this.gameObject);
+                Debug.LogError("Chưa thiết lập 'Upgrade Path' cho PlayerState!", this);
                 return;
             }
 
-            // Tăng cấp độ hiện tại
             currentUpgradeLevel++;
 
-            // Kiểm tra xem có vượt quá giới hạn cấp độ không
             if (currentUpgradeLevel >= upgradePath.upgradeLevels.Count)
             {
-                currentUpgradeLevel = upgradePath.upgradeLevels.Count - 1; // Giữ ở cấp độ tối đa
-                Debug.Log("Player đã đạt cấp độ nâng cấp tối đa!");
-                return; // Không làm gì thêm nếu đã max level
+                currentUpgradeLevel = upgradePath.upgradeLevels.Count - 1;
+                Debug.Log("Player đã đạt cấp độ tối đa!");
+                return;
             }
 
-            // Lấy data nâng cấp của cấp độ mới
             UpgradeData nextUpgrade = upgradePath.upgradeLevels[currentUpgradeLevel];
-            
+        
             if (nextUpgrade != null)
             {
-                // Logic quan trọng: Xóa các nâng cấp cũ và chỉ áp dụng nâng cấp của level hiện tại.
-                ClearAllUpgrades(); 
-                AddUpgrade(nextUpgrade); // Thêm và áp dụng nâng cấp mới
-                Debug.Log($"Player đã lên cấp {currentUpgradeLevel}: {nextUpgrade.name}");
+            
+                // Chỉ thêm nâng cấp mới. ApplyAllUpgrades() sẽ tính toán lại tất cả.
+                AddUpgrade(nextUpgrade); 
+                Debug.Log($"Player đã lên cấp {currentUpgradeLevel}: Áp dụng nâng cấp '{nextUpgrade.name}'");
             }
         }
 
@@ -143,19 +140,18 @@ namespace _Project._Scripts.Player
 
         public void AddUpgrade(UpgradeData upgrade)
         {
-            if (upgrade == null) return;
-            if (!collectedUpgrades.Contains(upgrade))
-            {
-                collectedUpgrades.Add(upgrade);
-            }
-            ApplyAllUpgrades();
+            if (upgrade == null || collectedUpgrades.Contains(upgrade)) return;
+        
+            collectedUpgrades.Add(upgrade);
+            ApplyAllUpgrades(); // Gọi áp dụng lại sau khi thêm
         }
         
         public void ClearAllUpgrades()
         {
             collectedUpgrades.Clear();
-            ApplyAllUpgrades();
+            ApplyAllUpgrades(); // Gọi áp dụng lại sau khi xóa
         }
+
         
         public bool HasDashAbility()
         {
@@ -188,11 +184,21 @@ namespace _Project._Scripts.Player
         private void ApplyAllUpgrades()
         {
             float totalSpeedMultiplier = 1.0f;
+        
+            // Reset trạng thái trước khi áp dụng lại
+            bool newDashState = false; 
+        
+            // Tính toán lại tất cả các hiệu ứng từ đầu
             foreach (var upgrade in collectedUpgrades)
             {
                 totalSpeedMultiplier *= upgrade.moveSpeedMultiplier;
+                if (upgrade.unlocksDash)
+                {
+                    newDashState = true;
+                }
             }
-            
+        
+            // Cập nhật các component khác
             playerController?.SetSpeedMultiplier(totalSpeedMultiplier);
             playerShooting?.ApplyUpgrades(collectedUpgrades);
         }
