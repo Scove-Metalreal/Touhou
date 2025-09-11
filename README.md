@@ -40,31 +40,24 @@ Bạn sẽ vào vai Hakurei Reimu, sử dụng các kỹ năng và đòn tấn c
 
 * **Menu Chính**
 
-**![](media/image1.png){width="4.54586832895888in"
-height="2.78125in"}
-**
+![](media/image1.png)
 
 * **Gameplay Level 1**
 
-**![](media/image2.png){width="4.54586832895888in"
-height="2.78125in"}**
+![](media/image2.png)
 
 * **Gameplay Level 2**
 
-**![](media/image3.png){width="4.54586832895888in"
-height="2.78125in"}**
+![](media/image3.png)
 
 * **Gameplay Level 3**
 
-**![](media/image4.png){width="4.54586832895888in"
-height="2.78125in"}**
+![](media/image4.png)
 
 * **Màn hình Game Over / Victory**
 
-**![](media/image5.png){width="4.54586832895888in"
-height="2.78125in"}**  
-**![](media/image6.png){width="4.54586832895888in"
-height="2.78125in"}**
+![](media/image5.png)  
+![](media/image6.png)
 
 ## **Tính Năng Nổi Bật ✨**
 
@@ -110,4 +103,5 @@ Dự án vẫn đang trong quá trình hoàn thiện với các kế hoạch tro
 * \[ \] Thiết kế thêm Boss và các AttackPattern mới.  
 * \[ \] Tích hợp hệ thống âm thanh (nhạc nền và SFX).  
 * \[ \] Nâng cấp đồ họa và hiệu ứng hình ảnh (VFX).
+
 
