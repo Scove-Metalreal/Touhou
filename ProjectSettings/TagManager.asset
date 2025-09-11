@@ -16,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
     locked: 0
   - name: EnemyProjectiles
     uniqueID: 2873882759
+    locked: 0
+  - name: UI
+    uniqueID: 3739923105
     locked: 0
   m_RenderingLayers:
   - Default

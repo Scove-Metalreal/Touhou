@@ -1,134 +1,167 @@
+// FILE: _Project/_Scripts/Player/PlayerCollision.cs (VERSION 3.0 - FULLY COMPATIBLE)
+
+using _Project._Scripts.Gameplay.Items;
+using _Project._Scripts.Gameplay.Projectiles;
 using UnityEngine;
 
 namespace _Project._Scripts.Player
 {
     /// <summary>
-    /// Handles collision events for the player, such as being hit by enemy bullets (death)
-    /// or bullets passing very close (graze).
-    /// ---
-    /// Xử lý các sự kiện va chạm cho người chơi, như bị trúng đạn địch (chết)
-    /// hoặc khi đạn bay sượt qua (graze).
+    /// Xử lý các sự kiện va chạm vật lý cho người chơi.
+    /// Script này chịu trách nhiệm phát hiện va chạm với đạn địch hoặc vật phẩm,
+    /// sau đó thông báo cho PlayerState để xử lý logic tương ứng.
+    /// Nó cũng quản lý các hiệu ứng hình ảnh và âm thanh liên quan đến va chạm và cái chết.
     /// </summary>
+    [RequireComponent(typeof(AudioSource))]
     public class PlayerCollision : MonoBehaviour
     {
-        [Header("Component References")]
-        [Tooltip("Kéo chính đối tượng Player (chứa script PlayerState) vào đây. (Reference to the PlayerState script.)")]
-        public PlayerState playerState;
+        // =============================================================================================
+        // SECTION: KHAI BÁO BIẾN & THAM CHIẾU (VARIABLES & REFERENCES)
+        // =============================================================================================
 
-        [Header("Effects & Sounds")]
-        [Tooltip("Kéo Prefab hiệu ứng nổ khi chết vào đây. (VFX Prefab for player death.)")]
-        public GameObject deathVFX;
+        [Header("🧩 Tham chiếu Component (Component References)")]
+        [Tooltip("Kéo chính đối tượng Player (GameObject chứa script PlayerState) vào đây.")]
+        [SerializeField] private PlayerState playerState;
 
-        [Tooltip("Kéo file âm thanh 'pichuun' vào đây. (SFX for player death.)")]
-        public AudioClip deathSFX;
+        [Space(10)]
 
-        [Tooltip("Kéo Prefab hiệu ứng khi graze vào đây. (VFX Prefab for grazing a bullet.)")]
-        public GameObject grazeVFX;
+        [Header("💥 Hiệu ứng & Âm thanh (Effects & Sounds)")]
+        [Tooltip("Âm thanh sẽ phát khi người chơi bị trúng đạn.")]
+        [SerializeField] private AudioClip hitSFX; // Đổi tên từ deathSFX để rõ nghĩa hơn
 
-        [Tooltip("Kéo file âm thanh khi graze vào đây. (SFX for grazing a bullet.)")]
-        public AudioClip grazeSFX;
+        [Tooltip("Prefab hiệu ứng nổ sẽ xuất hiện khi máu người chơi về 0.")]
+        [SerializeField] private GameObject deathVFX;
+
+        [Space(10)]
+        [Header("✨ Hiệu ứng Graze (Sượt đạn)")]
+        [Tooltip("Prefab hiệu ứng sẽ xuất hiện khi đạn địch bay sượt qua người chơi.")]
+        [SerializeField] private GameObject grazeVFX;
+
+        [Tooltip("Âm thanh sẽ phát khi người chơi graze thành công.")]
+        [SerializeField] private AudioClip grazeSFX;
     
-        // --- Private Variables ---
-        private AudioSource audioSource; // Dùng để phát âm thanh. (Used to play audio clips.)
+        // --- Biến nội bộ (private) ---
+        private AudioSource audioSource; // Dùng để phát âm thanh
 
-        /// <summary>
-        /// Awake được gọi khi script được tải.
-        /// (Awake is called when the script instance is being loaded.)
-        /// </summary>
+        // =============================================================================================
+        // SECTION: VÒNG ĐỜI UNITY & SỰ KIỆN (UNITY LIFECYCLE & EVENTS)
+        // =============================================================================================
+
         void Awake()
         {
-            // Tự động thêm một AudioSource nếu chưa có.
-            // (Automatically add an AudioSource component if one doesn't exist.)
+            // Tự động lấy component AudioSource để phát âm thanh.
             audioSource = GetComponent<AudioSource>();
             if (audioSource == null)
             {
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
         }
-    
+        
+        // Đăng ký lắng nghe sự kiện khi script được kích hoạt
+        void OnEnable()
+        {
+            PlayerState.OnPlayerDied += HandlePlayerDeath;
+        }
+
+        // Hủy đăng ký để tránh lỗi khi đối tượng bị phá hủy
+        void OnDisable()
+        {
+            PlayerState.OnPlayerDied -= HandlePlayerDeath;
+        }
+
         /// <summary>
-        /// Được gọi khi một Collider2D khác đi vào trigger của đối tượng này.
-        /// (Called when another Collider2D enters this object's trigger.)
+        /// Được gọi bởi Unity mỗi khi một Collider2D khác đi vào trigger của đối tượng này.
         /// </summary>
-        /// <param name="other">Collider của đối tượng đã va chạm.</param>
         void OnTriggerEnter2D(Collider2D other)
         {
-            // Kiểm tra tag của đối tượng va chạm.
-            // (Check the tag of the colliding object.)
-
-            // Nếu va chạm với đạn của địch.
-            // (If colliding with an enemy bullet.)
+            // --- XỬ LÝ VA CHẠM VỚI ĐẠN ĐỊCH ---
             if (other.CompareTag("EnemyBullet"))
             {
-                HandleDeath();
-                // Destroy(other.gameObject); // Phá hủy viên đạn. (Destroy the bullet.)
-                other.gameObject.SetActive(false); 
+                Bullet bullet = other.GetComponent<Bullet>();
+                if (bullet != null)
+                {
+                    // Gọi hàm xử lý va chạm và truyền vào lượng sát thương của viên đạn
+                    HandleHit(bullet.Damage);
+                }
+                
+                // Trả viên đạn về Object Pooler
+                other.gameObject.SetActive(false);
             }
 
-            // Nếu va chạm với vật phẩm.
-            // (If colliding with an item.)
+            // --- XỬ LÝ VA CHẠM VỚI VẬT PHẨM ---
             if (other.CompareTag("Item"))
             {
-                // Thêm logic nhặt item ở đây.
-                // (Add item collection logic here.)
-                Debug.Log("Item collected!");
-                Destroy(other.gameObject); // Phá hủy vật phẩm. (Destroy the item.)
+                Debug.Log($"[PlayerCollision] Va chạm với một đối tượng có tag 'Item': {other.gameObject.name}"); // DEBUG 1
+
+                Item item = other.GetComponent<Item>();
+                if (item != null)
+                {
+                    Debug.Log($"[PlayerCollision] Lấy được component Item. Loại vật phẩm là: {item.itemType}"); // DEBUG 2
+
+                    // Ra lệnh cho vật phẩm áp dụng hiệu ứng và tự hủy
+                    item.Collect(playerState);
+                }
+                else
+                {
+                    Debug.LogError($"[PlayerCollision] Đối tượng {other.gameObject.name} có tag 'Item' nhưng không có script Item.cs!", other.gameObject); // DEBUG 3
+                }
             }
         }
-    
+
+        // =============================================================================================
+        // SECTION: HÀM XỬ LÝ LOGIC (LOGIC HANDLERS)
+        // =============================================================================================
+
         /// <summary>
-        /// Xử lý logic khi người chơi chết.
-        /// (Handles the player's death logic.)
+        /// Xử lý logic khi người chơi bị trúng đạn (nhưng chưa chắc đã chết).
         /// </summary>
-        private void HandleDeath()
+        private void HandleHit(int damageAmount)
         {
-            // Kiểm tra xem người chơi có đang bất tử hay không.
-            // (Check if the player is currently invincible.)
             if (playerState.IsInvincible) return;
 
-            // Kích hoạt hiệu ứng và âm thanh.
-            // (Trigger visual and sound effects.)
+            // Phát âm thanh bị trúng đạn
+            if (hitSFX != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(hitSFX);
+            }
+
+            // Ra lệnh cho PlayerState nhận sát thương.
+            playerState.TakeDamage(damageAmount);
+        }
+
+        /// <summary>
+        /// Hàm này được gọi bởi sự kiện OnPlayerDied từ PlayerState khi máu về 0.
+        /// Chịu trách nhiệm cho hiệu ứng chết.
+        /// </summary>
+        private void HandlePlayerDeath()
+        {
+            // Kích hoạt hiệu ứng nổ khi chết
             if (deathVFX != null)
             {
                 Instantiate(deathVFX, transform.position, Quaternion.identity);
             }
-            if (deathSFX != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(deathSFX);
-            }
-
-            // Gọi hàm TakeDamage từ PlayerState.
-            // (Call the TakeDamage function from PlayerState.)
-            playerState.TakeDamage();
-        
-            // Có thể ẩn người chơi đi một chút trước khi respawn.
-            // (You might want to temporarily hide the player before they respawn.)
-            // gameObject.SetActive(false); // Ví dụ
+            // Logic còn lại (ẩn player, hiện màn hình game over...) đã được xử lý ở PlayerState và GameManager.
         }
 
         /// <summary>
-        /// (Hàm này dành cho Graze Collider) - Xử lý khi đạn sượt qua.
-        /// (This function is for a separate Graze Collider) - Handles bullet grazing.
+        /// Xử lý khi đạn địch bay sượt qua (được gọi từ một collider riêng cho graze).
         /// </summary>
         public void HandleGraze(GameObject bullet)
         {
             // Tạo hiệu ứng và âm thanh graze.
-            // (Create graze VFX and play SFX.)
             if (grazeVFX != null)
             {
-                // Tạo hiệu ứng tại điểm gần nhất trên collider với viên đạn.
-                // (Instantiate the effect at the closest point on the collider to the bullet.)
-                Vector3 spawnPosition = bullet.transform.position; 
-                Instantiate(grazeVFX, spawnPosition, Quaternion.identity);
+                Instantiate(grazeVFX, bullet.transform.position, Quaternion.identity);
             }
             if (grazeSFX != null && audioSource != null)
             {
                 audioSource.PlayOneShot(grazeSFX);
             }
         
-            // Thêm điểm hoặc power cho người chơi.
-            // (Add score or power to the player.)
+            // Thêm điểm hoặc power cho người chơi (logic này có thể nằm trong PlayerState)
+            playerState.AddScore(50); // Ví dụ: thêm 50 điểm cho mỗi lần graze
             Debug.Log("Graze!");
         }
     }
 }
+

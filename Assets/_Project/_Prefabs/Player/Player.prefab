@@ -114,7 +114,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.86, y: 2.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9050262529554507907}
   - {fileID: 7151509672715113646}
@@ -131,14 +131,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386304588943596455}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8351817764982452622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +173,8 @@ MonoBehaviour:
   playerVisuals: {fileID: 9050262529554507907}
   maxTiltAngle: 15
   tiltSpeed: 10
+  victoryPullForce: 2
+  victoryPullStartY: 0
 --- !u!114 &6873620633021049184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +194,6 @@ MonoBehaviour:
   diagonalShotPrefab: {fileID: 1718278173086116756, guid: db3adaf9f3091a6458ac7908de2757f2, type: 3}
   homingShotPrefab: {fileID: 1718278173086116756, guid: 34cc3a9a81361154cb3dcd74a050b596, type: 3}
   cannonballPrefab: {fileID: 1718278173086116756, guid: 658804a23853dd24485ac23faa13e891, type: 3}
-  bombPrefab: {fileID: 0}
   fireRate: 0.1
   diagonalAngle: 15
 --- !u!114 &4628774940143077667
@@ -221,23 +222,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6298265e9143f9c488c2c7a38c6a3dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Player.PlayerState
-  initialLives: 3
-  initialBombs: 2
+  upgradePath: {fileID: 11400000, guid: 5a34a271adb07fa42905e4cd68373e59, type: 2}
+  maxHealth: 20
   invincibilityDuration: 3
-  upgradeLevels:
-  - {fileID: 11400000, guid: 98bfb864edf73b745b148bd4e09c74e9, type: 2}
-  - {fileID: 11400000, guid: 491c02a354c27b443a916ff8018dc622, type: 2}
-  - {fileID: 11400000, guid: 82bc53ea478f92e4db9fa772c26f73ab, type: 2}
-  - {fileID: 11400000, guid: 04b11ab3bf14b3f478dea179de07a225, type: 2}
-  - {fileID: 11400000, guid: 77046906b313a2d41aae292d250f0352, type: 2}
-  - {fileID: 11400000, guid: 1e895b80a228a5b47bcca68790554161, type: 2}
-  - {fileID: 11400000, guid: d1be0e87992d2ff4c8b901dcc14980c1, type: 2}
-  - {fileID: 11400000, guid: 9080ace8702ead943961ae7087194c89, type: 2}
-  - {fileID: 11400000, guid: fbec118b6109a5246b8a5df678ff0c22, type: 2}
-  - {fileID: 11400000, guid: c8a5bec6cdd371f47904613759cfd0e5, type: 2}
-  - {fileID: 11400000, guid: 377ca30457fe12244a7b19eadbfa8895, type: 2}
-  - {fileID: 11400000, guid: 2d056136b6f9bda4aab602c4f025bfe2, type: 2}
-  startingUpgradeLevel: 11
+  initialBombs: 2
+  initialPower: 1
+  bombs: 0
+  power: 0
+  score: 0
+  debugMode: 1
+  debugApplyUpgrade: {fileID: 11400000, guid: fbec118b6109a5246b8a5df678ff0c22, type: 2}
 --- !u!114 &5239147151053284703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,12 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b36bb42e378084ea92e97df6f5a917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Player.PlayerSkillManager
+  bombPrefab: {fileID: 0}
   bulletClearCooldown: 15
-  bulletClear_CooldownImage: {fileID: 0}
-  bulletClear_CooldownText: {fileID: 0}
   invincibilityCooldown: 30
-  invincibility_CooldownImage: {fileID: 0}
-  invincibility_CooldownText: {fileID: 0}
 --- !u!1 &3637892809442829622
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2607984890652393142
 Transform:
   m_ObjectHideFlags: 0
@@ -313,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 4605059645844565372}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0.206, z: 0}
+  m_LocalPosition: {x: -0.009, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -613,6 +604,7 @@ GameObject:
   - component: {fileID: 8889022955816232463}
   - component: {fileID: 6483401886919119600}
   - component: {fileID: 8330884433855591073}
+  - component: {fileID: 5903369027935128568}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: PlayerHitbox
@@ -669,8 +661,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.008012056, y: -0.004578471}
-  m_Size: {x: 0.200109, y: 0.58335805}
+  m_Offset: {x: -0.011444092, y: 0.19265246}
+  m_Size: {x: 0.23763084, y: 0.23763084}
   m_Direction: 0
 --- !u!114 &8330884433855591073
 MonoBehaviour:
@@ -685,10 +677,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Player.PlayerCollision
   playerState: {fileID: 6180588750958836106}
+  hitSFX: {fileID: 0}
   deathVFX: {fileID: 0}
-  deathSFX: {fileID: 0}
   grazeVFX: {fileID: 0}
   grazeSFX: {fileID: 0}
+--- !u!82 &5903369027935128568
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5402233326164575183}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5777304660579230740
 GameObject:
   m_ObjectHideFlags: 0

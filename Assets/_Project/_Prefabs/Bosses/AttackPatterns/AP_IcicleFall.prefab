@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d6a1c5b57f85647804775994983a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._Scripts.Bosses.AttackPatterns.IcicleFall
+  isPersistent: 0
   bulletPrefab: {fileID: 1718278173086116756, guid: 25ba6b8d91e00814ab21346f349fce26, type: 3}
   spawnRate: 0.08
+  duration: 5

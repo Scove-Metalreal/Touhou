@@ -11,13 +11,13 @@ namespace _Project._Scripts.Player
         {
             if (other.CompareTag("Item"))
             {
-                 
                 Item item = other.GetComponent<Item>();
             
                 if (item != null)
                 {
                     // Ra lệnh cho vật phẩm bắt đầu bay về phía người chơi
-                    item.StartHoming(this.transform.parent); // this.transform.parent là Transform của Player
+                    // this.transform.parent là Transform của Player (chứa PlayerState)
+                    item.StartHoming(this.transform.parent); 
                 }
             }
         }

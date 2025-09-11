@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: UpgradePath
+  m_EditorClassIdentifier: Assembly-CSharp:_Project._Scripts.Player:PlayerUpgradePath
+  upgradeLevels:
+  - {fileID: 11400000, guid: 98bfb864edf73b745b148bd4e09c74e9, type: 2}
+  - {fileID: 11400000, guid: 491c02a354c27b443a916ff8018dc622, type: 2}
+  - {fileID: 11400000, guid: 82bc53ea478f92e4db9fa772c26f73ab, type: 2}
+  - {fileID: 11400000, guid: 04b11ab3bf14b3f478dea179de07a225, type: 2}
+  - {fileID: 11400000, guid: 77046906b313a2d41aae292d250f0352, type: 2}
+  - {fileID: 11400000, guid: 1e895b80a228a5b47bcca68790554161, type: 2}
+  - {fileID: 11400000, guid: d1be0e87992d2ff4c8b901dcc14980c1, type: 2}
+  - {fileID: 11400000, guid: 9080ace8702ead943961ae7087194c89, type: 2}
+  - {fileID: 11400000, guid: fbec118b6109a5246b8a5df678ff0c22, type: 2}
+  - {fileID: 11400000, guid: c8a5bec6cdd371f47904613759cfd0e5, type: 2}
+  - {fileID: 11400000, guid: 377ca30457fe12244a7b19eadbfa8895, type: 2}
+  - {fileID: 11400000, guid: 2d056136b6f9bda4aab602c4f025bfe2, type: 2}

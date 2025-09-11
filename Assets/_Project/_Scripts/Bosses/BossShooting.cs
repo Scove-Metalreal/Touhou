@@ -1,49 +1,106 @@
-// 8/30/2025 AI-Tag
-// This was created with the help of Assistant, a Unity Artificial Intelligence product.
-
-using _Project._Scripts.Core;
-using _Project._Scripts.Gameplay.Projectiles;
+using System.Collections;
+using System.Collections.Generic;
+using _Project._Scripts.Bosses.AttackPatterns;
 using UnityEngine;
 
 namespace _Project._Scripts.Bosses
 {
     public class BossShooting : MonoBehaviour
     {
-        [Header("Shooting Settings")]
-        [Tooltip("Tần suất bắn (giây/viên). (Time between shots.)")]
-        public float fireRate = 1.0f;
+        [Header("Scheduler Settings")]
+        [Tooltip("Thời gian nghỉ tối thiểu trước khi thử kích hoạt một đợt tấn công (Cyclic) mới.")]
+        [SerializeField] private float minCyclicActivationCooldown = 1.0f;
+        [Tooltip("Thời gian nghỉ tối đa trước khi thử kích hoạt một đợt tấn công (Cyclic) mới.")]
+        [SerializeField] private float maxCyclicActivationCooldown = 2.5f;
 
-        [Tooltip("Tốc độ của đạn. (Speed of the bullets.)")]
-        public float bulletSpeed = 5.0f;
+        // Danh sách các pattern được phân loại
+        private List<AttackPattern> persistentPatterns = new List<AttackPattern>();
+        private List<AttackPattern> cyclicPatterns = new List<AttackPattern>();
+        
+        // Coroutine chính điều phối các đợt tấn công
+        private Coroutine schedulerCoroutine;
 
-        private float fireTimer = 0f;
-
-        void Update()
+        public void SetAttackPatterns(List<AttackPattern> allPatterns)
         {
-            fireTimer += Time.deltaTime;
+            persistentPatterns.Clear();
+            cyclicPatterns.Clear();
 
-            if (fireTimer >= fireRate)
+            if (allPatterns == null) return;
+
+            foreach (var pattern in allPatterns)
             {
-                FireBullet();
-                fireTimer = 0f;
+                if (pattern.isPersistent)
+                {
+                    persistentPatterns.Add(pattern);
+                }
+                else
+                {
+                    cyclicPatterns.Add(pattern);
+                }
             }
         }
 
-        private void FireBullet()
+        public void StartShooting()
         {
-            // Lấy đạn từ Object Pooler
-            GameObject bullet = ObjectPooler.Instance.GetPooledObject("BossBullet");
-            if (bullet != null)
+            // 1. Bắt đầu tất cả các pattern Persistent. Chúng sẽ chạy liên tục.
+            foreach (var pattern in persistentPatterns)
             {
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = Quaternion.identity;
-                bullet.SetActive(true);
+                pattern?.StartFiring();
+            }
 
-                // Thiết lập hướng và tốc độ cho đạn
-                Bullet bulletScript = bullet.GetComponent<Bullet>();
-                if (bulletScript != null)
+            // 2. Bắt đầu bộ điều phối cho các pattern Cyclic.
+            //    Bộ điều phối này sẽ liên tục kích hoạt lại chúng.
+            if (cyclicPatterns.Count > 0)
+            {
+                if (schedulerCoroutine != null) StopCoroutine(schedulerCoroutine);
+                schedulerCoroutine = StartCoroutine(CyclicPatternScheduler());
+            }
+        }
+
+        public void StopShooting()
+        {
+            // Dừng bộ điều phối
+            if (schedulerCoroutine != null)
+            {
+                StopCoroutine(schedulerCoroutine);
+                schedulerCoroutine = null;
+            }
+
+            // Dừng tất cả các pattern đang chạy (cả Persistent và Cyclic)
+            foreach (var pattern in persistentPatterns)
+            {
+                pattern?.StopFiring();
+            }
+            foreach (var pattern in cyclicPatterns)
+            {
+                pattern?.StopFiring();
+            }
+        }
+
+        private IEnumerator CyclicPatternScheduler()
+        {
+            // Vòng lặp này chạy suốt stage để liên tục kích hoạt các pattern Cyclic
+            while (true)
+            {
+                // Chờ một khoảng thời gian ngẫu nhiên
+                float cooldown = Random.Range(minCyclicActivationCooldown, maxCyclicActivationCooldown);
+                yield return new WaitForSeconds(cooldown);
+
+                // Sau khi chờ, chọn một pattern Cyclic ngẫu nhiên để thực thi
+                if (cyclicPatterns.Count > 0)
                 {
-                    // bulletScript.SetDirection(Vector2.down); // Ví dụ: Bắn xuống dưới
+                    int randomIndex = Random.Range(0, cyclicPatterns.Count);
+                    
+                    AttackPattern patternToExecute = cyclicPatterns[randomIndex];
+
+                    if (patternToExecute != null)
+                    {
+                        Debug.Log($"<color=yellow>Scheduler is re-triggering: {patternToExecute.GetType().Name}</color>");
+                        
+                        // Khởi động pattern. Hàm StartFiring() trong AttackPattern
+                        // sẽ tự động xử lý việc dừng coroutine cũ (nếu có) và bắt đầu cái mới.
+                        patternToExecute.StartFiring();
+                    }
                 }
             }
         }

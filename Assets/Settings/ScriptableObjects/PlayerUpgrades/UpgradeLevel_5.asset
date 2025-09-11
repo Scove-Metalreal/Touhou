@@ -16,7 +16,8 @@ MonoBehaviour:
   diagonalShots: 2
   homingShots: 0
   cannonballShots: 0
-  hasDash: 1
+  unlocksDash: 1
   moveSpeedMultiplier: 1
   hasBulletClearSkill: 0
   hasInvincibilitySkill: 0
+  invincibilitySkillDuration: 3

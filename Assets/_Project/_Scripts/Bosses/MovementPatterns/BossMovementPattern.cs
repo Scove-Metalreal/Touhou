@@ -1,26 +1,53 @@
+using _Project._Scripts.Bosses;
 using UnityEngine;
 
 namespace _Project._Scripts.Bosses.MovementPatterns
 {
+    /// <summary>
+    /// Lớp trừu tượng (base class) cho tất cả các kiểu di chuyển của Boss.
+    /// Mỗi kiểu di chuyển cụ thể (ví dụ: SideToSideMovement) sẽ kế thừa từ lớp này
+    /// và triển khai logic di chuyển riêng trong hàm Move().
+    /// </summary>
     public abstract class BossMovementPattern : MonoBehaviour
     {
-        protected Rigidbody2D rb;
+        // Tham chiếu đến các component chính để điều khiển
+        protected BossController bossController;
         protected Transform bossTransform;
+        
+        // Cờ trạng thái để kiểm soát việc di chuyển có được phép hay không
+        protected bool canMove = false;
 
         /// <summary>
-        /// Hàm này được gọi một lần duy nhất khi pattern được kích hoạt.
-        /// Dùng để thiết lập các tham chiếu cần thiết.
+        /// Được gọi bởi BossController để khởi tạo pattern với các tham chiếu cần thiết.
         /// </summary>
-        public virtual void Initialize(Rigidbody2D bossRigidbody2D)
+        /// <param name="controller">Tham chiếu đến BossController chính.</param>
+        public virtual void Initialize(BossController controller)
         {
-            this.rb = bossRigidbody2D;
-            this.bossTransform = bossRigidbody2D.transform;
+            bossController = controller;
+            bossTransform = controller.transform;
+        }
+
+        /// <summary>
+        /// Kích hoạt trạng thái cho phép di chuyển.
+        /// </summary>
+        public virtual void StartMoving()
+        {
+            canMove = true;
         }
         
         /// <summary>
-        /// Hàm này được gọi trong FixedUpdate của BossController.
-        /// Nơi để thực hiện logic di chuyển dựa trên vật lý.
+        /// Vô hiệu hóa trạng thái cho phép di chuyển.
         /// </summary>
-        public abstract void Move();
+        public virtual void StopMoving()
+        {
+            canMove = false;
+        }
+
+        /// <summary>
+        /// Hàm trừu tượng chứa logic di chuyển chính.
+        /// Sẽ được gọi liên tục từ FixedUpdate() của BossController.
+        /// Các lớp con bắt buộc phải triển khai (override) hàm này.
+        /// </summary>
+        public abstract void Move(); 
     }
 }
