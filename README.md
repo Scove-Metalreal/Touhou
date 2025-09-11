@@ -1,17 +1,16 @@
-# **\Touhou 16 - remaster \- Một Fan Game Touhou Bằng Unity**
+# **Touhou 16 - remaster - Một Fan Game Touhou Bằng Unity**
 
 Dự án game "bullet hell" (danmaku) 2D được phát triển trên nền tảng Unity, lấy cảm hứng từ series game đình đám Touhou Project. Người chơi sẽ điều khiển nhân vật Hakurei Reimu chiến đấu chống lại các Boss với những loạt đạn đầy thử thách.
 
 ### **MỤC LỤC**
 
-* [Tính Năng Nổi Bật](https://www.google.com/search?q=%23t%C3%ADnh-n%C4%83ng-n%E1%BB%95i-b%E1%BA%ADt)  
-* [Gameplay & Điều Khiển](https://www.google.com/search?q=%23gameplay--%C4%91i%E1%BB%81u-khi%E1%BB%83n)  
-* [Cài Đặt & Chạy Thử](https://www.google.com/search?q=%23c%C3%A0i-%C4%91%E1%BA%B7t--ch%E1%BA%A1y-th%E1%BB%AD)  
-  * [Để Chơi Game](https://www.google.com/search?q=%23%C4%91%E1%BB%83-ch%C6%A1i-game)  
-  * [Dành Cho Lập Trình Viên](https://www.google.com/search?q=%23d%C3%A0nh-cho-l%E1%BA%ADp-tr%C3%ACnh-vi%C3%AAn)  
-* [Điểm Nhấn Về Kỹ Thuật](https://www.google.com/search?q=%23%C4%91i%E1%BB%83m-nh%E1%BA%A5n-v%E1%BB%81-k%E1%BB%B9-thu%E1%BA%ADt)  
-* [Lộ Trình Phát Triển](https://www.google.com/search?q=%23l%E1%BB%99-tr%C3%ACnh-ph%C3%A1t-tri%E1%BB%83n)  
-* [Giấy Phép](https://www.google.com/search?q=%23gi%E1%BA%A5y-ph%C3%A9p)
+* [Tính Năng Nổi Bật]  
+* [Gameplay & Điều Khiển]
+* [Cài Đặt & Chạy Thử]  
+  * [Để Chơi Game]
+  * [Dành Cho Lập Trình Viên] 
+* [Điểm Nhấn Về Kỹ Thuật] 
+* [Lộ Trình Phát Triển]
 
 ## **Tính Năng Nổi Bật ✨**
 
