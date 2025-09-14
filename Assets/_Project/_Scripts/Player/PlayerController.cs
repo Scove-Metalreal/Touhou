@@ -2,7 +2,8 @@
 
 using System.Collections;
 using UnityEngine;
-using _Project._Scripts.Core; // Cần thiết để tham chiếu GameManager (tùy chọn, không bắt buộc)
+using _Project._Scripts.Core;
+using _Project._Scripts.UI; // Cần thiết để tham chiếu GameManager (tùy chọn, không bắt buộc)
 
 namespace _Project._Scripts.Player
 {
@@ -115,47 +116,61 @@ namespace _Project._Scripts.Player
         }
         
         /// <summary>
-        /// Xử lý toàn bộ input của người chơi bằng hệ thống Input cũ.
+        /// Xử lý toàn bộ input của người chơi bằng cách lấy dữ liệu từ InputManager.
         /// </summary>
         private void ProcessInputs()
         {
+            // Nếu không có InputManager, không làm gì cả để tránh lỗi
+            if (InputManager.Instance == null) return;
+
             // Chỉ xử lý input di chuyển nếu được phép
             if (canMove)
             {
-                moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                // THAY ĐỔI 1: Lấy input di chuyển từ InputManager thay vì Input.GetAxisRaw
+                moveInput = InputManager.Instance.MoveInput;
             }
             else
             {
                 // Nếu không được phép di chuyển, đảm bảo moveInput là zero để dừng lại
                 moveInput = Vector2.zero;
             }
-            
-            // Input Focus (giữ nút "Fire3", mặc định là Left Shift)
-            IsFocused = canMove && Input.GetButton("Fire3"); // Chỉ có thể focus khi có thể di chuyển
-            
-            // Input Bắn (giữ nút "Fire1", mặc định là Z hoặc Left Ctrl)
-            if (canShoot && Input.GetButton("Fire1"))
+
+            // THAY ĐỔI 2: Lấy input Focus từ InputManager
+            IsFocused = canMove && InputManager.Instance.FocusInput;
+
+            // THAY ĐỔI 3: Lấy input Bắn từ InputManager
+            if (canShoot && InputManager.Instance.ShootInput)
             {
                 playerShooting.TryToShoot();
             }
 
-            // Input Dùng Bom (nhấn 1 lần "Fire2", mặc định là X hoặc Left Alt)
-            if (canMove && Input.GetButtonDown("Fire2")) // Thường thì bạn có thể dùng bom ngay cả khi không thể bắn
+            // THAY ĐỔI 4: Lấy input Dùng Bom từ InputManager
+            if (canMove && InputManager.Instance.BombTriggered)
             {
                 playerState.UseBomb();
             }
-            
-            // Input Dash (nhấn 1 lần "Jump", mặc định là Space)
-            if (canMove && Input.GetButtonDown("Jump") && canDash && playerState.HasDashAbility())
+
+            // THAY ĐỔI 5: Lấy input Dash từ InputManager
+            if (canMove && InputManager.Instance.DashTriggered && canDash && playerState.HasDashAbility())
             {
                 StartCoroutine(Dash());
             }
+            
+            // if (InputManager.Instance != null && InputManager.Instance.InvincibilityTriggered)
+            // {
+            //     Debug.Log("TÍN HIỆU 'TRUE' ĐÃ ĐẾN PLAYER CONTROLLER! Game sẽ Pause ngay bây giờ...");
+            //     Debug.Break(); // <-- Lệnh này sẽ tạm dừng Editor
+            // }
 
-            // Input Dùng Skill Bất Tử (nhấn 1 lần phím "E")
-            if (canMove && Input.GetKeyDown(KeyCode.E))
+            // Thay thế dòng kiểm tra phím "E" cũ:
+            // if (canMove && Input.GetKeyDown(KeyCode.E))
+            // Bằng dòng mới này:
+            if (canMove && InputManager.Instance.InvincibilityTriggered)
             {
                 playerState.UseInvincibilitySkill();
             }
+            
+            
         }
         
         #region Movement & Abilities

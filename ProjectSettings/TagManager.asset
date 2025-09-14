@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - Item
   - PlayerHitbox
+  - MobileControlsCanvas
   layers:
   - Default
   - TransparentFX
